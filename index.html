@@ -1,292 +1,444 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Oruborus</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      html {
-        font-size: clamp(14px, 2vw, 16px);
-      }
+  <meta name="description" content="Oruborus - Plataforma digital con convocatorias, alertas y recursos accesibles sin registro." />
+  <meta property="og:title" content="Oruborus" />
+  <meta property="og:description" content="Explora convocatorias, alertas y recursos digitales. Sin registro, con privacidad." />
+  <meta property="og:image" content="/assets/icon.png" />
+  <meta name="theme-color" content="#D32F2F" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="/assets/icon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Oruborus</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
 
-      body {
-        background: #f3f4f6;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
+    
 
-      header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: 60px;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  
+    html {
+        scroll-behavior: smooth;
       }
-
-      .center-icons {
-        display: flex;
-        gap: 1.5rem;
+      
+      ::-webkit-scrollbar {
+        width: 10px;
       }
-
-      .icon {
-        font-size: 1.4rem;
-        cursor: pointer;
-        position: relative;
+      
+      ::-webkit-scrollbar-track {
+        background: transparent;
       }
-
-      .icon:hover::after {
-        content: attr(data-tooltip);
-        position: absolute;
-        top: 125%;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #111827;
-        color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 0.7rem;
-        white-space: nowrap;
-      }
-
-      .main-container {
-        display: flex;
-        flex-direction: column;
-        padding-top: 60px;
-        flex: 1;
-        overflow: hidden;
-      }
-
-      .sidebar {
-        display: none;
-        background: #f9fafb;
-        padding: 1rem;
-      }
-
-      .sidebar button {
-        display: block;
-        width: 100%;
-        margin-bottom: 0.5rem;
-        padding: 0.75rem;
-        border: none;
+      
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
         border-radius: 6px;
-        background: white;
-        font-weight: bold;
-        cursor: pointer;
+        backdrop-filter: blur(10px);
+        border: 2px solid transparent;
+        background-clip: padding-box;
+        transition: background 0.3s ease;
       }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
+      
+    .glass-capsule {
+      position: fixed;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(24px) saturate(150%);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease-in-out;
+    }
+    .glass-capsule.shrink {
+      transform: translateX(-50%) scale(0.95);
+      padding: 0.5rem 1.5rem;
+    }
+    .glass-capsule nav button {
+      margin: 0 0.5rem;
+    }
+  </style>
+</head>
 
-      .sidebar button.active {
-        background: #111827;
-        color: white;
-      }
+<body class="bg-gray-900 text-white min-h-screen">
+  <!-- Capsule Header -->
+  <div id="capsuleHeader" class="glass-capsule">
+    <div class="flex items-center gap-2">
+      <!-- <img src="/assets/icon.png" alt="Oruborus" class="h-6 w-6 rounded-full"> -->
+      <!-- <span class="font-semibold text-base">Oruborus</span> -->
+    </div>
+    <nav class="flex items-center text-sm font-medium">
+      <button onclick="loadModule('inicio')" class="hover:text-red-400">Inicio</button>
+      <button onclick="loadModule('explora')" class="hover:text-red-400">Explora</button>
+      <button onclick="loadModule('favoritos')" class="hover:text-red-400">Favoritos</button>
+      <button onclick="loadModule('convocatorias')" class="hover:text-red-400">Convocatorias</button>
+      <button onclick="loadModule('contacto')" class="hover:text-red-400">Contacto</button>
+    </nav>
+  </div>
 
-      .content {
-        flex: 1;
-        overflow-y: auto;
-      }
+  <style>
+    @keyframes slideUp {
+      0% { transform: translateY(0); }
+      25% { transform: translateY(-1.5rem); }
+      50% { transform: translateY(-3rem); }
+      75% { transform: translateY(-4.5rem); }
+      100% { transform: translateY(0); }
+    }
+  
+    .animate-carousel {
+      display: flex;
+      flex-direction: column;
+      animation: slideUp 10s infinite ease-in-out;
+    }
+  </style>
+  
 
-      .scroll-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 1rem;
-      }
 
-      .card {
-        background: white;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
-      }
-
-      .card img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-      }
-
-      .card .info {
-        padding: 1rem;
-      }
-
-      .card .info h3 {
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .card .info .footer {
-        display: flex;
-        justify-content: space-between;
-        font-size: 0.8rem;
-        color: gray;
-      }
-
-      .skeleton {
-        background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
-        background-size: 200% 100%;
-        animation: shimmer 1.2s infinite;
-        border-radius: 10px;
-      }
-
-      .skeleton-card {
-        height: 300px;
-      }
-
-      @keyframes shimmer {
-        0% {
-          background-position: -200% 0;
-        }
-        100% {
-          background-position: 200% 0;
-        }
-      }
-
-      @media (min-width: 768px) {
-        .main-container {
-          flex-direction: row;
-        }
-        .sidebar {
-          display: block;
-          width: 200px;
-          flex-shrink: 0;
-          padding-top: 80px;
-        }
-        .scroll-container {
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-      }
-
-      @media (min-width: 1024px) {
-        .scroll-container {
-          max-width: 1200px;
-          margin: auto;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="center-icons">
-        <div
-          class="icon"
-          data-tooltip="Alertas"
-          onclick="loadSection('alertas')"
-        >
-          <i class="bi bi-bell"></i>
+  <!-- Hero Section -->
+<!-- Hero Reimaginado -->
+<!-- HERO -->
+<section class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] overflow-hidden">
+    <div class="z-10 w-full max-w-7xl">
+      <h1 class="text-5xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-orange-400 drop-shadow-lg leading-tight tracking-tight mb-4">
+        La nueva forma de conectarte<br><span class="text-white">con oportunidades</span>
+      </h1>
+  
+      <p class="mt-2 text-lg text-white/80 max-w-xl mx-auto font-light">
+        Oruborus transforma datos abiertos en soluciones reales.
+      </p>
+  
+      <!-- Contenedor del carrusel con botones -->
+      <!-- CONTENEDOR del carrusel con botones -->
+<div class="relative mt-10 w-full max-w-7xl mx-auto">
+    <!-- Botón Izquierda -->
+    <button onclick="scrollCarousel(-1)"
+      class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full shadow-md backdrop-blur-lg">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+  
+    <!-- Carrusel de tarjetas -->
+    <div id="carousel" class="flex flex-nowrap gap-5 overflow-x-auto scroll-smooth px-10 py-2 scrollbar-hide">
+      
+      <!-- Tarjetas aquí (repítelas todas sin cambiar este bloque) -->
+      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
+        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
+          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
         </div>
-        <div
-          class="icon"
-          data-tooltip="Empleos"
-          onclick="loadSection('empleos')"
-        >
-          <i class="bi bi-box-seam"></i>
-        </div>
-        <div
-          class="icon"
-          data-tooltip="Trámites"
-          onclick="loadSection('tramites')"
-        >
-          <i class="bi bi-ticket-perforated"></i>
-        </div>
-        <div
-          class="icon"
-          data-tooltip="Guardados"
-          onclick="loadSection('guardados')"
-        >
-          <i class="bi bi-heart"></i>
-        </div>
-        <div
-          class="icon"
-          data-tooltip="Ajustes"
-          onclick="loadSection('ajustes')"
-        >
-          <i class="bi bi-gear"></i>
+        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
+        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
+        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
+          <button onclick="like(this)">❤️</button>
+          <button onclick="fav(this)">⭐</button>
         </div>
       </div>
-    </header>
-    <div class="main-container">
-      <div class="sidebar">
-        <button class="active" onclick="loadSection('alertas')">Alertas</button>
-        <button onclick="loadSection('empleos')">Empleos Estatales</button>
-        <button onclick="loadSection('tramites')">Trámites Estatales</button>
-        <button onclick="loadSection('becas')">Becas Estatales</button>
-        <button onclick="loadSection('noticias')">Noticias</button>
+
+
+      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
+        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
+          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
+        </div>
+        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
+        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
+        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
+          <button onclick="like(this)">❤️</button>
+          <button onclick="fav(this)">⭐</button>
+        </div>
       </div>
-      <div class="content">
-        <div class="scroll-container" id="cards">
-          <div class="skeleton skeleton-card"></div>
-          <div class="skeleton skeleton-card"></div>
-          <div class="skeleton skeleton-card"></div>
+      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
+        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
+          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
+        </div>
+        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
+        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
+        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
+          <button onclick="like(this)">❤️</button>
+          <button onclick="fav(this)">⭐</button>
+        </div>
+      </div>
+      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
+        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
+          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
+        </div>
+        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
+        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
+        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
+          <button onclick="like(this)">❤️</button>
+          <button onclick="fav(this)">⭐</button>
+        </div>
+      </div>
+      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
+        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
+          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
+        </div>
+        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
+        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
+        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
+          <button onclick="like(this)">❤️</button>
+          <button onclick="fav(this)">⭐</button>
+        </div>
+      </div>
+      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
+        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
+          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
+        </div>
+        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
+        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
+        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
+          <button onclick="like(this)">❤️</button>
+          <button onclick="fav(this)">⭐</button>
+        </div>
+      </div>
+      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
+        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
+          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
+        </div>
+        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
+        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
+        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
+          <button onclick="like(this)">❤️</button>
+          <button onclick="fav(this)">⭐</button>
+        </div>
+      </div>
+  
+      <!-- DUPLICA este bloque por cada tarjeta adicional -->
+    </div>
+  
+    <!-- Botón Derecha -->
+    <button onclick="scrollCarousel(1)"
+      class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full shadow-md backdrop-blur-lg">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+  
+      <!-- CTA -->
+      <div class="mt-10">
+        <button onclick="loadModule('explora')"
+          class="px-6 py-3 rounded-full text-white font-bold text-lg bg-gradient-to-r from-pink-500 to-purple-500 hover:scale-105 transition shadow-xl">
+          Empezar ahora 🚀
+        </button>
+      </div>
+    </div>
+  </section>
+  <script>
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById('carousel');
+      const scrollAmount = 300;
+      carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+  
+    function like(btn) {
+      btn.classList.toggle('text-pink-500');
+    }
+  
+    function fav(btn) {
+      btn.classList.toggle('text-yellow-400');
+    }
+  </script>
+  <style>
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+  
+    
+  
+
+
+  <!-- Qué es Oruborus -->
+  <section class="py-28 bg-[#0b0c1c] relative overflow-hidden">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 px-6 items-center">
+      <div class="relative">
+        <img src="/assets/ui-demo.svg" alt="Interfaz Oruborus" class="w-full max-w-md mx-auto animate-zoom-in rounded-xl shadow-xl">
+        <div class="absolute -top-6 -left-6 bg-pink-500 rounded-full w-16 h-16 opacity-30 blur-2xl animate-pulse"></div>
+      </div>
+      <div class="text-white">
+        <h2 class="text-4xl font-bold mb-4 leading-tight animate-fade-in-up">¿Qué es Oruborus?</h2>
+        <p class="text-lg text-white/80 leading-relaxed mb-4">Oruborus es una plataforma de participación ciudadana sin registros, sin anuncios y sin dependencias. Conecta datos abiertos con experiencias de usuario ultra modernas, accesibles y seguras desde cualquier navegador.</p>
+        <ul class="space-y-3 text-left text-white/80">
+          <li class="flex items-center gap-3"><span class="text-green-400">✔</span> Hoja de cálculo pública como backend</li>
+          <li class="flex items-center gap-3"><span class="text-green-400">✔</span> Diseño sin barreras, optimizado para móvil</li>
+          <li class="flex items-center gap-3"><span class="text-green-400">✔</span> Compatible con WhatsApp y sin descargas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Cómo Funciona -->
+  <section class="py-28 bg-gradient-to-b from-[#0f0c29] to-[#000000] text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">¿Cómo funciona?</h2>
+      <div class="grid md:grid-cols-3 gap-12 text-center">
+        <div class="bg-white/5 backdrop-blur-md p-6 rounded-xl shadow-xl hover:scale-105 transition transform">
+          <div class="text-6xl mb-4">🔍</div>
+          <h3 class="text-xl font-semibold mb-2">Explora</h3>
+          <p class="text-white/70">Filtra convocatorias y alertas públicas de forma visual desde tu navegador sin cuentas.</p>
+        </div>
+        <div class="bg-white/5 backdrop-blur-md p-6 rounded-xl shadow-xl hover:scale-105 transition transform">
+          <div class="text-6xl mb-4">⚙️</div>
+          <h3 class="text-xl font-semibold mb-2">Personaliza</h3>
+          <p class="text-white/70">Agrega favoritos, comparte por WhatsApp y edita la base de datos como comunidad.</p>
+        </div>
+        <div class="bg-white/5 backdrop-blur-md p-6 rounded-xl shadow-xl hover:scale-105 transition transform">
+          <div class="text-6xl mb-4">🚀</div>
+          <h3 class="text-xl font-semibold mb-2">Impacta</h3>
+          <p class="text-white/70">Empodera a tu barrio, tu institución o ciudad con alertas y soluciones en tiempo real.</p>
         </div>
       </div>
     </div>
-    <script>
-      function loadSection(section) {
-        const cards = document.getElementById("cards");
-        const buttons = document.querySelectorAll(".sidebar button");
+  </section>
+  
+  <!-- Impacto real -->
+  <section class="bg-gradient-to-b from-black to-[#0f0c29] pb-20">
 
-        buttons.forEach((btn) => btn.classList.remove("active"));
-        const matchedBtn = [...buttons].find((btn) =>
-          btn.textContent.toLowerCase().includes(section)
-        );
-        if (matchedBtn) matchedBtn.classList.add("active");
+    <div class="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-4xl font-extrabold mb-6">Un impacto real para personas reales</h2>
+      <p class="text-white/70 mb-8 text-lg">Miles de usuarios ya acceden a oportunidades sin tener que instalar apps, llenar formularios ni registrarse. Nuestra misión es que la información útil no tenga barreras tecnológicas.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12">
+        <div class="bg-white/5 p-6 rounded-lg shadow-xl">
+          <h3 class="text-3xl font-bold">+50K</h3>
+          <p class="text-white/60">Consultas ciudadanas</p>
+        </div>
+        <div class="bg-white/5 p-6 rounded-lg shadow-xl">
+          <h3 class="text-3xl font-bold">0</h3>
+          <p class="text-white/60">Anuncios ni rastreadores</p>
+        </div>
+        <div class="bg-white/5 p-6 rounded-lg shadow-xl">
+          <h3 class="text-3xl font-bold">100%</h3>
+          <p class="text-white/60">Hecho en Perú 🇵🇪</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer nuevo -->
+    <!-- FOOTER -->
+    <footer class="bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white pt-16 pb-8 px-6 rounded-t-3xl relative shadow-inner">
 
-        cards.innerHTML = `
-        <div class="skeleton skeleton-card"></div>
-        <div class="skeleton skeleton-card"></div>
-        <div class="skeleton skeleton-card"></div>
-      `;
-
-        setTimeout(() => {
-          if (section === "noticias") {
-            cards.innerHTML = `
-            <div class="card">
-              <img src="https://media.datacenterdynamics.com/media/images/Extra.2e16d0ba.fill-1200x630.jpg" alt="Market" />
-              <div class="info">
-                <h3>Música: Nuevo álbum de la banda británica LOR</h3>
-                <p>Escucha lo nuevo en el reproductor web de Oruborus</p>
-                <div class="footer">
-                  <span>3M</span>
-                  <span>2k ❤️</span>
-                </div>
-              </div>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-sm">
+      
+          <!-- Marca -->
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-3 h-3 rounded-full bg-pink-500 animate-pulse shadow-md"></div>
+              <h2 class="text-lg font-semibold tracking-wide">Oruborus</h2>
             </div>
-            <div class="card">
-              <img src="https://source.unsplash.com/random/800x301?interview" alt="Entrevista" />
-              <div class="info">
-                <h3>Convocatoria: Entrevista para nuevos cargos</h3>
-                <p>Participa en los procesos abiertos publicados hoy</p>
-                <div class="footer">
-                  <span>2M</span>
-                  <span>1.5k ❤️</span>
-                </div>
+            <p class="text-white/70 leading-relaxed text-sm">
+              Plataforma ciudadana inteligente. Accede a datos útiles sin barreras.
+            </p>
+            <p class="mt-2 text-white/50 text-xs">Hecho en Perú 🇵🇪</p>
+          </div>
+      
+          <!-- Contacto -->
+          <div>
+            <h3 class="text-white font-semibold mb-2">Contacto</h3>
+            <ul class="space-y-2 text-white/70 text-sm">
+              <li class="flex items-center gap-2 hover:text-pink-400 transition"><span>📞</span> +51 999 999 999</li>
+              <li class="flex items-center gap-2 hover:text-pink-400 transition"><span>📧</span> info@oruborus.pe</li>
+              <li class="flex items-center gap-2 hover:text-pink-400 transition"><span>📍</span> Chimbote, Perú</li>
+            </ul>
+          </div>
+      
+          <!-- Ayuda -->
+          <div>
+            <h3 class="text-white font-semibold mb-2">Soporte</h3>
+            <ul class="space-y-2 text-white/70 text-sm hover:[&>li:hover]:text-white cursor-pointer">
+              <li>Preguntas frecuentes</li>
+              <li>Políticas de privacidad</li>
+              <li>Devoluciones</li>
+            </ul>
+          </div>
+      
+          <!-- Suscripción -->
+          <div>
+            <h3 class="text-white font-semibold mb-2">Suscríbete</h3>
+            <form onsubmit="event.preventDefault(); suscribirse();" class="flex flex-col gap-3">
+              <div class="flex items-center rounded-lg bg-white px-3 py-2 text-sm text-black shadow-sm">
+                <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                  viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+                    d="M16 12H8m0 0l4-4m-4 4l4 4" /></svg>
+                <input id="inputCorreo" type="email" placeholder="Tu correo"
+                  class="bg-transparent outline-none w-full">
               </div>
-            </div>
-          `;
-          } else {
-            cards.innerHTML = `<div class='card'><div class='info'><h3>Contenido de "${section}"</h3><p>Sección cargada dinámicamente.</p><div class='footer'><span>1.2k</span><span>💡</span></div></div></div>`;
-          }
-        }, 1000);
+              <button type="submit"
+                class="bg-gradient-to-r from-fuchsia-600 to-pink-500 hover:from-fuchsia-500 hover:to-pink-400 text-white py-2 rounded-md font-semibold transition-all duration-300 shadow-md">
+                Unirme
+              </button>
+            </form>
+          </div>
+      
+        </div>
+      
+        <!-- Línea y derechos -->
+        <div class="border-t border-white/10 mt-10 pt-6 text-center text-xs text-white/40">
+          © 2025 <strong>Oruborus Digital</strong>. Todos los derechos reservados.
+        </div>
+      
+        <!-- Botón scroll top -->
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+          class="absolute bottom-5 right-5 w-9 h-9 flex items-center justify-center bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur transition">
+          ↑
+        </button>
+      </footer>
+      
+      
+  
+  <!-- Scroll Top Button -->
+  <button id="scrollTopBtn" title="Subir" class="hidden fixed bottom-6 right-6 bg-white/10 backdrop-blur text-white border border-white/20 p-3 rounded-full shadow-lg hover:bg-white/20 transition">
+    ⬆
+  </button>
+
+
+  <script>
+    // Scroll shrink effect for capsule
+    const capsule = document.getElementById('capsuleHeader');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > lastScroll && currentScroll > 20) {
+        capsule.classList.add('shrink');
+      } else {
+        capsule.classList.remove('shrink');
       }
+      lastScroll = currentScroll;
+    });
+  </script>
+  <script src="app.js"></script>
 
-      window.addEventListener("DOMContentLoaded", () => loadSection("alertas"));
+
+  <button id="scrollTopBtn" title="Subir" class="hidden fixed bottom-6 right-6 bg-white/10 backdrop-blur text-white border border-white/20 p-3 rounded-full shadow-lg hover:bg-white/20 transition">
+    ⬆
+  </button>
+  <script>const scrollBtn = document.getElementById("scrollTopBtn");
+
+    window.addEventListener("scroll", () => {
+      scrollBtn.classList.toggle("hidden", window.scrollY < 300);
+    });
+    
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
     </script>
-  </body>
+</body>
 </html>
