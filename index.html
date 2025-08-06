@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oruborus</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      html {
+        font-size: clamp(14px, 2vw, 16px);
+      }
+
+      body {
+        background: #f3f4f6;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 60px;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .center-icons {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .icon {
+        font-size: 1.4rem;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .icon:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #111827;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        white-space: nowrap;
+      }
+
+      .main-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 60px;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      .sidebar {
+        display: none;
+        background: #f9fafb;
+        padding: 1rem;
+      }
+
+      .sidebar button {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.5rem;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 6px;
+        background: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .sidebar button.active {
+        background: #111827;
+        color: white;
+      }
+
+      .content {
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      .scroll-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      .card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .card .info {
+        padding: 1rem;
+      }
+
+      .card .info h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .card .info .footer {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: gray;
+      }
+
+      .skeleton {
+        background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.2s infinite;
+        border-radius: 10px;
+      }
+
+      .skeleton-card {
+        height: 300px;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .main-container {
+          flex-direction: row;
+        }
+        .sidebar {
+          display: block;
+          width: 200px;
+          flex-shrink: 0;
+          padding-top: 80px;
+        }
+        .scroll-container {
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .scroll-container {
+          max-width: 1200px;
+          margin: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="center-icons">
+        <div
+          class="icon"
+          data-tooltip="Alertas"
+          onclick="loadSection('alertas')"
+        >
+          <i class="bi bi-bell"></i>
+        </div>
+        <div
+          class="icon"
+          data-tooltip="Empleos"
+          onclick="loadSection('empleos')"
+        >
+          <i class="bi bi-box-seam"></i>
+        </div>
+        <div
+          class="icon"
+          data-tooltip="Trámites"
+          onclick="loadSection('tramites')"
+        >
+          <i class="bi bi-ticket-perforated"></i>
+        </div>
+        <div
+          class="icon"
+          data-tooltip="Guardados"
+          onclick="loadSection('guardados')"
+        >
+          <i class="bi bi-heart"></i>
+        </div>
+        <div
+          class="icon"
+          data-tooltip="Ajustes"
+          onclick="loadSection('ajustes')"
+        >
+          <i class="bi bi-gear"></i>
+        </div>
+      </div>
+    </header>
+    <div class="main-container">
+      <div class="sidebar">
+        <button class="active" onclick="loadSection('alertas')">Alertas</button>
+        <button onclick="loadSection('empleos')">Empleos Estatales</button>
+        <button onclick="loadSection('tramites')">Trámites Estatales</button>
+        <button onclick="loadSection('becas')">Becas Estatales</button>
+        <button onclick="loadSection('noticias')">Noticias</button>
+      </div>
+      <div class="content">
+        <div class="scroll-container" id="cards">
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function loadSection(section) {
+        const cards = document.getElementById("cards");
+        const buttons = document.querySelectorAll(".sidebar button");
+
+        buttons.forEach((btn) => btn.classList.remove("active"));
+        const matchedBtn = [...buttons].find((btn) =>
+          btn.textContent.toLowerCase().includes(section)
+        );
+        if (matchedBtn) matchedBtn.classList.add("active");
+
+        cards.innerHTML = `
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+      `;
+
+        setTimeout(() => {
+          if (section === "noticias") {
+            cards.innerHTML = `
+            <div class="card">
+              <img src="https://media.datacenterdynamics.com/media/images/Extra.2e16d0ba.fill-1200x630.jpg" alt="Market" />
+              <div class="info">
+                <h3>Música: Nuevo álbum de la banda británica LOR</h3>
+                <p>Escucha lo nuevo en el reproductor web de Oruborus</p>
+                <div class="footer">
+                  <span>3M</span>
+                  <span>2k ❤️</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="https://source.unsplash.com/random/800x301?interview" alt="Entrevista" />
+              <div class="info">
+                <h3>Convocatoria: Entrevista para nuevos cargos</h3>
+                <p>Participa en los procesos abiertos publicados hoy</p>
+                <div class="footer">
+                  <span>2M</span>
+                  <span>1.5k ❤️</span>
+                </div>
+              </div>
+            </div>
+          `;
+          } else {
+            cards.innerHTML = `<div class='card'><div class='info'><h3>Contenido de "${section}"</h3><p>Sección cargada dinámicamente.</p><div class='footer'><span>1.2k</span><span>💡</span></div></div></div>`;
+          }
+        }, 1000);
+      }
+
+      window.addEventListener("DOMContentLoaded", () => loadSection("alertas"));
+    </script>
+  </body>
+</html>
