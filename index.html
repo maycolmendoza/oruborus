@@ -72,10 +72,183 @@
     .glass-capsule nav button {
       margin: 0 0.5rem;
     }
+
+    /* ===== Capsule Header – mejoras solo CSS ===== */
+
+/* tipografía y tamaño fluido */
+.glass-capsule {
+  font-size: clamp(.85rem, 1.6vw, .95rem);
+  color: #0f172a;                /* legible en claros */
+  text-shadow: 0 1px 0 rgba(0,0,0,.18); /* ayuda sobre fondos muy claros */
+  background: rgba(255,255,255,.65);    /* más contraste por defecto */
+  border: 1px solid rgba(15,23,42,.12); /* ring sutil */
+  box-shadow: 0 8px 30px rgba(0,0,0,.18);
+}
+
+/* mejor fondo cuando hay soporte de blur */
+@supports (backdrop-filter: blur(12px)) {
+  .glass-capsule {
+    background: rgba(255,255,255,.55);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    border-color: rgba(15,23,42,.10);
+  }
+}
+
+/* modo oscuro del SO: se invierten tonos para seguir siendo legible */
+@media (prefers-color-scheme: dark) {
+  .glass-capsule {
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0,0,0,.35);
+    background: rgba(15,23,42,.60);     /* slate-900 translúcido */
+    border-color: rgba(255,255,255,.14);
+    box-shadow: 0 8px 34px rgba(0,0,0,.35);
+  }
+}
+
+/* botones dentro de la cápsula: mejor hit area, pill y contraste */
+.glass-capsule nav button {
+  margin: 0 .375rem;             /* más compacto */
+  padding: .5rem .9rem;          /* área clicable cómoda */
+  border-radius: 9999px;
+  color: inherit;                /* hereda para claro/oscuro */
+  background: transparent;
+  transition: color .2s, background .2s, transform .12s, opacity .2s;
+  opacity: .95;
+}
+
+/* hover/active únicamente con CSS (sin JS) */
+.glass-capsule nav button:hover {
+  color: #fb7185;                /* rose-400 */
+  background: rgba(255,255,255,.55);
+}
+@media (prefers-color-scheme: dark) {
+  .glass-capsule nav button:hover {
+    background: rgba(255,255,255,.16);
+    color: #fff;
+  }
+}
+
+/* foco accesible (teclado) */
+.glass-capsule nav button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(251,113,133,.6); /* anillo rosa */
+  background: rgba(255,255,255,.65);
+}
+
+/* estado “activo” opcional SIN JS: añade .is-active o aria-current="page" desde tu HTML si quieres marcar la sección actual */
+.glass-capsule nav button.is-active,
+.glass-capsule nav button[aria-current="page"] {
+  background: rgba(255,255,255,.7);
+  color: #0f172a;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.08);
+}
+@media (prefers-color-scheme: dark) {
+  .glass-capsule nav button.is-active,
+  .glass-capsule nav button[aria-current="page"] {
+    background: rgba(255,255,255,.16);
+    color: #fff;
+  }
+}
+
+/* responsive: cápsula más compacta en pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .glass-capsule { padding: .6rem 1rem; }
+  .glass-capsule nav { gap: .25rem; }
+}
+
+/* opcional: si el nav llega a desbordar, escóndele el scrollbar */
+.glass-capsule nav {
+  overflow-x: auto;
+  -ms-overflow-style: none; scrollbar-width: none;
+}
+.glass-capsule nav::-webkit-scrollbar { display: none; }
+
   </style>
+<style>
+  /* Safe area para iPhone con notch */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+
+.glass-capsule {
+  top: calc(1rem + var(--safe-top));
+}
+
+/* Ajuste de cápsula en pantallas pequeñas */
+@media (max-width: 480px) {
+  .glass-capsule {
+    width: calc(100% - 1.25rem);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.55rem 0.9rem;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  .glass-capsule nav button {
+    margin: 0 0.35rem;
+  }
+}
+
+/* Tipografía fluida */
+h1, h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+p {
+  font-size: clamp(1rem, 2.6vw, 1.125rem);
+  line-height: 1.6;
+}
+
+/* Botones fluidos */
+.btn-responsive {
+  width: 100%;
+}
+@media (min-width: 640px) {
+  .btn-responsive {
+    width: auto;
+  }
+}
+
+/* Olas más bajas en móvil */
+.wave-responsive {
+  height: clamp(48px, 8vw, 100px);
+}
+
+
+/*aa*/
+/* mejora contraste en fondos claros/oscuros (ya lo tienes, refuerzo sutil) */
+.glass-capsule{
+  background: rgba(255,255,255,.65);
+  border: 1px solid rgba(15,23,42,.12);
+  box-shadow: 0 8px 30px rgba(0,0,0,.18);
+}
+@supports (backdrop-filter: blur(12px)){
+  .glass-capsule{
+    background: rgba(255,255,255,.55);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+  }
+}
+@media (prefers-color-scheme: dark){
+  .glass-capsule{
+    background: rgba(15,23,42,.60);
+    border-color: rgba(255,255,255,.14);
+    color:#fff;
+  }
+  .glass-capsule nav button:hover{ background: rgba(255,255,255,.16); }
+}
+
+</style>
+  
 </head>
 
 <body class="bg-gray-900 text-white min-h-screen">
+  
+
+
+
+
   <!-- Capsule Header -->
   <div id="capsuleHeader" class="glass-capsule">
     <div class="flex items-center gap-2">
@@ -691,16 +864,19 @@
     <!-- SECCIÓN: SÍGUENOS EN -->
     <section
       id="siguenos"
-      class="relative py-24 bg-gradient-to-br from-[#f0f4ff] to-[#e0ecff] text-center"
+      class="relative py-24 bg-gradient-to-br from-[#e0ecff] to-[#e0ecff] text-center"
     >
       <div class="max-w-4xl mx-auto px-6" data-aos="fade-up">
-        <h2 class="text-4xl font-bold text-gray-800 mb-4">Síguenos en</h2>
-        <p class="text-lg text-gray-600 mb-8">
-          Conéctate con nosotros para ver lo último de Oruborus en redes
-          sociales.
-        </p>
+<h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+  Síguenos en
+</h2>
+<p class="text-base sm:text-lg md:text-xl text-gray-600 mb-8">
+  Conéctate con nosotros para ver lo último de Oruborus en redes sociales.
+</p>
 
-        <div class="flex justify-center items-center gap-6">
+
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+
           <!-- Facebook -->
           <div
             class="fb-follow"
@@ -750,72 +926,130 @@
 
     <!----contacto-->
 
-    <!-- Curva SVG entre secciones -->
-    <!-- Separador en forma de ola que desciende hacia la siguiente sección -->
-    <div class="relative w-full overflow-hidden leading-none">
-      <svg
-        block
-        w-full
-        h-[100px]
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1440 320"
-      >
-        <defs>
-          <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f0f4ff" />
-            <stop offset="100%" stop-color="#e0ecff" />
-          </linearGradient>
-        </defs>
-        <path
-          fill="url(#waveGradient)"
-          fill-opacity="1"
-          d="M0,320L48,293.3C96,267,192,213,288,202.7C384,192,480,224,576,218.7C672,213,768,171,864,165.3C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
-        ></path>
-      </svg>
+    <!-- Separador con doble ola (transición más elegante) -->
+<!-- Wave responsive (sin gaps) -->
+<!-- Wave con mismo fondo que la sección contacto -->
+<!-- Wave con mismo fondo que #contacto -->
+<!-- Wave con mismo fondo que #contacto -->
+<div class="relative w-full overflow-hidden leading-none bg-gradient-to-b from-[#0b1220] via-[#101a33] to-[#0b1220] -mt-[1px]">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.08),_transparent_60%)]"></div>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1440 320"
+    preserveAspectRatio="none"
+    class="relative block w-full h-[clamp(80px,12vw,160px)]"
+    aria-hidden="true"
+  >
+    <defs>
+      <!-- Degradado igual que bg-gradient-to-br from-[#f0f4ff] to-[#e0ecff] -->
+      <linearGradient id="waveTop" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#f0f4ff" />
+        <stop offset="100%" stop-color="#e0ecff" />
+      </linearGradient>
+    </defs>
+
+    <path fill="#e0ecff" d="M0,256L48,245.3C96,235,192,213,288,202.7C384,192,480,192,576,197.3C672,203,768,213,864,202.7C960,192,1056,160,1152,154.7C1248,149,1344,171,1392,181.3L1440,192L1440,0L0,0Z"/>
+
+
+    <path fill="transparent"
+      d="M0,320L48,309.3C96,299,192,277,288,256C384,235,480,213,576,197.3C672,181,768,171,864,176C960,181,1056,203,1152,213.3C1248,224,1344,224,1392,224L1440,224L1440,320L0,320Z"/>
+  </svg>
+</div>
+
+
+
+
+
+
+
+<!-- Contacto con fondo hero, patrón sutil y glassmorphism -->
+<!-- Contacto con fondo hero, patrón sutil y glassmorphism -->
+<section id="contacto"
+  class="relative -mt-[1px] py-28 text-white bg-gradient-to-b from-[#0b1220] via-[#101a33] to-[#0b1220]">
+  <!-- patrón radial suave (comienza más abajo y con fade-in) -->
+  <div
+    class="pointer-events-none absolute inset-x-0 top-[clamp(56px,8vw,120px)] bottom-0
+           bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.08),_transparent_60%)]
+           [mask-image:linear-gradient(to_bottom,transparent_0,black_40px,black)]
+           [-webkit-mask-image:linear-gradient(to_bottom,transparent_0,black_40px,black)]">
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
+    <!-- Card formulario -->
+    <div data-aos="fade-right"
+         class="backdrop-blur-xl bg-white/10 border border-white/15 rounded-2xl p-8 shadow-2xl">
+      <h2 class="text-3xl font-extrabold tracking-tight mb-2">Contáctanos</h2>
+      <p class="text-white/70 mb-6">¿Tienes un proyecto o una idea? Conversemos.</p>
+
+      <form class="space-y-4">
+        <!-- Nombre -->
+        <div class="relative">
+          <span class="absolute left-4 top-1/2 -translate-y-1/2">
+            <!-- icono usuario -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 7.5a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 19.5a7.5 7.5 0 0115 0"/></svg>
+          </span>
+          <input type="text" placeholder="Nombre"
+                 class="w-full pl-12 pr-4 py-3 rounded-xl border border-white/15 bg-white/5 placeholder-white/60 text-white focus:outline-none focus:ring-2 focus:ring-pink-400/60 focus:border-pink-300/50 transition"/>
+        </div>
+
+        <!-- Correo -->
+        <div class="relative">
+          <span class="absolute left-4 top-1/2 -translate-y-1/2">
+            <!-- icono correo -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 8.25v7.5a2.25 2.25 0 01-2.25 2.25H4.5A2.25 2.25 0 012.25 15.75v-7.5M21.75 8.25l-9.75 6-9.75-6M21.75 8.25l-3.743-2.246A4.5 4.5 0 0015.632 5.25H8.368a4.5 4.5 0 00-2.375.754L2.25 8.25"/></svg>
+          </span>
+          <input type="email" placeholder="Correo"
+                 class="w-full pl-12 pr-4 py-3 rounded-xl border border-white/15 bg-white/5 placeholder-white/60 text-white focus:outline-none focus:ring-2 focus:ring-pink-400/60 focus:border-pink-300/50 transition"/>
+        </div>
+
+        <!-- Mensaje -->
+        <div class="relative">
+          <span class="absolute left-4 top-4">
+            <!-- icono mensaje -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4.2-.9L3 20l1.09-3.27A7.64 7.64 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          </span>
+          <textarea rows="5" placeholder="Mensaje"
+                    class="w-full pl-12 pr-4 py-3 rounded-xl border border-white/15 bg-white/5 placeholder-white/60 text-white focus:outline-none focus:ring-2 focus:ring-pink-400/60 focus:border-pink-300/50 transition"></textarea>
+        </div>
+
+        <button type="submit"
+          class="w-full md:w-auto bg-gradient-to-r from-fuchsia-600 via-pink-600 to-rose-500 text-white font-semibold py-3 px-6 rounded-xl shadow-lg shadow-pink-600/30 hover:scale-[1.02] active:scale-100 transition">
+          Enviar mensaje
+        </button>
+
+        <!-- badge confianza -->
+        <div class="flex items-center gap-2 pt-2 text-xs text-white/60">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+          Respuesta en menos de 24h
+        </div>
+      </form>
     </div>
 
-    <!-- Contacto -->
-    <section id="contacto" class="py-28 bg-white">
-      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-        <div data-aos="fade-right">
-          <h2 class="text-3xl font-bold mb-4">Contáctanos</h2>
-          <form class="space-y-4">
-            <input
-              type="text"
-              placeholder="Nombre"
-              class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-400"
-            />
-            <input
-              type="email"
-              placeholder="Correo"
-              class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-400"
-            />
-            <textarea
-              rows="5"
-              placeholder="Mensaje"
-              class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-400"
-            ></textarea>
-            <button
-              type="submit"
-              class="bg-gradient-to-r from-purple-600 to-pink-500 text-white font-bold py-3 px-6 rounded-md hover:scale-105 transition shadow"
-            >
-              Enviar mensaje
-            </button>
-          </form>
-        </div>
-        <div data-aos="fade-left">
-          <iframe
-            class="rounded-xl w-full h-full min-h-[300px] shadow-lg"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62820.426802147!2d-78.6129185!3d-9.073763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91b6bb5351880cd7%3A0x4f84041d833071c4!2sNuevo%20Chimbote!5e0!3m2!1ses!2spe!4v1689449156123!5m2!1ses!2spe"
-            frameborder="0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+    <!-- Mapa con marco y tarjeta -->
+    <div data-aos="fade-left" class="relative">
+      <div class="rounded-2xl overflow-hidden border border-white/15 shadow-2xl shadow-black/30">
+        <iframe
+          class="w-full h-[420px]"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62820.426802147!2d-78.6129185!3d-9.073763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91b6bb5351880cd7%3A0x4f84041d833071c4!2sNuevo%20Chimbote!5e0!3m2!1ses!2spe!4v1689449156123!5m2!1ses!2spe"
+          frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <!-- Tarjeta flotante sobre el mapa -->
+      <div class="absolute -bottom-6 left-6 right-6 md:left-6 md:right-auto md:w-[75%] bg-white text-slate-900 rounded-xl p-4 shadow-xl border border-slate-200">
+        <div class="flex items-start gap-3">
+          <div class="shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600"></div>
+          <div>
+            <h3 class="font-semibold leading-tight">Oficina Oruborus — Nuevo Chimbote</h3>
+            <p class="text-sm text-slate-600">Atendemos de Lun a Vie, 9:00–18:00</p>
+            <a href="https://maps.google.com/?q=Nuevo+Chimbote" target="_blank"
+               class="inline-block mt-2 text-indigo-600 font-medium hover:underline">Ver en Google Maps</a>
+          </div>
         </div>
       </div>
-    </section>
-
+    </div>
+  </div>
+</section>
 
 
 
