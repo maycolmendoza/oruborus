@@ -577,67 +577,73 @@ document.addEventListener('DOMContentLoaded', () => {
   
 
 <!-- Conoce Oruborus -->
-<section id="conoce" class="py-28 bg-gradient-to-br from-white to-[#f0f4ff] relative">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+<!-- Conoce Oruborus -->
+<section id="conoce" class="py-28 bg-gradient-to-br from-[#fdfdfd] to-[#f4f6ff] relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+
     <!-- Texto -->
     <div data-aos="fade-right">
-      <h3 class="text-sm uppercase tracking-widest text-purple-500 font-semibold mb-2">
+      <h3 class="text-sm uppercase tracking-widest text-orange-500 font-semibold mb-3">
         Conoce Oruborus
       </h3>
-      <h2 class="text-5xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight">
-        ¿Quiénes somos?
+      <h2 class="text-5xl font-extrabold text-gray-900 leading-tight tracking-tight mb-6">
+        Tecnología pensada para <span class="text-orange-500">tu negocio</span>
       </h2>
       <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-        Somos <span class="font-semibold text-purple-600">Oruborus</span>, una startup tecnológica fundada en 
-        <strong>Chimbote, Perú</strong>, decidida a transformar la manera en que las personas interactúan con los datos, 
-        la inteligencia artificial y las oportunidades digitales.
+        En <span class="font-semibold text-orange-500">Oruborus Startup</span> impulsamos la transformación digital
+        con soluciones innovadoras que combinan <strong>IA, automatización y desarrollo a medida</strong>.
+        Nuestro objetivo: que tu negocio funcione mejor, más rápido y a un precio justo.
       </p>
-      <ul class="space-y-4 text-gray-700">
+
+      <!-- Lista mejorada -->
+      <ul class="space-y-5 text-gray-700 text-lg">
         <li class="flex items-start gap-3">
-          <span class="text-purple-600 text-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9.75 3.5L4.5 12h15l-5.25-8.5z" />
-            </svg>
+          <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow">
+            🚀
           </span>
-          Desarrollamos sistemas de automatización y asistencia inteligente.
+          Asistentes inteligentes y agentes de IA listos para optimizar tu trabajo.
         </li>
         <li class="flex items-start gap-3">
-          <span class="text-purple-600 text-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M21 12.79A9 9 0 1111.21 3h.01" />
-            </svg>
+          <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow">
+            ⚙️
           </span>
-          Democratizamos el acceso a tecnología útil en contextos reales.
+          Automatización de procesos para ahorrar tiempo y recursos.
         </li>
         <li class="flex items-start gap-3">
-          <span class="text-purple-600 text-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 13l4 4L19 7" />
-            </svg>
+          <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow">
+            💻
           </span>
-          Potenciamos negocios, instituciones y personas con soluciones únicas.
+          Aplicaciones web y móviles adaptadas a tu negocio.
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow">
+            📊
+          </span>
+          Análisis de datos y paneles de control personalizados.
         </li>
       </ul>
+
+      <!-- Botón -->
+      <div class="mt-8">
+        <button onclick="loadModule('contacto')"
+          class="px-8 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition">
+          Solicitar una propuesta
+        </button>
+      </div>
     </div>
 
-    <!-- Imagen -->
-    <div data-aos="fade-left" class="relative">
-      <div class="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition">
-        <img
-          src="https://source.unsplash.com/600x400/?team,tech,startup"
-          alt="Equipo Oruborus"
-          class="object-cover w-full h-full"
-        />
+    <!-- Imagen con logo -->
+    <div data-aos="fade-left" class="relative flex justify-center items-center">
+      <div class="bg-white p-8 rounded-3xl shadow-2xl border border-gray-200 hover:scale-105 transition">
+        <img src="logo.svg" alt="Logo Oruborus" class="w-40 h-40 mx-auto mb-6">
+        <p class="text-center text-gray-600 max-w-xs">
+          Somos tu aliado tecnológico para llevar tus ideas al siguiente nivel.
+        </p>
       </div>
     </div>
   </div>
 </section>
+
 
 
 
