@@ -332,20 +332,115 @@ p {
 
  <div class="z-10 w-full max-w-7xl pt-[clamp(4.5rem,6vw,7rem)]"
        style="padding-top: calc(clamp(4.5rem,6vw,7rem) + var(--safe-top));">
+<!-- Título -->
+<h1 class="hero-title">
+  Automatizamos tu negocio,
+  <span class="oruborus-brand">Oruborus Startup</span>
+  a un precio justo
+</h1>
 
-    <h1 class="font-extrabold bg-clip-text text-transparent
-               bg-gradient-to-r from-pink-400 to-orange-400 drop-shadow-lg
-               leading-tight tracking-tight mb-3
-               text-[clamp(2rem,6vw,3.75rem)]">
-      La nueva forma de conectarte<br>
-      <span class="text-white">con oportunidades</span>
-    </h1>
+<p id="services-rotator" class="hero-subtitle" aria-live="polite">
+  Se emiten comprobantes de pago.
+</p>
 
-    <p class="mt-2 mx-auto font-light text-white/80
-              max-w-prose
-              text-[clamp(1rem,2.6vw,1.125rem)]">
-      Oruborus transforma datos abiertos en soluciones reales.
-    </p>
+
+<!-- Subtítulo con máquina de escribir -->
+<p class="typewriter" id="typewriter"></p>
+
+<style>
+  /* Fuente moderna tecnológica */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap');
+
+/* Título */
+.hero-title{
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  font-size: clamp(2rem,6vw,3.75rem);
+  color:#fff;
+  text-shadow: 0 4px 12px rgba(0,0,0,.6);
+}
+.oruborus-brand{
+  color:#ff4d00;              /* naranja sólido */
+  text-shadow: 0 2px 8px rgba(0,0,0,.35);
+  font-style: italic;
+}
+
+/* Subtítulo con fade */
+.hero-subtitle{
+  margin-top:.5rem;
+  font-weight:300;
+  color:rgba(255,255,255,.9);
+  max-width: 680px;
+  text-align:center;
+  margin-inline:auto;
+  font-size: clamp(1rem,2.6vw,1.125rem);
+  min-height: 1.6em;          /* evita salto al cambiar */
+  transition: opacity .6s ease, transform .6s ease;
+  will-change: opacity, transform;
+}
+.fade-out{ opacity:0; transform: translateY(6px); }
+.fade-in { opacity:1; transform: translateY(0); }
+
+/* Si el usuario prefiere menos animación */
+@media (prefers-reduced-motion: reduce){
+  .hero-subtitle{ transition: none; }
+}
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.getElementById('services-rotator');
+  if (!el) return;
+
+  const frases = [
+    "Agentes de IA personalizados",
+    "Asistentes inteligentes para tu negocio",
+    "Aplicativos web y móviles a medida",
+    "Automatización de procesos críticos",
+    "Integración con datos abiertos",
+    "Dashboards y analítica para decisiones",
+    "Bots de atención y ventas",
+    "Scraping y ETL de datos",
+    "Soporte y mantenimiento técnico"
+  ];
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let i = 0;
+
+  function next() {
+    const siguiente = frases[i % frases.length];
+    if (reduce) {
+      el.textContent = siguiente;
+      i++; setTimeout(next, 2000);
+      return;
+    }
+
+    // fade out
+    el.classList.add('fade-out');
+    setTimeout(() => {
+      el.textContent = siguiente;
+      // fade in
+      el.classList.remove('fade-out');
+      el.classList.add('fade-in');
+      setTimeout(() => {
+        el.classList.remove('fade-in');
+        i++;
+        setTimeout(next, 1600); // pausa visible entre cambios
+      }, 600); // duración del fade-in
+    }, 400);   // duración del fade-out
+  }
+
+  // inicio
+  el.classList.add('fade-in');
+  setTimeout(() => { el.classList.remove('fade-in'); setTimeout(next, 1400); }, 600);
+});
+</script>
+
+
 
     <!-- Carrusel -->
     <div class="relative mt-10 w-full max-w-7xl mx-auto carousel-mask">
@@ -395,15 +490,60 @@ p {
     </div>
 
     <!-- CTA -->
-    <div class="mt-10">
-      <button onclick="loadModule('explora')"
-        class="w-full sm:w-auto px-6 py-3 rounded-full text-white font-bold
-               text-[clamp(1.05rem,2.4vw,1.25rem)]
-               bg-gradient-to-r from-pink-500 to-purple-500
-               hover:scale-[1.03] transition shadow-xl">
-        Empezar ahora 🚀
-      </button>
-    </div>
+<!-- CTA -->
+<div class="mt-10">
+  <button onclick="loadModule('explora')"
+    class="cta-glass-btn">
+    Empezar ahora 🚀
+  </button>
+</div>
+
+<style>
+.cta-glass-btn {
+  position: relative;
+  padding: 0.85rem 2.2rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 2px solid transparent;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 0;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cta-glass-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #ff6b6b, #feca57, #5f27cd, #48dbfb, #ff6b6b);
+  background-size: 400% 400%;
+  animation: borderGradient 6s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+          mask-composite: exclude;
+  z-index: -1;
+}
+
+@keyframes borderGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.cta-glass-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+</style>
+
 
   </div>
 </section>
