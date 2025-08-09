@@ -285,130 +285,111 @@ p {
   <!-- Hero Section -->
 <!-- Hero Reimaginado -->
 <!-- HERO -->
-<section class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] overflow-hidden">
-    <div class="z-10 w-full max-w-7xl">
-      <h1 class="text-5xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-orange-400 drop-shadow-lg leading-tight tracking-tight mb-4">
-        La nueva forma de conectarte<br><span class="text-white">con oportunidades</span>
-      </h1>
-  
-      <p class="mt-2 text-lg text-white/80 max-w-xl mx-auto font-light">
-        Oruborus transforma datos abiertos en soluciones reales.
-      </p>
-  
-      <!-- Contenedor del carrusel con botones -->
-      <!-- CONTENEDOR del carrusel con botones -->
-<div class="relative mt-10 w-full max-w-7xl mx-auto">
-    <!-- Botón Izquierda -->
-    <button onclick="scrollCarousel(-1)"
-      class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full shadow-md backdrop-blur-lg">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-        viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-    </button>
-  
-    <!-- Carrusel de tarjetas -->
-    <div id="carousel" class="flex flex-nowrap gap-5 overflow-x-auto scroll-smooth px-10 py-2 scrollbar-hide">
-      
-      <!-- Tarjetas aquí (repítelas todas sin cambiar este bloque) -->
-      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
-        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
-          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
+ <style>
+  /* Safe area iOS si no la tienes ya */
+:root { --safe-top: env(safe-area-inset-top, 0px); }
+
+/* Carrusel: scroll-snap y scrollbars discretos */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+.carousel-snap {
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+}
+
+.card-snap { scroll-snap-align: start; }
+
+/* Bordes laterales suaves del carrusel (fade) */
+.carousel-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%);
+}
+
+ </style>
+<section
+  class="relative min-h-screen flex flex-col justify-center items-center text-center
+         px-6 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] overflow-hidden">
+
+  <div class="z-10 w-full max-w-7xl
+              pt-[clamp(4.5rem,6vw,7rem)]"  
+       style="padding-top: calc(clamp(4.5rem,6vw,7rem) + var(--safe-top));">
+
+    <h1 class="font-extrabold bg-clip-text text-transparent
+               bg-gradient-to-r from-pink-400 to-orange-400 drop-shadow-lg
+               leading-tight tracking-tight mb-3
+               text-[clamp(2rem,6vw,3.75rem)]">
+      La nueva forma de conectarte<br>
+      <span class="text-white">con oportunidades</span>
+    </h1>
+
+    <p class="mt-2 mx-auto font-light text-white/80
+              max-w-prose
+              text-[clamp(1rem,2.6vw,1.125rem)]">
+      Oruborus transforma datos abiertos en soluciones reales.
+    </p>
+
+    <!-- Carrusel -->
+    <div class="relative mt-10 w-full max-w-7xl mx-auto carousel-mask">
+      <!-- Flecha Izquierda (oculta en móvil) -->
+      <button onclick="scrollCarousel(-1)"
+        class="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-10
+               bg-white/10 hover:bg-white/20 text-white p-3 rounded-full shadow-md backdrop-blur">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+
+      <!-- Track -->
+      <div id="carousel"
+           class="flex flex-nowrap gap-5 overflow-x-auto scroll-smooth px-6 py-3
+                  scrollbar-hide carousel-snap touch-pan-x">
+        <!-- Card -->
+        <div class="card-snap min-w-[220px] sm:min-w-[260px] max-w-[260px]
+                    bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur
+                    border border-white/10 hover:scale-[1.03] transition
+                    flex flex-col justify-between">
+          <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
+            <img src="https://source.unsplash.com/random/300x160?sig=1"
+                 alt="MINEDU" class="w-full h-full object-cover object-center">
+          </div>
+          <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
+          <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
+          <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
+            <button onclick="like(this)">❤️</button>
+            <button onclick="fav(this)">⭐</button>
+          </div>
         </div>
-        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
-        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
-        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
-          <button onclick="like(this)">❤️</button>
-          <button onclick="fav(this)">⭐</button>
-        </div>
+
+        <!-- duplica tus demás tarjetas y solo añade class="card-snap" -->
+        <!-- ... (tus otras cards con la misma estructura y clases) ... -->
+
       </div>
 
-
-      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
-        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
-          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
-        </div>
-        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
-        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
-        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
-          <button onclick="like(this)">❤️</button>
-          <button onclick="fav(this)">⭐</button>
-        </div>
-      </div>
-      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
-        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
-          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
-        </div>
-        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
-        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
-        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
-          <button onclick="like(this)">❤️</button>
-          <button onclick="fav(this)">⭐</button>
-        </div>
-      </div>
-      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
-        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
-          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
-        </div>
-        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
-        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
-        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
-          <button onclick="like(this)">❤️</button>
-          <button onclick="fav(this)">⭐</button>
-        </div>
-      </div>
-      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
-        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
-          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
-        </div>
-        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
-        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
-        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
-          <button onclick="like(this)">❤️</button>
-          <button onclick="fav(this)">⭐</button>
-        </div>
-      </div>
-      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
-        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
-          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
-        </div>
-        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
-        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
-        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
-          <button onclick="like(this)">❤️</button>
-          <button onclick="fav(this)">⭐</button>
-        </div>
-      </div>
-      <div class="min-w-[260px] max-w-[260px] bg-white/5 p-4 rounded-xl shadow-xl backdrop-blur border border-white/10 hover:scale-105 transition flex flex-col justify-between">
-        <div class="h-36 w-full rounded-lg overflow-hidden mb-3 bg-gray-800">
-          <img src="https://source.unsplash.com/random/300x160?sig=1" alt="MINEDU" class="w-full h-full object-cover object-center">
-        </div>
-        <h3 class="text-white text-sm font-bold mb-1">Convocatoria MINEDU</h3>
-        <p class="text-white/60 text-xs">MINEDU 2025 – Educación Digital</p>
-        <div class="flex justify-between items-center mt-3 text-white/70 text-sm">
-          <button onclick="like(this)">❤️</button>
-          <button onclick="fav(this)">⭐</button>
-        </div>
-      </div>
-  
-      <!-- DUPLICA este bloque por cada tarjeta adicional -->
+      <!-- Flecha Derecha (oculta en móvil) -->
+      <button onclick="scrollCarousel(1)"
+        class="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-10
+               bg-white/10 hover:bg-white/20 text-white p-3 rounded-full shadow-md backdrop-blur">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
     </div>
-  
-    <!-- Botón Derecha -->
-    <button onclick="scrollCarousel(1)"
-      class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full shadow-md backdrop-blur-lg">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-        viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-    </button>
+
+    <!-- CTA -->
+    <div class="mt-10">
+      <button onclick="loadModule('explora')"
+        class="w-full sm:w-auto px-6 py-3 rounded-full text-white font-bold
+               text-[clamp(1.05rem,2.4vw,1.25rem)]
+               bg-gradient-to-r from-pink-500 to-purple-500
+               hover:scale-[1.03] transition shadow-xl">
+        Empezar ahora 🚀
+      </button>
+    </div>
+
   </div>
-  
-      <!-- CTA -->
-      <div class="mt-10">
-        <button onclick="loadModule('explora')"
-          class="px-6 py-3 rounded-full text-white font-bold text-lg bg-gradient-to-r from-pink-500 to-purple-500 hover:scale-105 transition shadow-xl">
-          Empezar ahora 🚀
-        </button>
-      </div>
-    </div>
-  </section>
+</section>
+
   <script>
     function scrollCarousel(direction) {
       const carousel = document.getElementById('carousel');
