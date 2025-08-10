@@ -311,7 +311,7 @@ p {
   class="relative min-h-screen flex flex-col justify-center items-center text-center
          px-6 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] overflow-hidden"> -->
 <section
-  class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 
+  class="relative  z-0 min-h-screen flex flex-col justify-center items-center text-center px-6 
          overflow-hidden">
          <!-- VIDEO de fondo -->
 <div class="absolute inset-0 z-0 overflow-hidden">
@@ -577,8 +577,45 @@ document.addEventListener('DOMContentLoaded', () => {
   
 
 <!-- Conoce Oruborus -->
+ <!-- Wave bridge: intermedio entre HERO y CONOCE -->
+<!-- Intermedio entre hero y conoce -->
+<!-- Bridge: wave entre HERO y CONOCE -->
+
+
+<!-- Ola limpia: SIN fondo extra, SOLO la curva rellena -->
+<div class="relative w-full h-0 pointer-events-none">
+  <svg
+    viewBox="0 0 1440 180"
+    preserveAspectRatio="none"
+    class="absolute inset-x-0 bottom-0 w-full h-[140px]"
+    aria-hidden="true"
+  >
+    <defs>
+      <!-- usa los colores de la sección siguiente -->
+      <linearGradient id="toNext" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"   stop-color="#eee"/>
+        <stop offset="100%" stop-color="#eee"/>
+      </linearGradient>
+    </defs>
+
+    <!-- ola rellena (convexa hacia abajo) -->
+    <path fill="url(#toNext)"
+      d="M0,180 L0,120
+         C240,86 480,72 720,76
+         C960,80 1200,100 1440,120
+         L1440,180 Z"/>
+  </svg>
+</div>
+
+
+
+
+
+
+
+ 
 <!-- Conoce Oruborus -->
-<section id="conoce" class="py-28 bg-gradient-to-br from-[#fdfdfd] to-[#f4f6ff] relative overflow-hidden">
+<section id="conoce" class="py-28 bg-gradient-to-br from-[#eee] to-[#eee] relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
     <!-- Texto -->
@@ -699,15 +736,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     <!-- Transición visual con onda suave -->
-    <div class="relative -mt-1 overflow-hidden leading-[0] rotate-180">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#fdf4ff"
-          fill-opacity="1"
-          d="M0,224L30,186.7C60,149,120,75,180,69.3C240,64,300,128,360,144C420,160,480,128,540,133.3C600,139,660,181,720,192C780,203,840,181,900,170.7C960,160,1020,160,1080,144C1140,128,1200,96,1260,117.3C1320,139,1380,213,1410,250.7L1440,288L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"
-        ></path>
-      </svg>
-    </div>
+<!-- Wave con mismo fondo que #contacto -->
+<div class="relative w-full overflow-hidden leading-none bg-gradient-to-b bg-[#fdf4ff] -mt-[1px]">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.08),_transparent_60%)]"></div>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1440 320"
+    preserveAspectRatio="none"
+    class="relative block w-full h-[clamp(80px,12vw,160px)]"
+    aria-hidden="true"
+  >
+    <defs>
+      <!-- Degradado igual que bg-gradient-to-br from-[#f0f4ff] to-[#e0ecff] -->
+      <linearGradient id="waveTop" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fdf4ff" />
+        <stop offset="100%" stop-color="#fdf4ff" />
+      </linearGradient>
+    </defs>
+
+    <path fill="#eee" d="M0,256L48,245.3C96,235,192,213,288,202.7C384,192,480,192,576,197.3C672,203,768,213,864,202.7C960,192,1056,160,1152,154.7C1248,149,1344,171,1392,181.3L1440,192L1440,0L0,0Z"/>
+
+
+    <path fill="transparent"
+      d="M0,320L48,309.3C96,299,192,277,288,256C384,235,480,213,576,197.3C672,181,768,171,864,176C960,181,1056,203,1152,213.3C1248,224,1344,224,1392,224L1440,224L1440,320L0,320Z"/>
+  </svg>
+</div>
+
+
+
 
     <!-- Agendar -->
     <section id="agendar" class="relative py-28 bg-[#fdf4ff] text-center">
@@ -762,24 +819,17 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
 
-      <div
-        class="max-w-4xl mx-auto px-1 mt-16"
-        data-aos="fade-up"
-        data-aos-delay="100"
-      >
-        <div
-          class="relative bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200"
-        >
-          <iframe
-            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1mctPlsSOQLhfR3Zr_lStngNG3uIqbWTm6XCU1aCEpxxteGdJYwU7NrQoPiKKXH_ziz-qQfhDO?gv=true"
-            width="100%"
-            height="700"
-            frameborder="0"
-            allowfullscreen
-            class="relative z-10 w-full h-[700px] rounded-xl"
-          ></iframe>
-        </div>
-      </div>
+<div class="max-w-4xl mx-auto px-4 mt-16" data-aos="fade-up" data-aos-delay="100">
+  <div class="relative bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200 p-4">
+    <iframe
+      src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1mctPlsSOQLhfR3Zr_lStngNG3uIqbWTm6XCU1aCEpxxteGdJYwU7NrQoPiKKXH_ziz-qQfhDO?gv=true"
+      frameborder="0"
+      allowfullscreen
+      class="w-full h-[700px] rounded-lg"
+    ></iframe>
+  </div>
+</div>
+
     </section>
 
     <script>
@@ -810,239 +860,236 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     </script>
 
-    <!-- Catálogo de Soluciones -->
-    <section id="catalogo" class="relative py-28 bg-white text-center">
-      <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-4xl font-bold text-gray-800 mb-4">Catálogo</h2>
-        <p class="text-lg text-gray-600 mb-10">
-          Descubre nuestras soluciones visuales aplicadas a proyectos reales.
-        </p>
 
-        <div class="relative">
-          <!-- Botones de scroll -->
-          <button
-            id="scrollLeft"
-            class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-md p-2 rounded-full"
-          >
-            ◀
-          </button>
-          <button
-            id="scrollRight"
-            class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-md p-2 rounded-full"
-          >
-            ▶
-          </button>
 
-          <!-- Carrusel de imágenes -->
-          <div
-            id="carousel"
-            class="flex overflow-x-auto scrollbar-hide space-x-6 scroll-smooth px-4"
-          >
-            <!-- Tarjeta -->
-            <div
-              class="relative w-80 flex-shrink-0 cursor-pointer group transition-transform hover:scale-105"
-            >
-              <img
-                src="https://source.unsplash.com/400x300/?technology,ai"
-                alt="Solución 1"
-                class="rounded-t-lg shadow-lg w-full h-52 object-cover"
-              />
-              <div class="bg-white rounded-b-lg px-4 py-3 shadow-md text-left">
-                <h4 class="text-lg font-semibold text-gray-800">
-                  Asistente de IA
-                </h4>
-                <p class="text-sm text-gray-600">
-                  Atiende clientes con voz y automatiza tareas.
-                </p>
-              </div>
-              <button
-                class="absolute top-3 right-3 p-2 bg-white rounded-full shadow hover:scale-110 transition like-btn"
-                data-id="img1"
-              >
-                <i
-                  class="heart-icon lucide lucide-heart w-5 h-5 text-gray-500"
-                ></i>
-              </button>
-            </div>
 
-            <!-- Otra tarjeta -->
-            <!-- Tarjeta mejorada con sombra inferior y botón de like funcional -->
-            <div
-              class="relative w-80 h-60 flex-shrink-0 rounded-xl overflow-hidden group cursor-pointer shadow-lg"
-            >
-              <img
-                src="https://cdn.pixabay.com/photo/2025/04/17/23/04/iguana-9541365_1280.jpg"
-                alt="Solución IA"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-              />
 
-              <!-- Overlay de texto como sombra -->
-              <div
-                class="absolute bottom-0 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 text-white z-10"
-              >
-                <h4 class="text-lg font-semibold">Asistente de IA</h4>
-                <p class="text-sm">
-                  Atiende clientes con voz y automatiza tareas.
-                </p>
-              </div>
 
-              <!-- Botón de like -->
-              <div class="absolute top-3 right-3 z-20 text-center">
-                <button
-                  class="like-btn p-2 bg-white/80 backdrop-blur-sm rounded-full shadow"
-                  data-id="img1"
-                >
-                  <i
-                    class="heart-icon lucide lucide-heart w-6 h-6 text-gray-600 transition-all duration-300"
-                  ></i>
-                </button>
-                <p
-                  class="like-count text-xs text-white mt-1"
-                  id="like-count-img1"
-                >
-                  0
-                </p>
-              </div>
-            </div>
 
-            <!-- Añade más tarjetas similares con ID únicos -->
-          </div>
-        </div>
+
+
+
+
+
+<!-- Wave con mismo fondo que #contacto -->
+<div class="relative w-full overflow-hidden leading-none bg-gradient-to-b bg-[#fdf4ff] -mt-[1px]">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.08),_transparent_60%)]"></div>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1440 320"
+    preserveAspectRatio="none"
+    class="relative block w-full h-[clamp(80px,12vw,160px)]"
+    aria-hidden="true"
+  >
+    <defs>
+      <!-- Degradado igual que bg-gradient-to-br from-[#f0f4ff] to-[#e0ecff] -->
+      <linearGradient id="waveTop" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fdf4ff" />
+        <stop offset="100%" stop-color="#fdf4ff" />
+      </linearGradient>
+    </defs>
+
+    <path fill="#fdf4ff" d="M0,256L48,245.3C96,235,192,213,288,202.7C384,192,480,192,576,197.3C672,203,768,213,864,202.7C960,192,1056,160,1152,154.7C1248,149,1344,171,1392,181.3L1440,192L1440,0L0,0Z"/>
+
+
+    <path fill="transparent"
+      d="M0,320L48,309.3C96,299,192,277,288,256C384,235,480,213,576,197.3C672,181,768,171,864,176C960,181,1056,203,1152,213.3C1248,224,1344,224,1392,224L1440,224L1440,320L0,320Z"/>
+  </svg>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===================== CATÁLOGO ===================== -->
+<section id="catalogo"
+  class="relative py-28 overflow-hidden text-center
+         bg-[#0b1220]">
+
+  <!-- textura & brillos suaves -->
+  <div class="pointer-events-none absolute inset-0 opacity-[.07]
+              bg-[url('https://transparenttextures.com/patterns/cubes.png')]"></div>
+  <div class="pointer-events-none absolute inset-0
+              bg-[radial-gradient(1000px_600px_at_50%_-10%,rgba(255,255,255,.12),transparent_60%)]"></div>
+  <div class="pointer-events-none absolute inset-0
+              bg-[radial-gradient(1000px_500px_at_50%_120%,rgba(255,255,255,.08),transparent_70%)]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white drop-shadow mb-3">
+      Catálogo de soluciones
+    </h2>
+    <p class="text-white/70 text-base md:text-lg max-w-3xl mx-auto mb-10">
+      Explora algunos de nuestros trabajos y prototipos. Haz clic para verlos en grande.
+    </p>
+
+    <!-- Carrusel -->
+    <div class="relative">
+      <!-- Flechas (desktop) -->
+      <button id="catPrev" aria-label="Anterior"
+        class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10
+               p-3 rounded-full bg-white/90 hover:bg-white shadow-lg">
+        &#x276E;
+      </button>
+      <button id="catNext" aria-label="Siguiente"
+        class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10
+               p-3 rounded-full bg-white/90 hover:bg-white shadow-lg">
+        &#x276F;
+      </button>
+
+      <!-- Track -->
+      <div id="catTrack"
+        class="flex gap-6 overflow-x-auto px-2 md:px-10 py-2
+               scroll-smooth scrollbar-hide select-none
+               snap-x snap-mandatory">
+        
+        <!-- Card -->
+        <article class="group relative w-[300px] md:w-[360px] lg:w-[420px] shrink-0 snap-start
+                        rounded-2xl overflow-hidden shadow-2xl border border-white/10
+                        bg-white/10 backdrop-blur-xl">
+          <figure class="relative aspect-[16/10] overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop"
+              data-full="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2000&auto=format&fit=crop"
+              alt="Asistente de IA"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06] cursor-zoom-in"
+              loading="lazy" />
+            <button class="like-btn absolute top-3 right-3 z-10 p-2 rounded-full
+                           bg-white/90 hover:bg-white shadow"
+                    data-id="c1">
+              <svg class="heart-icon w-5 h-5 text-gray-700" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"><path
+                   d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </figure>
+          <figcaption class="text-left p-5">
+            <h3 class="text-white font-semibold text-lg">Asistente de IA</h3>
+            <p class="text-white/70 text-sm">Atiende con voz y automatiza tareas.</p>
+          </figcaption>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="group relative w-[300px] md:w-[360px] lg:w-[420px] shrink-0 snap-start
+                        rounded-2xl overflow-hidden shadow-2xl border border-white/10
+                        bg-white/10 backdrop-blur-xl">
+          <figure class="relative aspect-[16/10] overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"
+              data-full="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2000&auto=format&fit=crop"
+              alt="Panel de datos"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06] cursor-zoom-in"
+              loading="lazy" />
+            <button class="like-btn absolute top-3 right-3 z-10 p-2 rounded-full
+                           bg-white/90 hover:bg-white shadow"
+                    data-id="c2">
+              <svg class="heart-icon w-5 h-5 text-gray-700" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"><path
+                   d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </figure>
+          <figcaption class="text-left p-5">
+            <h3 class="text-white font-semibold text-lg">Panel de datos</h3>
+            <p class="text-white/70 text-sm">Dashboards y analítica ejecutiva.</p>
+          </figcaption>
+        </article>
+
+        <!-- Duplicar más <article> cambiando data-id y src/data-full -->
       </div>
+    </div>
+  </div>
 
-      <!-- Modal de vista previa -->
-      <div
-        id="lightbox"
-        class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden"
-      >
-        <button
-          id="prev-image"
-          class="absolute left-10 text-white text-3xl font-bold"
-        >
-          &larr;
-        </button>
-        <button
-          id="next-image"
-          class="absolute right-10 text-white text-3xl font-bold"
-        >
-          &rarr;
-        </button>
+  <!-- Lightbox -->
+  <div id="lb"
+    class="fixed inset-0 z-50 hidden items-center justify-center
+           bg-black/70 backdrop-blur-xl">
+    <button id="lbClose" aria-label="Cerrar"
+      class="absolute top-5 right-6 text-white/90 hover:text-white text-4xl font-bold">&times;</button>
+    <button id="lbPrev" aria-label="Anterior"
+      class="hidden md:flex absolute left-6 text-white/90 hover:text-white text-3xl">&#x276E;</button>
+    <button id="lbNext" aria-label="Siguiente"
+      class="hidden md:flex absolute right-6 text-white/90 hover:text-white text-3xl">&#x276F;</button>
+    <img id="lbImg" alt="Vista previa"
+         class="max-w-[92vw] max-h-[82vh] rounded-2xl shadow-2xl object-contain" />
+  </div>
+</section>
 
-        <img
-          id="lightbox-img"
-          class="max-w-4xl max-h-[80vh] rounded-xl shadow-xl"
-          src=""
-          alt="Vista previa"
-        />
-        <button
-          id="close-lightbox"
-          class="absolute top-6 right-6 text-white text-4xl font-bold"
-        >
-          &times;
-        </button>
-      </div>
-    </section>
+<style>
+  .scrollbar-hide::-webkit-scrollbar{display:none}
+  .scrollbar-hide{scrollbar-width:none;-ms-overflow-style:none}
+</style>
 
-    <!-- Script para manejar likes con localStorage -->
-    <script>
-      lucide.createIcons();
+<script>
+/* Likes persistentes */
+document.querySelectorAll('.like-btn').forEach(btn=>{
+  const id=btn.dataset.id, icon=btn.querySelector('.heart-icon');
+  let liked=localStorage.getItem('liked_'+id)==='true';
+  const paint=()=>{icon.classList.toggle('text-red-500',liked);
+                   icon.classList.toggle('fill-current',liked);
+                   icon.classList.toggle('text-gray-700',!liked);}
+  paint();
+  btn.addEventListener('click',e=>{
+    e.stopPropagation(); liked=!liked;
+    localStorage.setItem('liked_'+id,liked); paint();
+  });
+});
 
-      document.querySelectorAll(".like-btn").forEach((btn) => {
-        const id = btn.dataset.id;
-        const icon = btn.querySelector(".heart-icon");
-        const countEl = document.getElementById("like-count-" + id);
+/* Carrusel: flechas + arrastre */
+const track=document.getElementById('catTrack');
+document.getElementById('catPrev').onclick=()=>track.scrollBy({left:-450,behavior:'smooth'});
+document.getElementById('catNext').onclick=()=>track.scrollBy({left: 450,behavior:'smooth'});
 
-        let liked = localStorage.getItem("liked_" + id) === "true";
-        let count = parseInt(localStorage.getItem("likes_count_" + id)) || 0;
+let down=false, startX=0, startScroll=0;
+const start=e=>{down=true; track.classList.add('cursor-grabbing');
+  startX=(e.pageX||e.touches[0].pageX); startScroll=track.scrollLeft;}
+const move=e=>{if(!down)return; const x=(e.pageX||e.touches[0].pageX);
+  track.scrollLeft=startScroll-(x-startX)*1.2;}
+const stop=()=>{down=false; track.classList.remove('cursor-grabbing');}
+track.addEventListener('mousedown',start); track.addEventListener('touchstart',start,{passive:true});
+track.addEventListener('mousemove',move);  track.addEventListener('touchmove',move,{passive:true});
+['mouseleave','mouseup','touchend','touchcancel'].forEach(ev=>track.addEventListener(ev,stop));
 
-        updateUI();
+/* Lightbox */
+const lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg');
+const lbPrev=document.getElementById('lbPrev'), lbNext=document.getElementById('lbNext');
+const lbClose=document.getElementById('lbClose');
+const thumbs=[...track.querySelectorAll('img')];
+let i=-1;
 
-        btn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          liked = !liked;
-          localStorage.setItem("liked_" + id, liked);
+function open(n){ i=n;
+  lbImg.src= thumbs[i].dataset.full || thumbs[i].src;
+  lb.classList.remove('hidden'); document.body.style.overflow='hidden';
+}
+function close(){ lb.classList.add('hidden'); lbImg.src=''; document.body.style.overflow='';}
+function next(){ open((i+1)%thumbs.length); }
+function prev(){ open((i-1+thumbs.length)%thumbs.length); }
 
-          if (liked) {
-            count++;
-          } else {
-            count = Math.max(0, count - 1);
-          }
+thumbs.forEach((img,idx)=>img.addEventListener('click',()=>open(idx)));
+lbClose.addEventListener('click',close);
+lb.addEventListener('click',e=>{ if(e.target===lb) close(); });
+lbNext.addEventListener('click',next);
+lbPrev.addEventListener('click',prev);
+document.addEventListener('keydown',e=>{
+  if(lb.classList.contains('hidden')) return;
+  if(e.key==='Escape') close();
+  if(e.key==='ArrowRight') next();
+  if(e.key==='ArrowLeft')  prev();
+});
+</script>
 
-          localStorage.setItem("likes_count_" + id, count);
-          updateUI();
-        });
-
-        function updateUI() {
-          icon.classList.toggle("text-red-500", liked);
-          icon.classList.toggle("fill-current", liked);
-          icon.classList.toggle("text-gray-600", !liked);
-          countEl.textContent = count;
-        }
-      });
-    </script>
-
-    <script>
-      // FUNCIONALIDAD DE SCROLL LATERAL
-      const carousel = document.getElementById("carousel");
-      document.getElementById("scrollLeft").onclick = () => {
-        carousel.scrollBy({ left: -300, behavior: "smooth" });
-      };
-      document.getElementById("scrollRight").onclick = () => {
-        carousel.scrollBy({ left: 300, behavior: "smooth" });
-      };
-
-      // VISTA PREVIA EN MODAL
-      const lightbox = document.getElementById("lightbox");
-      const lightboxImg = document.getElementById("lightbox-img");
-      const closeBtn = document.getElementById("close-lightbox");
-
-      // Recoger todas las imágenes del carrusel
-      const imageElements = carousel.querySelectorAll("img");
-      let currentIndex = -1;
-
-      imageElements.forEach((img, index) => {
-        img.addEventListener("click", () => {
-          currentIndex = index;
-          lightboxImg.src = img.src;
-          lightbox.classList.remove("hidden");
-        });
-      });
-
-      // Cerrar modal
-      closeBtn.addEventListener("click", () => {
-        lightbox.classList.add("hidden");
-        lightboxImg.src = "";
-      });
-
-      // Navegación con teclas ← →
-      document.addEventListener("keydown", (e) => {
-        if (lightbox.classList.contains("hidden")) return;
-
-        if (e.key === "ArrowRight") {
-          currentIndex = (currentIndex + 1) % imageElements.length;
-          lightboxImg.src = imageElements[currentIndex].src;
-        }
-        if (e.key === "ArrowLeft") {
-          currentIndex =
-            (currentIndex - 1 + imageElements.length) % imageElements.length;
-          lightboxImg.src = imageElements[currentIndex].src;
-        }
-        if (e.key === "Escape") {
-          lightbox.classList.add("hidden");
-        }
-      });
-
-      document.getElementById("prev-image").onclick = () => {
-        currentIndex =
-          (currentIndex - 1 + imageElements.length) % imageElements.length;
-        lightboxImg.src = imageElements[currentIndex].src;
-      };
-
-      document.getElementById("next-image").onclick = () => {
-        currentIndex = (currentIndex + 1) % imageElements.length;
-        lightboxImg.src = imageElements[currentIndex].src;
-      };
-    </script>
 
     <style>
       .scrollbar-hide::-webkit-scrollbar {
@@ -1056,6 +1103,50 @@ document.addEventListener('DOMContentLoaded', () => {
     </style>
 
     <!---followme-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Wave con mismo fondo que #contacto -->
+<div class="relative w-full overflow-hidden leading-none bg-gradient-to-b bg-[#e0ecff] -mt-[1px]">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.08),_transparent_60%)]"></div>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1440 320"
+    preserveAspectRatio="none"
+    class="relative block w-full h-[clamp(80px,12vw,160px)]"
+    aria-hidden="true"
+  >
+    <defs>
+      <!-- Degradado igual que bg-gradient-to-br from-[#e0ecff] to-[#e0ecff] -->
+      <linearGradient id="waveTop" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#e0ecff" />
+        <stop offset="100%" stop-color="#e0ecff" />
+      </linearGradient>
+    </defs>
+
+    <path fill="#0b1220" d="M0,256L48,245.3C96,235,192,213,288,202.7C384,192,480,192,576,197.3C672,203,768,213,864,202.7C960,192,1056,160,1152,154.7C1248,149,1344,171,1392,181.3L1440,192L1440,0L0,0Z"/>
+
+
+    <path fill="transparent"
+      d="M0,320L48,309.3C96,299,192,277,288,256C384,235,480,213,576,197.3C672,181,768,171,864,176C960,181,1056,203,1152,213.3C1248,224,1344,224,1392,224L1440,224L1440,320L0,320Z"/>
+  </svg>
+</div>
+
+
+
 
     <!-- SECCIÓN: SÍGUENOS EN -->
     <section
