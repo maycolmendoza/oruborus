@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+
+<style>
+  /* ================== THEME TOKENS ================== */
+  :root{
+    /* colores base (claro) */
+    --bg: #f6f7fb;
+    --txt: #111827;
+    --muted:#6b7280;
+
+    /* glass */
+    --glass-bg: rgba(255,255,255,.20);
+    --glass-border: rgba(255,255,255,.40);
+    --shadow: 0 18px 46px rgba(15,23,42,.18);
+
+    /* degradé iconos */
+    --g1:#60a5fa; --g2:#22d3ee; --g3:#a78bfa;
+
+    /* surface/cards */
+    --card-bg: rgba(255,255,255,.65);
+    --card-bd: rgba(17,24,39,.06);
+
+    /* sizes */
+    --btn:  clamp(38px, 4.6vw, 54px);
+    --icon: clamp(16px, 2.2vw, 22px);
+    --gap:  clamp(8px, 1.6vw, 16px);
+    --barH: clamp(50px, 6.6vw, 70px);
+    --pad:  clamp(6px, 1.2vw, 10px);
+    --radius: 20px;
+
+    /* tooltip */
+    --tip-bg: rgba(15,23,42,.92);
+    --tip-bd: rgba(255,255,255,.18);
+  }
+  /* DARK */
+  .theme-dark{
+    --bg: #0b1220;
+    --txt:#e5e7eb;
+    --muted:#9ca3af;
+
+    --glass-bg: rgba(16,20,32,.55);
+    --glass-border: rgba(255,255,255,.12);
+    --shadow: 0 18px 46px rgba(0,0,0,.45);
+
+    --g1:#8ab4ff; --g2:#67e8f9; --g3:#c084fc;
+
+    --card-bg: rgba(17,24,39,.55);
+    --card-bd: rgba(255,255,255,.06);
+  }
+
+  /* ================== BASE ================== */
+  html,body{height:100%}
+  body{
+    margin:0;
+    color:var(--txt);
+    padding-top: calc(var(--barH) + 18px);
+    background:
+      radial-gradient(1200px 600px at 15% -10%, #e7f1ff 0%, transparent 60%),
+      radial-gradient(1000px 500px at 100% 0%, #ffe6fb 0%, transparent 60%),
+      var(--bg);
+    transition: background .35s ease, color .2s ease;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+  .theme-dark body, .theme-dark{
+    background:
+      radial-gradient(1000px 500px at 100% -10%, rgba(198,114,255,.10) 0%, transparent 60%),
+      radial-gradient(900px 450px at -10% 0%, rgba(96,165,250,.12) 0%, transparent 60%),
+      var(--bg);
+  }
+
+  /* ================== DOCK GLASS ================== */
+  .dock-wrap{
+    position: fixed; left:50%; top:10px; transform: translateX(-50%);
+    height: var(--barH); padding: var(--pad);
+    border-radius: var(--radius);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    backdrop-filter: blur(22px) saturate(160%);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    overflow: visible;
+    transition: background .35s ease, transform .35s ease, opacity .25s ease;
+  }
+  .dock-wrap::before{
+    content:""; position:absolute; inset:0; pointer-events:none; border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255,255,255,.50), rgba(255,255,255,0) 38%);
+  }
+  .dock-wrap::after{
+    content:""; position:absolute; inset:0; pointer-events:none; border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.18);
+  }
+  .dock-wrap.shrink{ background: color-mix(in oklab, var(--glass-bg) 85%, #fff 20%); }
+  .dock-wrap.hide{ opacity:.0; pointer-events:none; transform: translateX(-50%) translateY(-8px); }
+
+  .dock{ display:flex; align-items:center; gap: var(--gap); height:100%; position:relative; padding-inline: 2px; }
+
+  .active-bg{
+    position:absolute; z-index:0; width: var(--btn); height: var(--btn);
+    top:50%; left:0; transform: translateY(-50%);
+    border-radius: 14px;
+    background: radial-gradient(130% 130% at 30% 25%, rgba(255,255,255,.55), rgba(255,255,255,.12) 60%, transparent 100%);
+    border: 1px solid rgba(255,255,255,.30);
+    box-shadow: 0 10px 24px rgba(0,0,0,.14), inset 0 0 0 1px rgba(255,255,255,.14);
+    transition: transform .35s cubic-bezier(.18,.89,.32,1.28), width .25s ease;
+  }
+  .dock-btn{
+    position:relative; z-index:1;
+    width: var(--btn); height: var(--btn);
+    display:grid; place-items:center;
+    background: transparent;
+    border: 1px solid color-mix(in oklab, var(--txt) 10%, transparent);
+    border-radius: 14px; cursor:pointer;
+    transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+  }
+  .dock-btn:hover{
+    transform: translateY(-1px);
+    border-color: color-mix(in oklab, var(--txt) 18%, transparent);
+    box-shadow: 0 8px 18px rgba(0,0,0,.10);
+  }
+  .dock-btn.is-active{ border-color: transparent; box-shadow: none; }
+  .dock-btn i{
+    font-size: var(--icon); line-height:1;
+    background: linear-gradient(45deg, var(--g1), var(--g2), var(--g3));
+    background-size: 180% 180%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    filter: drop-shadow(0 1px 4px rgba(96,165,250,.32));
+    transition: background-position .35s ease, filter .16s ease, transform .16s ease;
+  }
+  .dock-btn:hover i{ background-position: 100% 0; filter: drop-shadow(0 3px 10px rgba(96,165,250,.42)); }
+  .dock-btn.is-active i{ transform: translateY(-1px); }
+
+  /* tooltips inteligentes */
+  .dock-btn[data-tip]::after,.dock-btn[data-tip]::before{
+    position:absolute; left:50%; opacity:0; pointer-events:none;
+    transition: opacity .18s ease, transform .18s ease; z-index:2000;
+  }
+  .dock-btn[data-tip]::after{
+    content: attr(data-tip);
+    background: var(--tip-bg); color:#fff; font-size:.72rem;
+    padding:6px 8px; white-space:nowrap; border-radius:8px;
+    border:1px solid var(--tip-bd); -webkit-backdrop-filter: blur(8px) saturate(130%); backdrop-filter: blur(8px) saturate(130%);
+  }
+  .dock-btn[data-tip]::before{ content:""; border:6px solid transparent; z-index:1999; }
+  .dock-btn:hover::after, .dock-btn:hover::before{ opacity:1; }
+  .tip-above .dock-btn[data-tip]::after{ top:-8px; transform: translate(-50%, -100%); }
+  .tip-above .dock-btn[data-tip]::before{ top:-8px; transform: translate(-50%, -100%); border-top-color: var(--tip-bg); }
+  .tip-below .dock-btn[data-tip]::after{ bottom:-8px; transform: translate(-50%, 100%); }
+  .tip-below .dock-btn[data-tip]::before{ bottom:-8px; transform: translate(-50%, 100%); border-bottom-color: var(--tip-bg); }
+
+  @media (max-width: 768px){
+    body{ padding-top:0; padding-bottom: calc(var(--barH) + 18px); }
+    .dock-wrap{ top:auto; bottom:10px; }
+  }
+
+  /* ================== LAYOUT / SECCIONES ================== */
+  main{ max-width: 1200px; margin: 20px auto 80px; padding: 0 16px; }
+  .title{ font-weight:800; letter-spacing:.2px; font-size:clamp(22px, 2.6vw, 28px); margin: 8px 0 16px; }
+  .muted{ color:var(--muted); font-size:.92rem; }
+
+  .grid{
+    display:grid; gap:16px;
+    grid-template-columns: repeat( auto-fill, minmax(240px, 1fr) );
+  }
+
+  /* ================== CARD / SKELETON ================== */
+  .card{
+    border-radius: 16px; overflow:hidden;
+    background: var(--card-bg);
+    border:1px solid var(--card-bd);
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{ transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
+  .card__media{ height:140px; background: linear-gradient(135deg, #e8f0ff, #fbe8ff); }
+  .theme-dark .card__media{ background: linear-gradient(135deg, #173055, #321a4d); }
+  .card__body{ padding:14px; }
+  .card__title{ font-weight:700; margin-bottom:6px; }
+  .card__meta{ color:var(--muted); font-size:.88rem; display:flex; gap:10px; align-items:center; }
+
+  /* Skeleton */
+  .skeleton{ position:relative; overflow:hidden; background: var(--card-bg); border:1px solid var(--card-bd); border-radius:16px; }
+  .sk-media{ height:140px; background: color-mix(in oklab, var(--bg) 92%, #ccc 8%); }
+  .sk-line{ height:12px; border-radius:6px; background: color-mix(in oklab, var(--bg) 88%, #bbb 12%); margin:10px 14px; }
+  .sk-line.w60{ width:60% } .sk-line.w40{ width:40% } .sk-line.w80{ width:80% }
+  .skeleton::after{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+    transform: translateX(-100%); animation: shimmer 1.2s infinite;
+  }
+  @keyframes shimmer{ to{ transform: translateX(100%);} }
+
+  /* pager (botón demo) */
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:10px 14px; border-radius:12px; border:1px solid var(--card-bd);
+    background: var(--card-bg); color:var(--txt); cursor:pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,.06);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 20px rgba(0,0,0,.10); }
+</style>
+</head>
+
+<body>
+  <!-- ================== DOCK ================== -->
+  <header class="dock-wrap tip-below" id="dockWrap">
+    <nav class="dock" id="dock">
+      <button class="dock-btn is-active" data-tip="Inicio"        onclick="selectDock(this); loadSection('inicio')"><i class="bi bi-house-door-fill"></i></button>
+      <button class="dock-btn"          data-tip="Explora"       onclick="selectDock(this); loadSection('explora')"><i class="bi bi-compass-fill"></i></button>
+      <button class="dock-btn"          data-tip="Favoritos"     onclick="selectDock(this); loadSection('favoritos')"><i class="bi bi-heart-fill"></i></button>
+      <button class="dock-btn"          data-tip="Convocatorias" onclick="selectDock(this); loadSection('convocatorias')"><i class="bi bi-megaphone-fill"></i></button>
+      <button class="dock-btn"          data-tip="Contacto"      onclick="selectDock(this); loadSection('contacto')"><i class="bi bi-chat-dots-fill"></i></button>
+      <!-- toggle tema -->
+      <button class="dock-btn" id="themeBtn" data-tip="Modo oscuro" onclick="toggleTheme()"><i class="bi bi-moon-stars-fill" id="themeIcon"></i></button>
+
+      <span class="active-bg" id="activeBg"></span>
+    </nav>
+  </header>
+
+  <!-- ================== CONTENIDO ================== -->
+  <main id="main">
+    <h1 class="title" id="pageTitle">Inicio</h1>
+    <p class="muted" id="pageDesc">Bienvenido. Carga diferida con skeleton.</p>
+
+    <section id="content" class="grid"></section>
+
+    <div style="margin:22px 0">
+      <button class="btn" onclick="loadMore()">Cargar más <i class="bi bi-arrow-down-circle"></i></button>
+    </div>
+  </main>
+
+<script>
+  /* ===== utilidades del dock ===== */
+  const wrap = document.getElementById('dockWrap');
+  const dock = document.getElementById('dock');
+  const bg   = document.getElementById('activeBg');
+  const btns = [...dock.querySelectorAll('.dock-btn')];
+
+  function moveBgTo(el){
+    const g = dock.getBoundingClientRect();
+    const b = el.getBoundingClientRect();
+    const left = b.left - g.left + (dock.scrollLeft||0);
+    bg.style.width = b.width + 'px';
+    bg.style.transform = `translate(${left}px, -50%)`;
+  }
+  function selectDock(btn){
+    btns.forEach(b=>b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    moveBgTo(btn);
+  }
+
+  // tooltips arriba/abajo según espacio
+  function updateTooltipSide(){
+    const r = wrap.getBoundingClientRect();
+    const showBelow = (r.top < (innerHeight - r.bottom) - 24);
+    wrap.classList.toggle('tip-below', showBelow);
+    wrap.classList.toggle('tip-above', !showBelow);
+  }
+
+  // scroll: shrink/auto-hide + tooltips
+  let lastY = window.scrollY;
+  addEventListener('scroll', ()=>{
+    const y = window.scrollY;
+    wrap.classList.toggle('shrink', y>8);
+    if (y > lastY + 6) wrap.classList.add('hide');
+    else if (y < lastY - 6) wrap.classList.remove('hide');
+    lastY = y;
+    updateTooltipSide();
+  });
+
+  addEventListener('resize', ()=>{ moveBgTo(dock.querySelector('.is-active')||btns[0]); updateTooltipSide(); });
+
+  /* ===== fake data ===== */
+  const lorem = [
+    'Convocatoria abierta', 'Oportunidad destacada', 'Nuevo anuncio', 'Post recomendado',
+    'Tendencia del día', 'Para ti', 'Actualización importante', 'Descubre hoy'
+  ];
+  const pics = [
+    'linear-gradient(135deg,#e8f0ff,#fbe8ff)',
+    'linear-gradient(135deg,#ffe7e7,#e7fff7)',
+    'linear-gradient(135deg,#e7f7ff,#efe7ff)',
+    'linear-gradient(135deg,#fff3d4,#e4f0ff)'
+  ];
+  const rand = a => a[Math.floor(Math.random()*a.length)];
+  let page = 0;
+
+  /* ===== skeleton + render ===== */
+  const grid = document.getElementById('content');
+  const pageTitle = document.getElementById('pageTitle');
+  const pageDesc  = document.getElementById('pageDesc');
+
+  function skeleton(n=8){
+    const frag = document.createDocumentFragment();
+    for (let i=0;i<n;i++){
+      const s = document.createElement('article');
+      s.className='skeleton';
+      s.innerHTML = `<div class="sk-media"></div>
+        <div class="sk-line w80"></div>
+        <div class="sk-line w60"></div>
+        <div class="sk-line w40"></div>`;
+      frag.appendChild(s);
+    }
+    return frag;
+  }
+
+  function fakeCards(n=8){
+    const frag = document.createDocumentFragment();
+    for (let i=0;i<n;i++){
+      const el = document.createElement('article');
+      el.className='card';
+      el.innerHTML = `
+        <div class="card__media" style="background:${rand(pics)}"></div>
+        <div class="card__body">
+          <div class="card__title">${rand(lorem)}</div>
+          <div class="card__meta"><i class="bi bi-clock"></i><span>${new Date().toLocaleDateString()}</span></div>
+        </div>`;
+      frag.appendChild(el);
+    }
+    return frag;
+  }
+
+  function loadSection(name){
+    page = 0;
+    pageTitle.textContent = name[0].toUpperCase()+name.slice(1);
+    pageDesc.textContent  = {
+      inicio:'Bienvenido. Carga diferida con skeleton.',
+      explora:'Explora contenido sugerido para ti.',
+      favoritos:'Tus elementos guardados aquí.',
+      convocatorias:'Lista de convocatorias y anuncios.',
+      contacto:'Ponte en contacto con nosotros.'
+    }[name] || '';
+
+    grid.innerHTML = '';
+    grid.appendChild(skeleton(8));
+
+    // simular carga + lazy render
+    setTimeout(()=>{
+      grid.innerHTML = '';
+      grid.appendChild(fakeCards(8));
+      observeLazy();  // activa IO para “cargar más” al acercarse al final
+    }, 700 + Math.random()*600);
+  }
+
+  function loadMore(){
+    grid.appendChild(skeleton(6));
+    setTimeout(()=>{
+      // elimina últimos skeletons
+      [...grid.querySelectorAll('.skeleton')].slice(-6).forEach(n=>n.remove());
+      grid.appendChild(fakeCards(6));
+    }, 600);
+  }
+
+  // lazy: cuando el final del grid entra en viewport, auto “loadMore”
+  let io;
+  function observeLazy(){
+    io && io.disconnect();
+    io = new IntersectionObserver((entries)=>{
+      for (const e of entries){
+        if (e.isIntersecting){
+          io.disconnect();
+          loadMore();
+          setTimeout(observeLazy, 800);
+        }
+      }
+    }, {rootMargin: '600px 0px'});
+    // target: último card o el grid si vacío
+    io.observe(grid.lastElementChild || grid);
+  }
+
+  /* ===== tema: persistencia en localStorage ===== */
+  const THEME_KEY = 'pref-theme';
+  const themeBtn  = document.getElementById('themeBtn');
+  const themeIcon = document.getElementById('themeIcon');
+
+  function applyTheme(mode){
+    document.documentElement.classList.toggle('theme-dark', mode==='dark');
+    themeIcon.className = mode==='dark' ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
+    themeBtn.setAttribute('data-tip', mode==='dark' ? 'Modo claro' : 'Modo oscuro');
+    localStorage.setItem(THEME_KEY, mode);
+  }
+  function toggleTheme(){
+    const cur = document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light';
+    applyTheme(cur==='dark' ? 'light' : 'dark');
+  }
+  function initTheme(){
+    const saved = localStorage.getItem(THEME_KEY);
+    applyTheme(saved || 'light');
+  }
+
+  /* ===== init ===== */
+  addEventListener('load', ()=>{
+    initTheme();
+    moveBgTo(dock.querySelector('.is-active')||dock.querySelector('.dock-btn'));
+    updateTooltipSide();
+    loadSection('inicio');          // sección inicial
+  });
+</script>
+</body>
+</html>
