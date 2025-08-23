@@ -91,12 +91,31 @@
     content:""; position:absolute; inset:0; pointer-events:none; border-radius: inherit;
     background: linear-gradient(180deg, rgba(255,255,255,.50), rgba(255,255,255,0) 38%);
   }
+  /* opcional: encoge un poquito el alto en scroll */
+
+  /* 1) Define un desplazamiento para el shrink (arriba = -2px, abajo = +2px) */
+:root{ --shrink-shift: -2px; }                    /* escritorio: dock arriba */
+@media (max-width: 768px){ :root{ --shrink-shift: 2px; } }  /* móvil: dock abajo */
+
+/* 2) Asegura que el dock tenga Y=0 por defecto */
+.dock-wrap{
+  transform: translateX(-50%) translateY(0);      /* antes solo tenías translateX */
+}
+
+/* 3) Shrink suave usando transform (¡sin top!) */
+.dock-wrap.shrink{
+  padding: calc(var(--pad) - 2px);
+  transform: translateX(-50%) translateY(var(--shrink-shift));
+  /* NO pongas top aquí */
+}
+
+
   .dock-wrap::after{
     content:""; position:absolute; inset:0; pointer-events:none; border-radius: inherit;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.18);
   }
   .dock-wrap.shrink{ background: color-mix(in oklab, var(--glass-bg) 85%, #fff 20%); }
-  .dock-wrap.hide{ opacity:.0; pointer-events:none; transform: translateX(-50%) translateY(-8px); }
+
 
   .dock{ display:flex; align-items:center; gap: var(--gap); height:100%; position:relative; padding-inline: 2px; }
 
@@ -268,9 +287,6 @@
   let lastY = window.scrollY;
   addEventListener('scroll', ()=>{
     const y = window.scrollY;
-    wrap.classList.toggle('shrink', y>8);
-    if (y > lastY + 6) wrap.classList.add('hide');
-    else if (y < lastY - 6) wrap.classList.remove('hide');
     lastY = y;
     updateTooltipSide();
   });
@@ -401,6 +417,15 @@
     updateTooltipSide();
     loadSection('inicio');          // sección inicial
   });
+
+
+  // scroll: SOLO shrink + tooltips (sin auto-hide)
+addEventListener('scroll', () => {
+  const y = window.scrollY;
+  wrap.classList.toggle('shrink', y > 8);  // mantiene la transición suave que ya tienes
+  updateTooltipSide();                     // sigue eligiendo arriba/abajo para el tooltip
+});
+
 </script>
 </body>
 </html>
