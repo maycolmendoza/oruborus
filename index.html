@@ -369,69 +369,182 @@ p {
 
  <div class="z-10 w-full max-w-7xl pt-[clamp(4.5rem,6vw,7rem)]"
        style="padding-top: calc(clamp(4.5rem,6vw,7rem) + var(--safe-top));">
-<!-- Título -->
-<h1 class="hero-title">
-  Automatizamos tu negocio,
-  <span class="oruborus-brand">Oruborus Startup</span>
-  a un precio justo
-</h1>
+<!-- ===== HERO TITLE (reemplazo) ===== -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
 
-<p id="services-rotator" class="hero-subtitle" aria-live="polite">
-  Se emiten comprobantes de pago.
-</p>
+<section class="hero-wrap" aria-label="Oruborus hero">
+  <!-- Eyebrow / badge -->
+  <div class="hero-eyebrow" role="note">
+    <span class="dot"></span> Marca & Tecnología • Oruborus
+  </div>
 
+  <!-- Título -->
+  <h1 class="hero-title">
+    Automatizamos tu negocio
+    <span class="line-break"></span>
+    <span class="brand-gradient" aria-label="Oruborus Startup">Oruborus Startup</span>
+    <span class="muted">a un precio justo</span>
+  </h1>
 
-<!-- Subtítulo con máquina de escribir -->
-<p class="typewriter" id="typewriter"></p>
+  <!-- Subtítulo rotatorio -->
+  <p id="services-rotator" class="hero-subtitle" aria-live="polite">
+    Se emiten comprobantes de pago.
+  </p>
+
+  <!-- Chips dinámicos -->
+  <div class="chips" id="chips"></div>
+
+  <!-- CTAs -->
+  <div class="hero-ctas">
+    <a href="#explora" class="btn btn-primary">Explorar servicios</a>
+    <a href="#contacto" class="btn btn-ghost">Hablemos</a>
+  </div>
+</section>
 
 <style>
-  /* Fuente moderna tecnológica */
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap');
+  :root{
+    --brand-1:#ff4d00;       /* naranja */
+    --brand-2:#ff8a00;       /* naranja cálido */
+    --ink-1:#ffffff;
+    --ink-2:rgba(255,255,255,.82);
+    --glass:rgba(255,255,255,.06);
+    --stroke:rgba(255,255,255,.16);
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
 
-/* Título */
-.hero-title{
-  font-family: 'Montserrat', system-ui, sans-serif;
-  font-weight: 800;
-  text-align: center;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  font-size: clamp(2rem,6vw,3.75rem);
-  color:#fff;
-  text-shadow: 0 4px 12px rgba(0,0,0,.6);
-}
-.oruborus-brand{
-  color:#ff4d00;              /* naranja sólido */
-  text-shadow: 0 2px 8px rgba(0,0,0,.35);
-  font-style: italic;
-}
+  .hero-wrap{
+    font-family:'Montserrat',system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    display:grid;
+    place-items:center;
+    gap:1rem;
+    text-align:center;
+    padding: clamp(2.5rem, 7vw, 6rem) 1rem;
+    color:var(--ink-1);
+    /* glass panel para mejorar legibilidad sobre video/imagen */
+    background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.05));
+    border-radius: 24px;
+    margin-inline: auto;
+    max-width: 1100px;
+    backdrop-filter: saturate(120%) blur(6px);
+    -webkit-backdrop-filter: saturate(120%) blur(6px);
+    outline:1px solid var(--stroke);
+    box-shadow: var(--shadow);
+  }
 
-/* Subtítulo con fade */
-.hero-subtitle{
-  margin-top:.5rem;
-  font-weight:300;
-  color:rgba(255,255,255,.9);
-  max-width: 680px;
-  text-align:center;
-  margin-inline:auto;
-  font-size: clamp(1rem,2.6vw,1.125rem);
-  min-height: 1.6em;          /* evita salto al cambiar */
-  transition: opacity .6s ease, transform .6s ease;
-  will-change: opacity, transform;
-}
-.fade-out{ opacity:0; transform: translateY(6px); }
-.fade-in { opacity:1; transform: translateY(0); }
+  .hero-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:.6rem;
+    font-weight:600;
+    letter-spacing:.02em;
+    color:var(--ink-2);
+    padding:.5rem .9rem;
+    border-radius:999px;
+    background:var(--glass);
+    outline:1px solid var(--stroke);
+  }
+  .hero-eyebrow .dot{
+    width:.55rem;height:.55rem;border-radius:50%;
+    background: radial-gradient(closest-side, var(--brand-2), var(--brand-1));
+    box-shadow:0 0 12px var(--brand-1);
+  }
 
-/* Si el usuario prefiere menos animación */
-@media (prefers-reduced-motion: reduce){
-  .hero-subtitle{ transition: none; }
-}
+  .hero-title{
+    font-weight:800;
+    line-height:1.1;
+    margin:0;
+    font-size: clamp(2rem, 6.4vw, 4.2rem);
+    text-shadow: 0 6px 20px rgba(0,0,0,.45);
+  }
+  .line-break{ display:block }
+  .brand-gradient{
+    display:inline-block;
+    background: linear-gradient(92deg, var(--brand-1), var(--brand-2));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    position:relative;
+    white-space:nowrap;
+  }
+  /* brillo sutil bajo la marca */
+  .brand-gradient::after{
+    content:"";
+    position:absolute; inset:0 0 -0.15em 0;
+    filter: blur(12px);
+    background: radial-gradient(60% 60% at 50% 60%, rgba(255,138,0,.35), transparent 70%);
+    pointer-events:none;
+    z-index:-1;
+  }
 
+  .hero-title .muted{
+    display:block;
+    font-weight:700;
+    color:var(--ink-2);
+    font-size: .9em;
+  }
+
+  .hero-subtitle{
+    margin-top:.25rem;
+    color:var(--ink-2);
+    max-width: 760px;
+    margin-inline:auto;
+    font-weight:500;
+    font-size: clamp(1rem, 2.4vw, 1.2rem);
+    min-height: 1.6em;
+    transition: opacity .6s ease, transform .6s ease;
+    will-change: opacity, transform;
+  }
+  .fade-out{ opacity:0; transform: translateY(6px); }
+  .fade-in { opacity:1; transform: translateY(0); }
+
+  .chips{
+    display:flex; flex-wrap:wrap;
+    gap:.6rem; justify-content:center;
+    max-width: 960px;
+  }
+  .chip{
+    padding:.5rem .8rem;
+    border-radius:999px;
+    background:var(--glass);
+    outline:1px solid var(--stroke);
+    color:var(--ink-2);
+    font-weight:600;
+    font-size:.92rem;
+    transition: transform .3s ease, background .3s ease;
+  }
+  .chip.active{ background:rgba(255,255,255,.12); transform:translateY(-2px); }
+
+  .hero-ctas{ display:flex; gap:.8rem; justify-content:center; margin-top:.4rem; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:.9rem 1.1rem; border-radius:14px; font-weight:700;
+    text-decoration:none; outline:1px solid var(--stroke); background:var(--glass);
+    transition: transform .2s ease, background .2s ease, outline-color .2s ease;
+    will-change:transform;
+  }
+  .btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.12); }
+  .btn-primary{
+    background: linear-gradient(92deg, var(--brand-1), var(--brand-2));
+    color:#111; outline-color:transparent;
+  }
+  .btn-ghost{ color:var(--ink-1); }
+
+  /* Motion-safe */
+  @media (prefers-reduced-motion: reduce){
+    .hero-subtitle, .chip{ transition:none }
+  }
+
+  /* Seguridad visual en móviles */
+  @media (max-width:560px){
+    .hero-wrap{ border-radius:16px; padding: clamp(1.5rem, 7vw, 2rem) .9rem; }
+  }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const el = document.getElementById('services-rotator');
-  if (!el) return;
+  const rotator = document.getElementById('services-rotator');
+  const chipsBox = document.getElementById('chips');
+  if (!rotator || !chipsBox) return;
 
   const frases = [
     "Agentes de IA personalizados",
@@ -445,37 +558,48 @@ document.addEventListener('DOMContentLoaded', () => {
     "Soporte y mantenimiento técnico"
   ];
 
+  // Render chips
+  const chipEls = frases.map(txt => {
+    const el = document.createElement('span');
+    el.className = 'chip';
+    el.textContent = txt;
+    chipsBox.appendChild(el);
+    return el;
+  });
+
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let i = 0;
 
   function next() {
-    const siguiente = frases[i % frases.length];
-    if (reduce) {
-      el.textContent = siguiente;
-      i++; setTimeout(next, 2000);
+    const txt = frases[i % frases.length];
+
+    // Rotador accesible
+    if (reduce){
+      rotator.textContent = txt;
+      chipEls.forEach((c,idx)=>c.classList.toggle('active', idx === (i % frases.length)));
+      i++; setTimeout(next, 2200);
       return;
     }
 
-    // fade out
-    el.classList.add('fade-out');
+    rotator.classList.add('fade-out');
     setTimeout(() => {
-      el.textContent = siguiente;
-      // fade in
-      el.classList.remove('fade-out');
-      el.classList.add('fade-in');
+      rotator.textContent = txt;
+      rotator.classList.remove('fade-out');
+      rotator.classList.add('fade-in');
+      chipEls.forEach((c,idx)=>c.classList.toggle('active', idx === (i % frases.length)));
       setTimeout(() => {
-        el.classList.remove('fade-in');
-        i++;
-        setTimeout(next, 1600); // pausa visible entre cambios
-      }, 600); // duración del fade-in
-    }, 400);   // duración del fade-out
+        rotator.classList.remove('fade-in');
+        i++; setTimeout(next, 1700);
+      }, 600);
+    }, 380);
   }
 
   // inicio
-  el.classList.add('fade-in');
-  setTimeout(() => { el.classList.remove('fade-in'); setTimeout(next, 1400); }, 600);
+  rotator.classList.add('fade-in');
+  setTimeout(() => { rotator.classList.remove('fade-in'); setTimeout(next, 1200); }, 500);
 });
 </script>
+
 
 
 
