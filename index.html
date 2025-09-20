@@ -593,52 +593,77 @@ p {
 
 
 
- 
+
+
+
+
+
+
 <!-- Conoce Oruborus -->
-<section id="conoce" class="py-28 bg-gradient-to-br from-[#eee] to-[#eee] relative overflow-hidden">
+<section id="conoce" class="py-28 bg-[#eee] relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-3 grid md:grid-cols-2 gap-12 items-center">
 
-    <!-- Texto -->
+    <!-- Columna: Texto + servicios -->
     <div data-aos="fade-right">
       <h3 class="text-sm uppercase tracking-widest text-orange-500 font-semibold mb-3">
         Conoce Oruborus
       </h3>
+
       <h2 class="text-5xl font-extrabold text-gray-900 leading-tight tracking-tight mb-6">
         Tecnología pensada para <span class="text-orange-500">tu negocio</span>
       </h2>
-      <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-        En <span class="font-semibold text-orange-500">Oruborus Startup</span> impulsamos la transformación digital
-        con soluciones innovadoras que combinan <strong>IA, automatización y desarrollo a medida</strong>.
-        Nuestro objetivo: que tu negocio funcione mejor, más rápido y a un precio justo.
+
+      <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+        En <span class="font-semibold text-orange-500">Oruborus Technology E.I.R.L.</span> unimos
+        <strong>software + hardware + datos</strong> para resolver problemas reales en empresas y comunidad:
+        IA aplicada, automatización, apps y dispositivos con sensores.
       </p>
 
-      <!-- Lista mejorada -->
-      <ul class="space-y-5 text-gray-700 text-lg">
-        <li class="flex items-start gap-3">
-          <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow">
-            🚀
-          </span>
-          Asistentes inteligentes y agentes de IA listos para optimizar tu trabajo.
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow">
-            ⚙️
-          </span>
-          Automatización de procesos para ahorrar tiempo y recursos.
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow">
-            💻
-          </span>
-          Aplicaciones web y móviles adaptadas a tu negocio.
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow">
-            📊
-          </span>
-          Análisis de datos y paneles de control personalizados.
-        </li>
-      </ul>
+      <!-- Grid de servicios (más descriptivo) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/70 border border-gray-200">
+          <span class="text-2xl">🤖</span>
+          <div>
+            <p class="font-semibold text-gray-900">Agentes de IA</p>
+            <p class="text-gray-600 text-sm">Atención 24/7, ventas y soporte integrados.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/70 border border-gray-200">
+          <span class="text-2xl">⚙️</span>
+          <div>
+            <p class="font-semibold text-gray-900">Automatización</p>
+            <p class="text-gray-600 text-sm">ETL, RPA y orquestación de procesos críticos.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/70 border border-gray-200">
+          <span class="text-2xl">📱</span>
+          <div>
+            <p class="font-semibold text-gray-900">Apps web & móvil</p>
+            <p class="text-gray-600 text-sm">Productos a medida listos para escalar.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/70 border border-gray-200">
+          <span class="text-2xl">🛰️</span>
+          <div>
+            <p class="font-semibold text-gray-900">IoT & LoRa</p>
+            <p class="text-gray-600 text-sm">Telemetría, sensores y redes de bajo consumo.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/70 border border-gray-200">
+          <span class="text-2xl">🛡️</span>
+          <div>
+            <p class="font-semibold text-gray-900">Seguridad conectada</p>
+            <p class="text-gray-600 text-sm">Botón de pánico y alertas inteligentes.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/70 border border-gray-200">
+          <span class="text-2xl">📊</span>
+          <div>
+            <p class="font-semibold text-gray-900">Analítica & dashboards</p>
+            <p class="text-gray-600 text-sm">Decisiones en tiempo real basadas en datos.</p>
+          </div>
+        </div>
+      </div>
 
       <!-- Botón -->
       <div class="mt-8">
@@ -649,68 +674,118 @@ p {
       </div>
     </div>
 
-    <!-- Imagen con logo -->
-    <div data-aos="fade-left" class="relative flex justify-center items-center">
-      <div class="bg-white p-8 rounded-3xl shadow-2xl border border-gray-200 hover:scale-105 transition">
-     <!-- Oruborus (versión vector flat, editable) -->
-<svg viewBox="0 0 512 512" width="256" height="256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Oruborus">
-  <defs>
-    <!-- Gradiente del anillo -->
-    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%"  stop-color="#FF6A3A"/>
-      <stop offset="100%" stop-color="#E84A1A"/>
-    </linearGradient>
-    <!-- Gradiente del cuerpo interno (peach) -->
-    <linearGradient id="innerGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%"  stop-color="#FEC6A9"/>
-      <stop offset="100%" stop-color="#F59B7B"/>
-    </linearGradient>
-  </defs>
+    <!-- Columna: Rail horizontal con imágenes/videos de proyectos -->
+    <div data-aos="fade-left" class="relative">
+      <!-- Controles -->
+      <button type="button" aria-label="Anterior"
+        onclick="scrollRail(-1)"
+        class="hidden md:flex absolute -left-3 top-1/2 -translate-y-1/2 z-10 bg-black/10 hover:bg-black/20 text-gray-800 p-3 rounded-full shadow">
+        <!-- ícono -->
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
 
-  <!-- ANILLO EXTERIOR (donut con fill-rule evenodd) -->
-  <path fill="url(#ringGrad)" fill-rule="evenodd" d="
-      M256,24
-      A232,232 0 1 1 255.99,24 Z
-      M256,96
-      A160,160 0 1 0 256,96 Z
-    "/>
+      <button type="button" aria-label="Siguiente"
+        onclick="scrollRail(1)"
+        class="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 bg-black/10 hover:bg-black/20 text-gray-800 p-3 rounded-full shadow">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
 
-  <!-- CUERPO INTERIOR (círculo + notch para formar la Q) -->
-  <!-- Es un círculo recortado por una “cola” en la parte inferior-derecha -->
-  <path fill="url(#innerGrad)" fill-rule="evenodd" d="
-      M256,120
-      A136,136 0 1 1 255.99,120 Z
+      <!-- Rail -->
+      <div id="oruborus-rail"
+           class="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-2 pr-2 scrollbar-none">
+        <!-- CARD 1: Collar inteligente (video) -->
+        <article class="rail-card snap-start">
+          <div class="media aspect-video rounded-xl overflow-hidden">
+            <video autoplay muted loop playsinline class="w-full h-full object-cover">
+              <source src="https://res.cloudinary.com/ddewqqfph/video/upload/v1754756180/background_pglnhf.mp4" type="video/mp4">
+            </video>
+          </div>
+          <h4 class="rail-title">Collar inteligente</h4>
+          <p class="rail-desc">NFC/QR, sensores y gestión en app.</p>
+        </article>
 
-      M356,330
-      C 338,350 314,366 287,374
-      C 298,356 306,338 311,319
-      C 316,301 318,282 318,262
-      C 318,204 271,158 214,158
-      C 181,158 152,173 132,196
-      C 150,155 193,128 242,126
-      C 304,124 356,172 356,236
-      C 356,269 356,300 356,330 Z
-    "/>
+        <!-- CARD 2: Botón de pánico -->
+        <article class="rail-card snap-start">
+          <div class="media aspect-video rounded-xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1556649101-0b6b5b0e9e3f?q=80&w=1280&auto=format&fit=crop"
+                 alt="Botón de pánico" class="w-full h-full object-cover">
+          </div>
+          <h4 class="rail-title">Botón de pánico</h4>
+          <p class="rail-desc">Alertas silenciosas con ubicación.</p>
+        </article>
 
-  <!-- OPCIONAL: pequeño realce interno (sutil) -->
-  <path fill="rgba(255,255,255,0.14)" d="
-      M256,120
-      A136,136 0 0 1 370,188
-      Q 340,158 298,144
-      Q 276,136 256,136
-      Q 236,136 214,144
-      Q 192,152 176,164
-      Q 208,132 256,120 Z
-    "/>
-</svg>
+        <!-- CARD 3: Red LoRa -->
+        <article class="rail-card snap-start">
+          <div class="media aspect-video rounded-xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1280&auto=format&fit=crop"
+                 alt="Red LoRa y telemetría" class="w-full h-full object-cover">
+          </div>
+          <h4 class="rail-title">Red LoRa</h4>
+          <p class="rail-desc">Telemetría de bajo consumo para ciudad.</p>
+        </article>
 
-        <p class="text-center text-gray-600 max-w-xs">
-          Somos tu aliado tecnológico para llevar tus ideas al siguiente nivel.
-        </p>
+        <!-- CARD 4: Apps y asistentes -->
+        <article class="rail-card snap-start">
+          <div class="media aspect-video rounded-xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1280&auto=format&fit=crop"
+                 alt="Apps y asistentes" class="w-full h-full object-cover">
+          </div>
+          <h4 class="rail-title">Apps & Asistentes</h4>
+          <p class="rail-desc">Web, móvil e IA para tu operación.</p>
+        </article>
+
+        <!-- CARD 5: Analítica -->
+        <article class="rail-card snap-start">
+          <div class="media aspect-video rounded-xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1280&auto=format&fit=crop"
+                 alt="Analítica y dashboards" class="w-full h-full object-cover">
+          </div>
+          <h4 class="rail-title">Analítica</h4>
+          <p class="rail-desc">Dashboards y decisiones en tiempo real.</p>
+        </article>
       </div>
     </div>
   </div>
+
+  <!-- estilos mínimos para el rail -->
+  <style>
+    .rail-card{ width: min(420px, 85vw); flex: 0 0 auto; }
+    .rail-title{ margin-top:.6rem; font-weight:700; color:#111827 }
+    .rail-desc{ color:#4b5563; font-size:.95rem }
+    .scrollbar-none::-webkit-scrollbar{ display:none }
+    .scrollbar-none{ -ms-overflow-style:none; scrollbar-width:none }
+    .media{ box-shadow: 0 10px 30px rgba(0,0,0,.15) }
+  </style>
+
+  <script>
+    function scrollRail(dir = 1){
+      const rail = document.getElementById('oruborus-rail');
+      if(!rail) return;
+      const card = rail.querySelector('.rail-card');
+      const step = card ? card.getBoundingClientRect().width + 20 : 320;
+      rail.scrollBy({ left: dir * step, behavior: 'smooth' });
+    }
+  </script>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
