@@ -598,13 +598,12 @@ p {
 
 
 
-
 <!-- Conoce Oruborus -->
 <section id="conoce" class="py-28 bg-[#eee] relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-3 grid md:grid-cols-2 gap-12 items-center">
 
     <!-- Columna: Texto + servicios -->
-    <div data-aos="fade-right">
+    <div>
       <h3 class="text-sm uppercase tracking-widest text-orange-500 font-semibold mb-3">
         Conoce Oruborus
       </h3>
@@ -615,52 +614,57 @@ p {
 
       <p class="text-lg text-gray-700 mb-8 leading-relaxed">
         En <span class="font-semibold text-orange-500">Oruborus Technology E.I.R.L.</span> unimos
-        <strong>software + hardware + datos</strong> para resolver problemas reales en empresas y comunidad:
-        IA aplicada, automatización, apps y dispositivos con sensores.
+        <strong>software, hardware e inteligencia de datos</strong> para crear productos y servicios
+        que resuelven problemas reales en empresas y comunidad.
       </p>
 
-      <!-- Grid de servicios (más descriptivo) -->
+      <!-- Grid de servicios (breve, consistente) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/70 border border-gray-200">
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/80 border border-gray-200">
           <span class="text-2xl">🤖</span>
           <div>
             <p class="font-semibold text-gray-900">Agentes de IA</p>
-            <p class="text-gray-600 text-sm">Atención 24/7, ventas y soporte integrados.</p>
+            <p class="text-gray-600 text-sm">Atención, ventas y soporte 24/7.</p>
           </div>
         </div>
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/70 border border-gray-200">
+
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/80 border border-gray-200">
           <span class="text-2xl">⚙️</span>
           <div>
             <p class="font-semibold text-gray-900">Automatización</p>
-            <p class="text-gray-600 text-sm">ETL, RPA y orquestación de procesos críticos.</p>
+            <p class="text-gray-600 text-sm">ETL, RPA y orquestación segura.</p>
           </div>
         </div>
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/70 border border-gray-200">
+
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/80 border border-gray-200">
           <span class="text-2xl">📱</span>
           <div>
             <p class="font-semibold text-gray-900">Apps web & móvil</p>
-            <p class="text-gray-600 text-sm">Productos a medida listos para escalar.</p>
+            <p class="text-gray-600 text-sm">Productos a medida y escalables.</p>
           </div>
         </div>
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/70 border border-gray-200">
-          <span class="text-2xl">🛰️</span>
+
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/80 border border-gray-200">
+          <span class="text-2xl">🧭</span>
           <div>
-            <p class="font-semibold text-gray-900">IoT & LoRa</p>
-            <p class="text-gray-600 text-sm">Telemetría, sensores y redes de bajo consumo.</p>
+            <p class="font-semibold text-gray-900">IoT con sensores</p>
+            <p class="text-gray-600 text-sm">Dispositivos conectados de bajo consumo.</p>
           </div>
         </div>
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/70 border border-gray-200">
+
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/80 border border-gray-200">
           <span class="text-2xl">🛡️</span>
           <div>
             <p class="font-semibold text-gray-900">Seguridad conectada</p>
-            <p class="text-gray-600 text-sm">Botón de pánico y alertas inteligentes.</p>
+            <p class="text-gray-600 text-sm">Botón de pánico y alertas.</p>
           </div>
         </div>
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/70 border border-gray-200">
+
+        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/80 border border-gray-200">
           <span class="text-2xl">📊</span>
           <div>
             <p class="font-semibold text-gray-900">Analítica & dashboards</p>
-            <p class="text-gray-600 text-sm">Decisiones en tiempo real basadas en datos.</p>
+            <p class="text-gray-600 text-sm">Decisiones en tiempo real.</p>
           </div>
         </div>
       </div>
@@ -674,30 +678,31 @@ p {
       </div>
     </div>
 
-    <!-- Columna: Rail horizontal con imágenes/videos de proyectos -->
-    <div data-aos="fade-left" class="relative">
-      <!-- Controles -->
-      <button type="button" aria-label="Anterior"
-        onclick="scrollRail(-1)"
-        class="hidden md:flex absolute -left-3 top-1/2 -translate-y-1/2 z-10 bg-black/10 hover:bg-black/20 text-gray-800 p-3 rounded-full shadow">
-        <!-- ícono -->
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
-        </svg>
-      </button>
+    <!-- Columna: Rail horizontal con imágenes/videos -->
+    <div class="relative">
+      <!-- Botones (no bloquean el touch del rail) -->
+      <div class="pointer-events-none select-none">
+        <button type="button" aria-label="Anterior"
+          onclick="scrollRail(-1)"
+          class="hidden md:flex pointer-events-auto absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-black/10 hover:bg-black/20 text-gray-800 p-3 rounded-full shadow">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
 
-      <button type="button" aria-label="Siguiente"
-        onclick="scrollRail(1)"
-        class="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 bg-black/10 hover:bg-black/20 text-gray-800 p-3 rounded-full shadow">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-        </svg>
-      </button>
+        <button type="button" aria-label="Siguiente"
+          onclick="scrollRail(1)"
+          class="hidden md:flex pointer-events-auto absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-black/10 hover:bg-black/20 text-gray-800 p-3 rounded-full shadow">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
 
       <!-- Rail -->
       <div id="oruborus-rail"
-           class="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-2 pr-2 scrollbar-none">
-        <!-- CARD 1: Collar inteligente (video) -->
+           class="rail flex gap-5 overflow-x-auto pb-2 pr-2 snap-x snap-mandatory rounded-2xl">
+        <!-- CARD 1 -->
         <article class="rail-card snap-start">
           <div class="media aspect-video rounded-xl overflow-hidden">
             <video autoplay muted loop playsinline class="w-full h-full object-cover">
@@ -705,10 +710,10 @@ p {
             </video>
           </div>
           <h4 class="rail-title">Collar inteligente</h4>
-          <p class="rail-desc">NFC/QR, sensores y gestión en app.</p>
+          <p class="rail-desc">NFC/QR, sensores y app de gestión.</p>
         </article>
 
-        <!-- CARD 2: Botón de pánico -->
+        <!-- CARD 2 -->
         <article class="rail-card snap-start">
           <div class="media aspect-video rounded-xl overflow-hidden">
             <img src="https://images.unsplash.com/photo-1556649101-0b6b5b0e9e3f?q=80&w=1280&auto=format&fit=crop"
@@ -718,50 +723,58 @@ p {
           <p class="rail-desc">Alertas silenciosas con ubicación.</p>
         </article>
 
-        <!-- CARD 3: Red LoRa -->
+        <!-- CARD 3 -->
         <article class="rail-card snap-start">
           <div class="media aspect-video rounded-xl overflow-hidden">
             <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1280&auto=format&fit=crop"
-                 alt="Red LoRa y telemetría" class="w-full h-full object-cover">
+                 alt="IoT con sensores" class="w-full h-full object-cover">
           </div>
-          <h4 class="rail-title">Red LoRa</h4>
-          <p class="rail-desc">Telemetría de bajo consumo para ciudad.</p>
+          <h4 class="rail-title">IoT con sensores</h4>
+          <p class="rail-desc">Telemetría y monitoreo de campo.</p>
         </article>
 
-        <!-- CARD 4: Apps y asistentes -->
+        <!-- CARD 4 -->
         <article class="rail-card snap-start">
           <div class="media aspect-video rounded-xl overflow-hidden">
             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1280&auto=format&fit=crop"
                  alt="Apps y asistentes" class="w-full h-full object-cover">
           </div>
-          <h4 class="rail-title">Apps & Asistentes</h4>
+          <h4 class="rail-title">Apps & asistentes</h4>
           <p class="rail-desc">Web, móvil e IA para tu operación.</p>
         </article>
 
-        <!-- CARD 5: Analítica -->
+        <!-- CARD 5 -->
         <article class="rail-card snap-start">
           <div class="media aspect-video rounded-xl overflow-hidden">
             <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1280&auto=format&fit=crop"
                  alt="Analítica y dashboards" class="w-full h-full object-cover">
           </div>
           <h4 class="rail-title">Analítica</h4>
-          <p class="rail-desc">Dashboards y decisiones en tiempo real.</p>
+          <p class="rail-desc">Paneles y KPIs en tiempo real.</p>
         </article>
       </div>
     </div>
   </div>
 
-  <!-- estilos mínimos para el rail -->
+  <!-- estilos del rail -->
   <style>
+    .rail{
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;                 /* permite deslizar con el dedo */
+      overscroll-behavior-x: contain;      /* evita rebotes raros */
+      scroll-padding-left: 1rem;
+      scrollbar-width: none;
+    }
+    .rail::-webkit-scrollbar{ display:none }
+
     .rail-card{ width: min(420px, 85vw); flex: 0 0 auto; }
     .rail-title{ margin-top:.6rem; font-weight:700; color:#111827 }
     .rail-desc{ color:#4b5563; font-size:.95rem }
-    .scrollbar-none::-webkit-scrollbar{ display:none }
-    .scrollbar-none{ -ms-overflow-style:none; scrollbar-width:none }
     .media{ box-shadow: 0 10px 30px rgba(0,0,0,.15) }
   </style>
 
   <script>
+    // Botones de avance (paso = ancho de tarjeta)
     function scrollRail(dir = 1){
       const rail = document.getElementById('oruborus-rail');
       if(!rail) return;
@@ -769,8 +782,27 @@ p {
       const step = card ? card.getBoundingClientRect().width + 20 : 320;
       rail.scrollBy({ left: dir * step, behavior: 'smooth' });
     }
+
+    // Mejora táctil en iOS/Android (evita scroll vertical capturado)
+    (function(){
+      const rail = document.getElementById('oruborus-rail');
+      if(!rail) return;
+      let startX = 0, startY = 0, isScrolling;
+      rail.addEventListener('touchstart', e => {
+        const t = e.touches[0];
+        startX = t.clientX; startY = t.clientY; isScrolling = undefined;
+      }, {passive:true});
+      rail.addEventListener('touchmove', e => {
+        const t = e.touches[0];
+        const dx = Math.abs(t.clientX - startX);
+        const dy = Math.abs(t.clientY - startY);
+        if (isScrolling === undefined) isScrolling = dy > dx; // vertical?
+        if (!isScrolling) e.preventDefault();                 // prioriza pan-x
+      }, {passive:false});
+    })();
   </script>
 </section>
+
 
 
 
