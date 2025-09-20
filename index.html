@@ -597,89 +597,149 @@ p {
 
 
 
-
-<!-- Conoce Oruborus -->
-<!-- Conoce Oruborus -->
-<section id="conoce" class="py-28 bg-[#eee] relative">
-  <div class="max-w-7xl mx-auto px-3 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+<!-- Conoce Oruborus (versión mobile-first y estable) -->
+<section id="conoce" class="relative w-full bg-[#eeeeee] py-20">
+  <div class="mx-auto max-w-7xl px-4 md:px-6 grid md:grid-cols-2 gap-10 items-start">
 
     <!-- Columna: Texto + servicios -->
     <div>
-      <h3 class="text-sm uppercase tracking-widest text-orange-500 font-semibold mb-3">
+      <h3 class="text-xs md:text-sm uppercase tracking-[0.2em] text-orange-500 font-semibold mb-3">
         Conoce Oruborus
       </h3>
 
-      <h2 class="text-5xl font-extrabold text-gray-900 leading-tight tracking-tight mb-6">
+      <h2 class="text-4xl sm:text-5xl font-extrabold text-[#0f172a] leading-tight tracking-tight mb-5">
         Tecnología pensada para <span class="text-orange-500">tu negocio</span>
       </h2>
 
-      <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      <p class="text-base sm:text-lg text-[#334155] mb-7 leading-relaxed">
         En <span class="font-semibold text-orange-500">Oruborus Technology E.I.R.L.</span> unimos
-        <strong>software, hardware e inteligencia de datos</strong> para crear soluciones que funcionen
-        en la vida real: empresas y comunidad.
+        <strong>software, hardware e inteligencia de datos</strong> para crear soluciones reales para empresas y comunidad.
       </p>
 
-      <!-- Grid de servicios (breve y consistente) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="flex items-start gap-3 p-4 rounded-xl bg-white/90 border border-gray-200 shadow-sm">
-          <span class="text-2xl">🤖</span>
-          <div>
-            <p class="font-semibold text-gray-900">Agentes de IA</p>
-            <p class="text-gray-600 text-sm">Atiende y vende 24/7.</p>
+      <!-- Servicios (tarjetas compactas y consistentes) -->
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <li class="flex gap-3 p-4 rounded-2xl bg-white border border-gray-200 shadow-sm">
+          <span class="text-2xl leading-none">🤖</span>
+          <div class="leading-snug">
+            <p class="font-semibold text-[#0f172a]">Agentes de IA</p>
+            <p class="text-sm text-[#475569]">Atiende y vende 24/7.</p>
           </div>
-        </div>
-        <div class="flex items-start gap-3 p-4 rounded-xl bg-white/90 border border-gray-200 shadow-sm">
-          <span class="text-2xl">⚙️</span>
-          <div>
-            <p class="font-semibold text-gray-900">Automatización</p>
-            <p class="text-gray-600 text-sm">Menos tareas, más resultados.</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-3 p-4 rounded-xl bg-white/90 border border-gray-200 shadow-sm">
-          <span class="text-2xl">📱</span>
-          <div>
-            <p class="font-semibold text-gray-900">Apps web & móvil</p>
-            <p class="text-gray-600 text-sm">A medida, listas para crecer.</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-3 p-4 rounded-xl bg-white/90 border border-gray-200 shadow-sm">
-          <span class="text-2xl">🧭</span>
-          <div>
-            <p class="font-semibold text-gray-900">IoT con sensores</p>
-            <p class="text-gray-600 text-sm">Monitoreo en tiempo real.</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-3 p-4 rounded-xl bg-white/90 border border-gray-200 shadow-sm">
-          <span class="text-2xl">🛡️</span>
-          <div>
-            <p class="font-semibold text-gray-900">Seguridad conectada</p>
-            <p class="text-gray-600 text-sm">Botón de pánico y alertas.</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-3 p-4 rounded-xl bg-white/90 border border-gray-200 shadow-sm">
-          <span class="text-2xl">📊</span>
-          <div>
-            <p class="font-semibold text-gray-900">Analítica & dashboards</p>
-            <p class="text-gray-600 text-sm">Indicadores claros para decidir.</p>
-          </div>
-        </div>
-      </div>
+        </li>
 
-      <!-- Botón -->
-      <div class="mt-8">
+        <li class="flex gap-3 p-4 rounded-2xl bg-white border border-gray-200 shadow-sm">
+          <span class="text-2xl leading-none">⚙️</span>
+          <div class="leading-snug">
+            <p class="font-semibold text-[#0f172a]">Automatización</p>
+            <p class="text-sm text-[#475569]">Menos tareas, más resultados.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-3 p-4 rounded-2xl bg-white border border-gray-200 shadow-sm">
+          <span class="text-2xl leading-none">📱</span>
+          <div class="leading-snug">
+            <p class="font-semibold text-[#0f172a]">Apps web & móvil</p>
+            <p class="text-sm text-[#475569]">A medida y escalables.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-3 p-4 rounded-2xl bg-white border border-gray-200 shadow-sm">
+          <span class="text-2xl leading-none">🧭</span>
+          <div class="leading-snug">
+            <p class="font-semibold text-[#0f172a]">IoT con sensores</p>
+            <p class="text-sm text-[#475569]">Monitoreo en tiempo real.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-3 p-4 rounded-2xl bg-white border border-gray-200 shadow-sm">
+          <span class="text-2xl leading-none">🛡️</span>
+          <div class="leading-snug">
+            <p class="font-semibold text-[#0f172a]">Seguridad conectada</p>
+            <p class="text-sm text-[#475569]">Botón de pánico y alertas.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-3 p-4 rounded-2xl bg-white border border-gray-200 shadow-sm">
+          <span class="text-2xl leading-none">📊</span>
+          <div class="leading-snug">
+            <p class="font-semibold text-[#0f172a]">Analítica & dashboards</p>
+            <p class="text-sm text-[#475569]">KPIs claros para decidir.</p>
+          </div>
+        </li>
+      </ul>
+
+      <!-- CTA -->
+      <div class="mt-7">
         <button onclick="loadModule('contacto')"
-          class="px-8 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition">
+          class="px-7 py-3 rounded-full font-semibold text-white shadow-lg transition
+                 bg-gradient-to-r from-orange-500 to-red-500 hover:scale-[1.03]">
           Solicitar una propuesta
         </button>
       </div>
     </div>
 
-    <!-- Columna: Rail horizontal con imágenes/videos -->
+    <!-- Columna: carrusel horizontal (mobile-first) -->
     <div class="relative">
-      <!-- Botones (no bloquean el gesto) -->
+      <!-- Rail -->
+      <div id="oruborus-rail"
+           class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-1 pr-1 rounded-2xl
+                  touch-pan-x overscroll-x-contain hide-scrollbar">
+        <!-- CARD 1 (video) -->
+        <article class="rail-card snap-start shrink-0 w-[85vw] sm:w-[360px]">
+          <div class="aspect-video rounded-xl overflow-hidden shadow-md bg-black">
+            <video autoplay muted loop playsinline class="w-full h-full object-cover">
+              <source src="https://res.cloudinary.com/ddewqqfph/video/upload/v1754756180/background_pglnhf.mp4" type="video/mp4">
+            </video>
+          </div>
+          <h4 class="mt-2 font-semibold text-[#0f172a]">Collar inteligente</h4>
+          <p class="text-sm text-[#475569]">NFC/QR, sensores y app.</p>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="rail-card snap-start shrink-0 w-[85vw] sm:w-[360px]">
+          <div class="aspect-video rounded-xl overflow-hidden shadow-md bg-gray-200">
+            <img src="https://images.unsplash.com/photo-1556649101-0b6b5b0e9e3f?q=80&w=1280&auto=format&fit=crop"
+                 alt="Botón de pánico" class="w-full h-full object-cover" draggable="false">
+          </div>
+          <h4 class="mt-2 font-semibold text-[#0f172a]">Botón de pánico</h4>
+          <p class="text-sm text-[#475569]">Alertas con ubicación.</p>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="rail-card snap-start shrink-0 w-[85vw] sm:w-[360px]">
+          <div class="aspect-video rounded-xl overflow-hidden shadow-md bg-gray-200">
+            <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1280&auto=format&fit=crop"
+                 alt="IoT con sensores" class="w-full h-full object-cover" draggable="false">
+          </div>
+          <h4 class="mt-2 font-semibold text-[#0f172a]">IoT con sensores</h4>
+          <p class="text-sm text-[#475569]">Monitoreo y control.</p>
+        </article>
+
+        <!-- CARD 4 -->
+        <article class="rail-card snap-start shrink-0 w-[85vw] sm:w-[360px]">
+          <div class="aspect-video rounded-xl overflow-hidden shadow-md bg-gray-200">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1280&auto=format&fit=crop"
+                 alt="Apps y asistentes" class="w-full h-full object-cover" draggable="false">
+          </div>
+          <h4 class="mt-2 font-semibold text-[#0f172a]">Apps & asistentes</h4>
+          <p class="text-sm text-[#475569]">Web, móvil e IA.</p>
+        </article>
+
+        <!-- CARD 5 -->
+        <article class="rail-card snap-start shrink-0 w-[85vw] sm:w-[360px]">
+          <div class="aspect-video rounded-xl overflow-hidden shadow-md bg-gray-200">
+            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1280&auto=format&fit=crop"
+                 alt="Analítica y dashboards" class="w-full h-full object-cover" draggable="false">
+          </div>
+          <h4 class="mt-2 font-semibold text-[#0f172a]">Analítica</h4>
+          <p class="text-sm text-[#475569]">KPIs en tiempo real.</p>
+        </article>
+      </div>
+
+      <!-- Flechas (solo desktop, no bloquean el gesto) -->
       <button type="button" aria-label="Anterior"
         onclick="scrollRail(-1)"
-        class="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-black/10 hover:bg-black/20 text-gray-800 p-3 rounded-full shadow">
+        class="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10
+               bg-black/10 hover:bg-black/20 text-[#0f172a] p-3 rounded-full shadow">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
         </svg>
@@ -687,100 +747,36 @@ p {
 
       <button type="button" aria-label="Siguiente"
         onclick="scrollRail(1)"
-        class="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-black/10 hover:bg-black/20 text-gray-800 p-3 rounded-full shadow">
+        class="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10
+               bg-black/10 hover:bg-black/20 text-[#0f172a] p-3 rounded-full shadow">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
         </svg>
       </button>
-
-      <!-- Rail -->
-      <div id="oruborus-rail" role="region" aria-label="Proyectos Oruborus"
-           class="rail flex gap-5 overflow-x-auto pb-2 pr-1 snap-x snap-mandatory rounded-2xl">
-        <!-- CARD 1 -->
-        <article class="rail-card snap-start select-none">
-          <div class="media aspect-video rounded-xl overflow-hidden">
-            <video autoplay muted loop playsinline class="w-full h-full object-cover">
-              <source src="https://res.cloudinary.com/ddewqqfph/video/upload/v1754756180/background_pglnhf.mp4" type="video/mp4">
-            </video>
-          </div>
-          <h4 class="rail-title">Collar inteligente</h4>
-          <p class="rail-desc">NFC/QR, sensores y app.</p>
-        </article>
-
-        <!-- CARD 2 -->
-        <article class="rail-card snap-start select-none">
-          <div class="media aspect-video rounded-xl overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1556649101-0b6b5b0e9e3f?q=80&w=1280&auto=format&fit=crop"
-                 alt="Botón de pánico" class="w-full h-full object-cover" draggable="false">
-          </div>
-          <h4 class="rail-title">Botón de pánico</h4>
-          <p class="rail-desc">Alertas con ubicación.</p>
-        </article>
-
-        <!-- CARD 3 -->
-        <article class="rail-card snap-start select-none">
-          <div class="media aspect-video rounded-xl overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1280&auto=format&fit=crop"
-                 alt="IoT con sensores" class="w-full h-full object-cover" draggable="false">
-          </div>
-          <h4 class="rail-title">IoT con sensores</h4>
-          <p class="rail-desc">Monitoreo y control.</p>
-        </article>
-
-        <!-- CARD 4 -->
-        <article class="rail-card snap-start select-none">
-          <div class="media aspect-video rounded-xl overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1280&auto=format&fit=crop"
-                 alt="Apps y asistentes" class="w-full h-full object-cover" draggable="false">
-          </div>
-          <h4 class="rail-title">Apps & asistentes</h4>
-          <p class="rail-desc">Web, móvil e IA.</p>
-        </article>
-
-        <!-- CARD 5 -->
-        <article class="rail-card snap-start select-none">
-          <div class="media aspect-video rounded-xl overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1280&auto=format&fit=crop"
-                 alt="Analítica y dashboards" class="w-full h-full object-cover" draggable="false">
-          </div>
-          <h4 class="rail-title">Analítica</h4>
-          <p class="rail-desc">KPIs en tiempo real.</p>
-        </article>
-      </div>
     </div>
   </div>
 
-  <!-- estilos del rail -->
+  <!-- helpers mínimos -->
   <style>
-    .rail{
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;   /* iOS */
-      touch-action: pan-x;                 /* prioriza gesto horizontal */
-      overscroll-behavior-x: contain;      /* evita rebote del body */
-      scroll-padding-left: .25rem;
-      scrollbar-width: none;
-    }
-    .rail::-webkit-scrollbar{ display:none }
-
-    .rail-card{ width: min(420px, 85vw); flex: 0 0 auto; }
-    .rail-title{ margin-top:.6rem; font-weight:700; color:#111827 }
-    .rail-desc{ color:#4b5563; font-size:.95rem }
-    .media{ box-shadow: 0 10px 30px rgba(0,0,0,.15) }
+    /* helpers sin chocar con Tailwind */
+    .hide-scrollbar::-webkit-scrollbar{ display:none }
+    .hide-scrollbar{ scrollbar-width:none; -ms-overflow-style:none }
+    .touch-pan-x{ touch-action: pan-x }
+    .overscroll-x-contain{ overscroll-behavior-x: contain }
   </style>
 
   <script>
-    // Flechas: avanzan una tarjeta (no interfieren con el gesto)
+    // Avanza/retrocede una tarjeta (desktop)
     function scrollRail(dir = 1){
       const rail = document.getElementById('oruborus-rail');
       if(!rail) return;
       const card = rail.querySelector('.rail-card');
-      const gap = parseFloat(getComputedStyle(rail).columnGap || getComputedStyle(rail).gap) || 20;
-      const step = card ? card.getBoundingClientRect().width + gap : 320;
+      const gap = parseFloat(getComputedStyle(rail).gap) || 16;
+      const step = (card?.getBoundingClientRect().width || 320) + gap;
       rail.scrollBy({ left: dir * step, behavior: 'smooth' });
     }
   </script>
 </section>
-
 
 
 
