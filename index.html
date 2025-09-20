@@ -599,7 +599,8 @@ p {
 
 
 <!-- Conoce Oruborus -->
-<section id="conoce" class="py-28 bg-[#eee] relative overflow-hidden">
+<!-- Conoce Oruborus -->
+<section id="conoce" class="py-28 bg-[#eee] relative">
   <div class="max-w-7xl mx-auto px-3 grid md:grid-cols-2 gap-12 items-center">
 
     <!-- Columna: Texto + servicios -->
@@ -614,57 +615,52 @@ p {
 
       <p class="text-lg text-gray-700 mb-8 leading-relaxed">
         En <span class="font-semibold text-orange-500">Oruborus Technology E.I.R.L.</span> unimos
-        <strong>software, hardware e inteligencia de datos</strong> para crear productos y servicios
-        que resuelven problemas reales en empresas y comunidad.
+        <strong>software, hardware e inteligencia de datos</strong> para crear soluciones que funcionen
+        en la vida real: empresas y comunidad.
       </p>
 
-      <!-- Grid de servicios (breve, consistente) -->
+      <!-- Grid de servicios (breve y consistente) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/80 border border-gray-200">
+        <div class="flex items-start gap-3 p-4 rounded-xl bg-white/90 border border-gray-200 shadow-sm">
           <span class="text-2xl">🤖</span>
           <div>
             <p class="font-semibold text-gray-900">Agentes de IA</p>
-            <p class="text-gray-600 text-sm">Atención, ventas y soporte 24/7.</p>
+            <p class="text-gray-600 text-sm">Atiende y vende 24/7.</p>
           </div>
         </div>
-
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/80 border border-gray-200">
+        <div class="flex items-start gap-3 p-4 rounded-xl bg-white/90 border border-gray-200 shadow-sm">
           <span class="text-2xl">⚙️</span>
           <div>
             <p class="font-semibold text-gray-900">Automatización</p>
-            <p class="text-gray-600 text-sm">ETL, RPA y orquestación segura.</p>
+            <p class="text-gray-600 text-sm">Menos tareas, más resultados.</p>
           </div>
         </div>
-
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/80 border border-gray-200">
+        <div class="flex items-start gap-3 p-4 rounded-xl bg-white/90 border border-gray-200 shadow-sm">
           <span class="text-2xl">📱</span>
           <div>
             <p class="font-semibold text-gray-900">Apps web & móvil</p>
-            <p class="text-gray-600 text-sm">Productos a medida y escalables.</p>
+            <p class="text-gray-600 text-sm">A medida, listas para crecer.</p>
           </div>
         </div>
-
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/80 border border-gray-200">
+        <div class="flex items-start gap-3 p-4 rounded-xl bg-white/90 border border-gray-200 shadow-sm">
           <span class="text-2xl">🧭</span>
           <div>
             <p class="font-semibold text-gray-900">IoT con sensores</p>
-            <p class="text-gray-600 text-sm">Dispositivos conectados de bajo consumo.</p>
+            <p class="text-gray-600 text-sm">Monitoreo en tiempo real.</p>
           </div>
         </div>
-
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/80 border border-gray-200">
+        <div class="flex items-start gap-3 p-4 rounded-xl bg-white/90 border border-gray-200 shadow-sm">
           <span class="text-2xl">🛡️</span>
           <div>
             <p class="font-semibold text-gray-900">Seguridad conectada</p>
             <p class="text-gray-600 text-sm">Botón de pánico y alertas.</p>
           </div>
         </div>
-
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/80 border border-gray-200">
+        <div class="flex items-start gap-3 p-4 rounded-xl bg-white/90 border border-gray-200 shadow-sm">
           <span class="text-2xl">📊</span>
           <div>
             <p class="font-semibold text-gray-900">Analítica & dashboards</p>
-            <p class="text-gray-600 text-sm">Decisiones en tiempo real.</p>
+            <p class="text-gray-600 text-sm">Indicadores claros para decidir.</p>
           </div>
         </div>
       </div>
@@ -680,77 +676,75 @@ p {
 
     <!-- Columna: Rail horizontal con imágenes/videos -->
     <div class="relative">
-      <!-- Botones (no bloquean el touch del rail) -->
-      <div class="pointer-events-none select-none">
-        <button type="button" aria-label="Anterior"
-          onclick="scrollRail(-1)"
-          class="hidden md:flex pointer-events-auto absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-black/10 hover:bg-black/20 text-gray-800 p-3 rounded-full shadow">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
-          </svg>
-        </button>
+      <!-- Botones (no bloquean el gesto) -->
+      <button type="button" aria-label="Anterior"
+        onclick="scrollRail(-1)"
+        class="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-black/10 hover:bg-black/20 text-gray-800 p-3 rounded-full shadow">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
 
-        <button type="button" aria-label="Siguiente"
-          onclick="scrollRail(1)"
-          class="hidden md:flex pointer-events-auto absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-black/10 hover:bg-black/20 text-gray-800 p-3 rounded-full shadow">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-          </svg>
-        </button>
-      </div>
+      <button type="button" aria-label="Siguiente"
+        onclick="scrollRail(1)"
+        class="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-black/10 hover:bg-black/20 text-gray-800 p-3 rounded-full shadow">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
 
       <!-- Rail -->
-      <div id="oruborus-rail"
-           class="rail flex gap-5 overflow-x-auto pb-2 pr-2 snap-x snap-mandatory rounded-2xl">
+      <div id="oruborus-rail" role="region" aria-label="Proyectos Oruborus"
+           class="rail flex gap-5 overflow-x-auto pb-2 pr-1 snap-x snap-mandatory rounded-2xl">
         <!-- CARD 1 -->
-        <article class="rail-card snap-start">
+        <article class="rail-card snap-start select-none">
           <div class="media aspect-video rounded-xl overflow-hidden">
             <video autoplay muted loop playsinline class="w-full h-full object-cover">
               <source src="https://res.cloudinary.com/ddewqqfph/video/upload/v1754756180/background_pglnhf.mp4" type="video/mp4">
             </video>
           </div>
           <h4 class="rail-title">Collar inteligente</h4>
-          <p class="rail-desc">NFC/QR, sensores y app de gestión.</p>
+          <p class="rail-desc">NFC/QR, sensores y app.</p>
         </article>
 
         <!-- CARD 2 -->
-        <article class="rail-card snap-start">
+        <article class="rail-card snap-start select-none">
           <div class="media aspect-video rounded-xl overflow-hidden">
             <img src="https://images.unsplash.com/photo-1556649101-0b6b5b0e9e3f?q=80&w=1280&auto=format&fit=crop"
-                 alt="Botón de pánico" class="w-full h-full object-cover">
+                 alt="Botón de pánico" class="w-full h-full object-cover" draggable="false">
           </div>
           <h4 class="rail-title">Botón de pánico</h4>
-          <p class="rail-desc">Alertas silenciosas con ubicación.</p>
+          <p class="rail-desc">Alertas con ubicación.</p>
         </article>
 
         <!-- CARD 3 -->
-        <article class="rail-card snap-start">
+        <article class="rail-card snap-start select-none">
           <div class="media aspect-video rounded-xl overflow-hidden">
             <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1280&auto=format&fit=crop"
-                 alt="IoT con sensores" class="w-full h-full object-cover">
+                 alt="IoT con sensores" class="w-full h-full object-cover" draggable="false">
           </div>
           <h4 class="rail-title">IoT con sensores</h4>
-          <p class="rail-desc">Telemetría y monitoreo de campo.</p>
+          <p class="rail-desc">Monitoreo y control.</p>
         </article>
 
         <!-- CARD 4 -->
-        <article class="rail-card snap-start">
+        <article class="rail-card snap-start select-none">
           <div class="media aspect-video rounded-xl overflow-hidden">
             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1280&auto=format&fit=crop"
-                 alt="Apps y asistentes" class="w-full h-full object-cover">
+                 alt="Apps y asistentes" class="w-full h-full object-cover" draggable="false">
           </div>
           <h4 class="rail-title">Apps & asistentes</h4>
-          <p class="rail-desc">Web, móvil e IA para tu operación.</p>
+          <p class="rail-desc">Web, móvil e IA.</p>
         </article>
 
         <!-- CARD 5 -->
-        <article class="rail-card snap-start">
+        <article class="rail-card snap-start select-none">
           <div class="media aspect-video rounded-xl overflow-hidden">
             <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1280&auto=format&fit=crop"
-                 alt="Analítica y dashboards" class="w-full h-full object-cover">
+                 alt="Analítica y dashboards" class="w-full h-full object-cover" draggable="false">
           </div>
           <h4 class="rail-title">Analítica</h4>
-          <p class="rail-desc">Paneles y KPIs en tiempo real.</p>
+          <p class="rail-desc">KPIs en tiempo real.</p>
         </article>
       </div>
     </div>
@@ -759,10 +753,11 @@ p {
   <!-- estilos del rail -->
   <style>
     .rail{
-      -webkit-overflow-scrolling: touch;
-      touch-action: pan-x;                 /* permite deslizar con el dedo */
-      overscroll-behavior-x: contain;      /* evita rebotes raros */
-      scroll-padding-left: 1rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;   /* iOS */
+      touch-action: pan-x;                 /* prioriza gesto horizontal */
+      overscroll-behavior-x: contain;      /* evita rebote del body */
+      scroll-padding-left: .25rem;
       scrollbar-width: none;
     }
     .rail::-webkit-scrollbar{ display:none }
@@ -774,32 +769,15 @@ p {
   </style>
 
   <script>
-    // Botones de avance (paso = ancho de tarjeta)
+    // Flechas: avanzan una tarjeta (no interfieren con el gesto)
     function scrollRail(dir = 1){
       const rail = document.getElementById('oruborus-rail');
       if(!rail) return;
       const card = rail.querySelector('.rail-card');
-      const step = card ? card.getBoundingClientRect().width + 20 : 320;
+      const gap = parseFloat(getComputedStyle(rail).columnGap || getComputedStyle(rail).gap) || 20;
+      const step = card ? card.getBoundingClientRect().width + gap : 320;
       rail.scrollBy({ left: dir * step, behavior: 'smooth' });
     }
-
-    // Mejora táctil en iOS/Android (evita scroll vertical capturado)
-    (function(){
-      const rail = document.getElementById('oruborus-rail');
-      if(!rail) return;
-      let startX = 0, startY = 0, isScrolling;
-      rail.addEventListener('touchstart', e => {
-        const t = e.touches[0];
-        startX = t.clientX; startY = t.clientY; isScrolling = undefined;
-      }, {passive:true});
-      rail.addEventListener('touchmove', e => {
-        const t = e.touches[0];
-        const dx = Math.abs(t.clientX - startX);
-        const dy = Math.abs(t.clientY - startY);
-        if (isScrolling === undefined) isScrolling = dy > dx; // vertical?
-        if (!isScrolling) e.preventDefault();                 // prioriza pan-x
-      }, {passive:false});
-    })();
   </script>
 </section>
 
