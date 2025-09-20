@@ -355,127 +355,155 @@ p {
 
 
 
+<section
+  class="relative z-0 min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden">
 
-<!-- ===== HERO: Slogan grande + pequeño + rotador pro ===== -->
-<h1 class="hero-title-large">
-  Innovación simple. Impacto real.
-</h1>
+  <!-- VIDEO de fondo -->
+  <div class="absolute inset-0 z-0 overflow-hidden video-wrap">
+    <video 
+      autoplay loop muted playsinline
+      class="w-full h-full object-cover"
+      poster="fallback.jpg">
+      <source src="https://res.cloudinary.com/ddewqqfph/video/upload/v1754756180/background_pglnhf.mp4" type="video/mp4">
+      Tu navegador no soporta video HTML5.
+    </video>
+  </div>
 
-<h2 class="hero-title-small">
-  Oruborus Technology E.I.R.L. — de apps a dispositivos, una sola visión.
-</h2>
+  <!-- Contenido -->
+  <div class="z-10 w-full max-w-7xl pt-[clamp(4.5rem,6vw,7rem)]"
+       style="padding-top: calc(clamp(4.5rem,6vw,7rem) + var(--safe-top));">
 
-<p id="services-rotator" class="hero-subtitle" aria-live="polite">
-  Construimos soluciones inteligentes para empresas y comunidades.
-</p>
+    <!-- TITULO SLOGAN GRANDE -->
+    <h1 class="hero-title-large">
+      Innovación simple. Impacto real.
+    </h1>
 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap');
+    <!-- TITULO SLOGAN PEQUEÑO -->
+    <h2 class="hero-title-small">
+      Oruborus Technology E.I.R.L. — de apps a dispositivos, una sola visión.
+    </h2>
 
-  :root{
-    --ink:#fff;
-    --ink-dim:rgba(255,255,255,.88);
-  }
+    <!-- ROTADOR PROFESIONAL -->
+    <p id="services-rotator" class="hero-subtitle" aria-live="polite">
+      Construimos soluciones inteligentes para empresas y comunidades.
+    </p>
 
-  /* TITULAR GRANDE (slogan) */
-  .hero-title-large{
-    font-family:'Montserrat',system-ui,sans-serif;
-    font-weight:800;
-    margin:0 0 .25rem;
-    text-align:center;
-    line-height:1.05;
-    font-size:clamp(2.4rem,7vw,4.6rem);
-    letter-spacing:-.01em;
-    color:var(--ink);
-    /* legibilidad sobre video, sin “caja” */
-    -webkit-text-stroke:.8px rgba(0,0,0,.18);
-    text-shadow:
-      0 2px 4px rgba(0,0,0,.35),
-      0 10px 28px rgba(0,0,0,.35),
-      0 0 1px rgba(0,0,0,.22);
-  }
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap');
 
-  /* TITULAR PEQUEÑO (apoyo) */
-  .hero-title-small{
-    font-family:'Montserrat',system-ui,sans-serif;
-    font-weight:700;
-    margin:.1rem 0 .6rem;
-    text-align:center;
-    line-height:1.2;
-    font-size:clamp(1.05rem,2.8vw,1.35rem);
-    color:var(--ink-dim);
-    text-shadow:
-      0 2px 3px rgba(0,0,0,.35),
-      0 8px 20px rgba(0,0,0,.25);
-  }
+      :root{
+        --ink:#fff;
+        --ink-dim:rgba(255,255,255,.88);
+      }
 
-  /* ROTADOR PROFESIONAL */
-  .hero-subtitle{
-    margin:.2rem auto 0;
-    font-family:'Montserrat',system-ui,sans-serif;
-    font-weight:600;
-    color:var(--ink-dim);
-    max-width: 900px;
-    text-align:center;
-    font-size:clamp(1rem,2.6vw,1.12rem);
-    min-height:1.6em; /* evita salto al cambiar */
-    transition:opacity .55s ease, transform .55s ease;
-    will-change:opacity, transform;
-    text-shadow:
-      0 2px 3px rgba(0,0,0,.35),
-      0 8px 20px rgba(0,0,0,.25);
-  }
-  .fade-out{ opacity:0; transform: translateY(6px); }
-  .fade-in { opacity:1; transform: translateY(0); }
+      /* OPCIONAL: viñeteado muy sutil en los bordes del video (puedes quitarlo si no quieres) */
+      .video-wrap::after{
+        content:"";
+        position:absolute; inset:0; pointer-events:none;
+        background: radial-gradient(120% 90% at 50% 55%, transparent 60%, rgba(0,0,0,.32) 100%);
+      }
 
-  @media (prefers-reduced-motion: reduce){
-    .hero-subtitle{ transition:none }
-  }
-</style>
+      /* TITULO GRANDE (slogan) */
+      .hero-title-large{
+        font-family:'Montserrat',system-ui,sans-serif;
+        font-weight:800;
+        margin:0 0 .25rem;
+        text-align:center;
+        line-height:1.05;
+        font-size:clamp(2.4rem,7vw,4.6rem);
+        letter-spacing:-.01em;
+        color:var(--ink);
+        -webkit-text-stroke:.8px rgba(0,0,0,.18);
+        text-shadow:
+          0 2px 4px rgba(0,0,0,.35),
+          0 10px 28px rgba(0,0,0,.35),
+          0 0 1px rgba(0,0,0,.22);
+      }
 
-<script>
-  // Rotador “pro”: textos más ejecutivos, mezcla software + hardware + comunidad.
-  document.addEventListener('DOMContentLoaded', () => {
-    const el = document.getElementById('services-rotator');
-    if (!el) return;
+      /* TITULO PEQUEÑO (apoyo) */
+      .hero-title-small{
+        font-family:'Montserrat',system-ui,sans-serif;
+        font-weight:700;
+        margin:.1rem 0 .6rem;
+        text-align:center;
+        line-height:1.2;
+        font-size:clamp(1.05rem,2.8vw,1.35rem);
+        color:var(--ink-dim);
+        text-shadow:
+          0 2px 3px rgba(0,0,0,.35),
+          0 8px 20px rgba(0,0,0,.25);
+      }
 
-    const frases = [
-      "Plataformas web y móviles listas para escalar.",
-      "Agentes de IA y asistentes para ventas y soporte 24/7.",
-      "Integraciones seguras con datos abiertos y APIs empresariales.",
-      "Dashboards y analítica para decisiones en tiempo real.",
-      "Automatización de procesos críticos (ETL, RPA, orquestación).",
-      "Dispositivos con sensores: del prototipo al despliegue.",
-      "Redes LoRa y telemetría para ciudades y empresas.",
-      "Collares inteligentes y soluciones IoT de bajo consumo.",
-      "Botones de pánico y seguridad conectada para tu comunidad.",
-      "Soporte, mantenimiento y evolución continua de productos."
-    ];
+      /* ROTADOR PROFESIONAL */
+      .hero-subtitle{
+        margin:.2rem auto 0;
+        font-family:'Montserrat',system-ui,sans-serif;
+        font-weight:600;
+        color:var(--ink-dim);
+        max-width: 900px;
+        text-align:center;
+        font-size:clamp(1rem,2.6vw,1.12rem);
+        min-height:1.6em;
+        transition:opacity .55s ease, transform .55s ease;
+        will-change:opacity, transform;
+        text-shadow:
+          0 2px 3px rgba(0,0,0,.35),
+          0 8px 20px rgba(0,0,0,.25);
+      }
+      .fade-out{ opacity:0; transform: translateY(6px); }
+      .fade-in { opacity:1; transform: translateY(0); }
 
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let i = 0;
+      @media (prefers-reduced-motion: reduce){
+        .hero-subtitle{ transition:none }
+      }
+    </style>
 
-    function next(){
-      const s = frases[i % frases.length];
-      if (reduce){ el.textContent = s; i++; setTimeout(next, 2400); return; }
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const el = document.getElementById('services-rotator');
+        if (!el) return;
 
-      el.classList.add('fade-out');
-      setTimeout(() => {
-        el.textContent = s;
-        el.classList.remove('fade-out');
+        const frases = [
+          "Plataformas web y móviles listas para escalar.",
+          "Agentes de IA y asistentes para ventas y soporte 24/7.",
+          "Integraciones seguras con datos abiertos y APIs empresariales.",
+          "Dashboards y analítica para decisiones en tiempo real.",
+          "Automatización de procesos críticos (ETL, RPA, orquestación).",
+          "Dispositivos con sensores: del prototipo al despliegue.",
+          "Redes LoRa y telemetría para ciudades y empresas.",
+          "Collares inteligentes y soluciones IoT de bajo consumo.",
+          "Botones de pánico y seguridad conectada para tu comunidad.",
+          "Soporte, mantenimiento y evolución continua de productos."
+        ];
+
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let i = 0;
+
+        function next(){
+          const s = frases[i % frases.length];
+          if (reduce){ el.textContent = s; i++; setTimeout(next, 2400); return; }
+
+          el.classList.add('fade-out');
+          setTimeout(() => {
+            el.textContent = s;
+            el.classList.remove('fade-out');
+            el.classList.add('fade-in');
+            setTimeout(() => {
+              el.classList.remove('fade-in');
+              i++; setTimeout(next, 1700);
+            }, 550);
+          }, 360);
+        }
+
+        // inicio
         el.classList.add('fade-in');
-        setTimeout(() => {
-          el.classList.remove('fade-in');
-          i++; setTimeout(next, 1700);
-        }, 550);
-      }, 360);
-    }
+        setTimeout(() => { el.classList.remove('fade-in'); setTimeout(next, 1100); }, 480);
+      });
+    </script>
 
-    // inicio
-    el.classList.add('fade-in');
-    setTimeout(() => { el.classList.remove('fade-in'); setTimeout(next, 1100); }, 480);
-  });
-</script>
+  </div>
+</section>
+
 
 
 
