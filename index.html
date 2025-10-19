@@ -65,14 +65,14 @@
 <!-- Header cápsula FINAL -->
 <!-- NAV CÁPSULA FINAL -->
 <!-- Cápsula -->
-<div id="capsuleHeader" class="glass-capsule">
-  <nav class="capsule-track">
-    <button data-goto="inicio">Inicio</button>
-    <button data-goto="explora">Explora</button>
-    <button data-goto="agenda">Agenda</button>
-    <button data-goto="catalogo">Catálogo</button>
-    <button data-goto="siguenos">Síguenos</button>
-    <button data-goto="contacto">Contacto</button>
+<div id="ob-nav" class="ob-nav">
+  <nav class="ob-nav__track" id="ob-nav-track">
+    <button class="ob-nav__btn is-active" data-goto="inicio">Inicio</button>
+    <button class="ob-nav__btn" data-goto="explora">Explora</button>
+    <button class="ob-nav__btn" data-goto="agenda">Agenda</button>
+    <button class="ob-nav__btn" data-goto="catalogo">Catálogo</button>
+    <button class="ob-nav__btn" data-goto="siguenos">Síguenos</button>
+    <button class="ob-nav__btn" data-goto="contacto">Contacto</button>
   </nav>
 </div>
 
@@ -80,77 +80,163 @@
 
 
 
-
 <style>
-/* ====== RESET de cualquier ancho que haya quedado por ahí ====== */
-.glass-capsule{ width:auto !important; max-width:none !important; }
+:root { --ob-safe-top: env(safe-area-inset-top, 0px); }
 
-/* ====== Desktop: centrado sin forzar ancho ====== */
-.glass-capsule{
-  position:fixed; top:12px; left:50%; transform:translateX(-50%);
-  z-index:50; display:flex; align-items:center;
-  padding:.65rem .8rem; gap:.5rem;
-  border-radius:9999px;
-  background:linear-gradient(180deg,#0f2238,#0c1826);
-  color:#eaf2ff; border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 14px 36px rgba(0,0,0,.28);
-}
-.capsule-track{
-  display:flex; align-items:center; justify-content:center;
-  gap:.5rem;
-}
-.capsule-track > *{
-  flex:0 0 auto;
-  white-space:nowrap;
-  appearance:none; border:0; background:transparent; color:inherit;
-  font:600 .95rem/1 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  padding:.55rem .7rem; border-radius:.75rem;
-  transition:background .18s ease,color .18s ease;
-}
-.capsule-track > *:hover{ background:rgba(255,255,255,.10); }
+/* ===== CÁPSULA ===== */
+.ob-nav{
+  position: fixed;
+  top: calc(12px + var(--ob-safe-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
 
-/* ====== Móvil: SCROLL HORIZONTAL EN EL MISMO DIV (sin ancho fijo) ====== */
-@media (max-width: 720px){
-  .glass-capsule{
-    /* ocupar el ancho visible, sin “ancho fijo” */
-    width:calc(100% - 16px) !important;
-    padding:.55rem .6rem;
+  display: flex;
+  align-items: center;
+
+  padding: .62rem .78rem;
+  border-radius: 9999px;
+
+  /* visible sobre fondos claros/oscros */
+  background: linear-gradient(180deg, #0e2134, #0b1726);
+  color: #e7f0ff;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 14px 36px rgba(0,0,0,.28);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+          backdrop-filter: blur(18px) saturate(150%);
+
+  width: max-content;
+  max-width: min(96vw, 1120px);
+  overflow: visible;
+  transition: transform .25s ease, padding .25s ease, box-shadow .25s ease;
+}
+
+/* Estado encogido al hacer scroll */
+.ob-nav.ob-nav--shrink{
+  transform: translateX(-50%) scale(.96);
+  padding: .48rem .62rem;
+  box-shadow: 0 10px 26px rgba(0,0,0,.22);
+}
+
+/* Pista de botones */
+.ob-nav__track{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+
+/* Botones */
+.ob-nav__btn{
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: 600 .95rem/1 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  padding: .55rem .7rem;
+  border-radius: .8rem;
+  white-space: nowrap;
+  transition: background .18s ease, color .18s ease, opacity .18s ease;
+}
+.ob-nav__btn:hover{ background: rgba(255,255,255,.10); }
+.ob-nav__btn.is-active{
+  background: rgba(255,255,255,.16);
+  color: #fff;
+}
+
+/* ===== MÓVIL: la cápsula se achica y la pista se desliza horizontalmente ===== */
+@media (max-width: 768px){
+  .ob-nav{
+    width: calc(100% - 16px);
+    padding: .5rem .55rem;
   }
-  .capsule-track{
-    justify-content:flex-start !important;   /* deja de centrarse */
-    overflow-x:auto !important;              /* << desliza horizontal */
-    -webkit-overflow-scrolling:touch;        /* inercia iOS */
-    scrollbar-width:none;                    /* oculta barra FF */
-    gap:.4rem;
-    /* fades en bordes para indicar que hay más */
-    -webkit-mask-image:linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
-            mask-image:linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
-    scroll-snap-type:x proximity;
+  .ob-nav__track{
+    justify-content: flex-start;           /* deja de centrarse */
+    overflow-x: auto;                       /* scroll horizontal */
+    -webkit-overflow-scrolling: touch;      /* inercia iOS */
+    scrollbar-width: none;                  /* oculta barra FF */
+
+    /* fades laterales para indicar que hay más */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+
+    scroll-snap-type: x proximity;
+    gap: .4rem;
   }
-  .capsule-track::-webkit-scrollbar{ display:none; } /* oculta barra Chrome/iOS */
-  .capsule-track > *{
-    padding:.5rem .6rem;
-    font-size:.92rem;
-    scroll-snap-align:center;
+  .ob-nav__track::-webkit-scrollbar{ display: none; }
+  .ob-nav__btn{
+    padding: .5rem .6rem;
+    font-size: .92rem;
+    scroll-snap-align: center;
   }
 }
 
 
 </style>
 <script>
-  (function(){
-    const track = document.querySelector('.capsule-track');
-    if(!track) return;
-    track.addEventListener('click', e=>{
-      const b = e.target.closest('button, a');
-      if(!b) return;
-      // centra el item dentro del carril en móvil
-      if (matchMedia('(max-width: 720px)').matches) {
-        b.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
-      }
+(() => {
+  const nav = document.getElementById('ob-nav');
+  const track = document.getElementById('ob-nav-track');
+  const btns = [...document.querySelectorAll('.ob-nav__btn')];
+
+  // --- Encoger la cápsula en scroll
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const shrink = window.scrollY > 12;
+      nav.classList.toggle('ob-nav--shrink', shrink);
+      ticking = false;
     });
-  })();
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // estado inicial
+
+  // --- Scroll a secciones con offset por altura de la cápsula
+  const goto = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const offset = window.scrollY + rect.top - (nav.offsetHeight + 8);
+    window.scrollTo({ top: offset, behavior: 'smooth' });
+  };
+
+  // Click en botones
+  track.addEventListener('click', (e) => {
+    const b = e.target.closest('.ob-nav__btn');
+    if (!b) return;
+    const id = b.dataset.goto;
+    if (!id) return;
+
+    // centra el botón seleccionado en móvil
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      b.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+    goto(id);
+  });
+
+  // --- Activar estado "is-active" con IntersectionObserver
+  const sections = btns
+    .map(b => document.getElementById(b.dataset.goto))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    btns.forEach(b => b.classList.toggle('is-active', b.dataset.goto === id));
+  };
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(ent => {
+      if (!ent.isIntersecting) return;
+      setActive(ent.target.id);
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(s => io.observe(s));
+})();
 </script>
+
+
 
 
 
@@ -914,24 +1000,39 @@ document.addEventListener('keydown',e=>{
     </div>
 
     <!-- Mapa con marco y tarjeta -->
-    <div data-aos="fade-left" class="relative">
-      <div class="rounded-2xl overflow-hidden border border-white/15 shadow-2xl shadow-black/30">
-     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.358169952651!2d-78.53372712592635!3d-9.122085194359135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ab844897a9deb7%3A0x6cc8cd12213095a6!2sPlaza%20Mayor%20de%20Nuevo%20Chimbote!5e0!3m2!1ses-419!2spe!4v1760888274027!5m2!1ses-419!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+<!-- Mapa con marco y tarjeta -->
+<div data-aos="fade-left" class="relative">
+  <div class="rounded-2xl overflow-hidden border border-white/15 shadow-2xl shadow-black/30">
+    <!-- wrapper con relación de aspecto -->
+    <div class="w-full aspect-[4/3] md:aspect-[16/9]">
+      <iframe
+        class="w-full h-full block"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.358169952651!2d-78.53372712592635!3d-9.122085194359135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ab844897a9deb7%3A0x6cc8cd12213095a6!2sPlaza%20Mayor%20de%20Nuevo%20Chimbote!5e0!3m2!1ses-419!2spe!4v1760888274027!5m2!1ses-419!2spe"
+        style="border:0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
 
-      <!-- Tarjeta flotante sobre el mapa -->
-      <div class="absolute -bottom-6 left-6 right-6 md:left-6 md:right-auto md:w-[75%] bg-white text-slate-900 rounded-xl p-4 shadow-xl border border-slate-200">
-        <div class="flex items-start gap-3">
-          <div class="shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600"></div>
-          <div>
-            <h3 class="font-semibold leading-tight">Oficina Oruborus — Nuevo Chimbote</h3>
-            <p class="text-sm text-slate-600">Atendemos de Lun a Vie, 9:00 am – 19:00 pm</p>
-            <a href="https://maps.google.com/?q=Plaza+Mayor+de+Nuevo+Chimbote" target="_blank"
-               class="inline-block mt-2 text-indigo-600 font-medium hover:underline">Ver en Google Maps</a>
-          </div>
-        </div>
+  <!-- Tarjeta flotante sobre el mapa -->
+  <div
+    class="absolute bottom-3 left-4 right-4 md:left-6 md:right-auto md:w-[75%]
+           max-w-[min(92vw,520px)] bg-white text-slate-900 rounded-xl p-4
+           shadow-xl border border-slate-200">
+    <div class="flex items-start gap-3">
+      <div class="shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600"></div>
+      <div>
+        <h3 class="font-semibold leading-tight">Oficina Oruborus — Nuevo Chimbote</h3>
+        <p class="text-sm text-slate-600">Atendemos de Lun a Vie, 9:00 am – 19:00 pm</p>
+        <a href="https://maps.google.com/?q=Plaza+Mayor+de+Nuevo+Chimbote" target="_blank"
+           class="inline-block mt-2 text-indigo-600 font-medium hover:underline">Ver en Google Maps</a>
       </div>
     </div>
+  </div>
+</div>
+
   </div>
 </section>
 
