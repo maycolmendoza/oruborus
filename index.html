@@ -61,24 +61,109 @@
 
 <body class="bg-gray-900 text-white min-h-screen">
   <!-- Capsule Header -->
-  <div id="capsuleHeader" class="glass-capsule">
-    <div class="flex items-center gap-2">
-      <!-- <img src="/assets/icon.png" alt="Oruborus" class="h-6 w-6 rounded-full"> -->
-      <!-- <span class="font-semibold text-base">Oruborus</span> -->
-    </div>
-    <nav class="flex items-center text-sm font-medium">
-
-  <button data-goto="inicio"        class="hover:text-red-400">Inicio</button>
-  <button data-goto="explora"       class="hover:text-red-400">Explora</button>
-  <button data-goto="agenda"       class="hover:text-red-400">Agenda</button>
-  <button data-goto="catalogo" class="hover:text-red-400">Catálogo</button>
-  <button data-goto="siguenos"     class="hover:text-red-400">Siguenos</button>
-  <button data-goto="contacto"      class="hover:text-red-400">Contacto</button>
-
-    </nav>
+<div id="capsuleHeader" class="glass-capsule">
+  <div class="flex items-center gap-2">
+    <!-- marca/loguito opcional -->
   </div>
 
-  
+  <!-- NUEVO: pista desplazable -->
+  <div class="cap-track" id="capTrack" aria-label="Secciones principales">
+    <nav class="cap-nav text-sm font-medium" role="navigation">
+      <button data-goto="inicio"     class="cap-link">Inicio</button>
+      <button data-goto="explora"    class="cap-link">Explora</button>
+      <button data-goto="agenda"     class="cap-link">Agenda</button>
+      <button data-goto="catalogo"   class="cap-link">Catálogo</button>
+      <button data-goto="siguenos"   class="cap-link">Síguenos</button>
+      <button data-goto="contacto"   class="cap-link">Contacto</button>
+    </nav>
+  </div>
+</div>
+<style>
+  /* contenedor actual de tu cápsula puede quedarse igual; solo añadimos reglas nuevas */
+.glass-capsule{
+  max-width:min(96vw, 1120px);
+}
+
+/* Pista desplazable con fade lateral */
+.cap-track{
+  display:block;
+  overflow-x:auto;
+  -webkit-overflow-scrolling: touch;
+  /* Bordes con fade para indicar que hay más */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+  /* que el contenido no “salte” verticalmente */
+  padding: 2px;
+}
+.cap-track::-webkit-scrollbar{ display:none; }
+.cap-track{ scrollbar-width:none; }
+
+/* Nav interno: fila sin wrap + snap */
+.cap-nav{
+  display:flex; align-items:center; gap:.5rem;
+  scroll-snap-type: x proximity;
+  min-height: 44px; /* confort táctil */
+}
+
+/* Enlaces/botones dentro de la cápsula */
+.cap-link{
+  flex:0 0 auto;                /* evita que hagan wrap */
+  white-space:nowrap;
+  scroll-snap-align:start;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  padding: .6rem .9rem;
+  border-radius: 9999px;
+  opacity: .95;
+  transition: background .2s ease, opacity .2s ease, transform .12s ease;
+}
+.cap-link:hover{ background: rgba(255,255,255,.08); opacity: 1; }
+.cap-link.is-active{ background: rgba(0,0,0,.66); color:#fff; }
+
+/* Compacto en móviles */
+@media (max-width: 560px){
+  .glass-capsule{ width: calc(100% - 16px); }
+  .cap-link{ padding: .5rem .7rem; font-size: .92rem; }
+}
+
+</style>
+
+  <script>
+    <script>
+(function(){
+  const track = document.getElementById('capTrack');
+  if(!track) return;
+
+  // Arrastre con mouse/touch
+  let down=false, startX=0, sx=0;
+  const start = e => { down=true; startX = (e.pageX || e.touches?.[0].pageX) - track.offsetLeft; sx = track.scrollLeft; };
+  const move  = e => {
+    if(!down) return;
+    const x = (e.pageX || e.touches?.[0].pageX) - track.offsetLeft;
+    track.scrollLeft = sx - (x - startX);
+  };
+  const end = () => down=false;
+
+  track.addEventListener('mousedown', start);
+  track.addEventListener('touchstart', start, {passive:true});
+  document.addEventListener('mousemove', move);
+  document.addEventListener('touchmove', move, {passive:true});
+  document.addEventListener('mouseup', end);
+  document.addEventListener('touchend', end);
+
+  // Desplazamiento horizontal con rueda (Shift o deltaX)
+  track.addEventListener('wheel', (e)=>{
+    const dx = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
+    if(dx){
+      e.preventDefault();
+      track.scrollLeft += dx;
+    }
+  }, {passive:false});
+})();
+</script>
+
+  </script>
 
 
 
