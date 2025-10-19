@@ -64,105 +64,93 @@
 <!-- Header cápsula 100% responsivo y centrado -->
 <!-- Header cápsula FINAL -->
 <!-- NAV CÁPSULA FINAL -->
-<div id="capsuleHeader" class="cap">
-  <div class="cap-brand">Orúboros</div>
-
-  <nav class="cap-track">
-    <button data-goto="inicio"   class="is-active">Inicio</button>
+<!-- Cápsula -->
+<div id="capsuleHeader" class="glass-capsule">
+  <nav class="capsule-track">
+    <button data-goto="inicio">Inicio</button>
     <button data-goto="explora">Explora</button>
     <button data-goto="agenda">Agenda</button>
     <button data-goto="catalogo">Catálogo</button>
     <button data-goto="siguenos">Síguenos</button>
     <button data-goto="contacto">Contacto</button>
-    <span class="cap-ink" aria-hidden="true"></span>
   </nav>
 </div>
 
 
 
+
+
+
 <style>
-:root{
-  --safe-top: env(safe-area-inset-top,0px);
-  --cap-max: 1120px;
-  --cap-bg: #0d1a28;
-  --cap-bg2:#0f2238;
-  --cap-text:#e8f0ff;
-  --cap-bord: rgba(255,255,255,.08);
-  --cap-shadow: 0 14px 36px rgba(0,0,0,.28);
+/* ====== RESET de cualquier ancho que haya quedado por ahí ====== */
+.glass-capsule{ width:auto !important; max-width:none !important; }
+
+/* ====== Desktop: centrado sin forzar ancho ====== */
+.glass-capsule{
+  position:fixed; top:12px; left:50%; transform:translateX(-50%);
+  z-index:50; display:flex; align-items:center;
+  padding:.65rem .8rem; gap:.5rem;
+  border-radius:9999px;
+  background:linear-gradient(180deg,#0f2238,#0c1826);
+  color:#eaf2ff; border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 14px 36px rgba(0,0,0,.28);
 }
-
-/* Cápsula fija, centrada */
-.cap{
-  position:fixed; z-index:1000;
-  top: calc(10px + var(--safe-top));
-  left:50%; transform: translateX(-50%);
-  width:min(var(--cap-max), calc(100% - 16px));
-  display:grid; grid-template-columns:auto 1fr; align-items:center; column-gap:12px;
-  padding:10px 12px; border-radius:9999px;
-  color:var(--cap-text);
-  background: linear-gradient(180deg,var(--cap-bg2),var(--cap-bg));
-  border:1px solid var(--cap-bord);
-  box-shadow: var(--cap-shadow);
-  backdrop-filter: blur(14px) saturate(130%);
+.capsule-track{
+  display:flex; align-items:center; justify-content:center;
+  gap:.5rem;
 }
-
-/* Chip de marca (se oculta en móvil para ganar ancho) */
-.cap-brand{
-  padding:6px 10px; border-radius:9999px; font-weight:700; letter-spacing:.2px;
-  background: rgba(255,255,255,.06); color:#c7d6ff;
+.capsule-track > *{
+  flex:0 0 auto;
+  white-space:nowrap;
+  appearance:none; border:0; background:transparent; color:inherit;
+  font:600 .95rem/1 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  padding:.55rem .7rem; border-radius:.75rem;
+  transition:background .18s ease,color .18s ease;
 }
+.capsule-track > *:hover{ background:rgba(255,255,255,.10); }
 
-/* Pista de navegación (centrada en desktop) */
-.cap-track{
-  position:relative;
-  display:flex; align-items:center; gap:8px;
-  justify-content:center;                     /* CENTRADO EN ESCRITORIO */
-  padding:2px; overflow:visible;
-}
-
-/* Botones */
-.cap button{
-  appearance:none; border:0; background:transparent;
-  color:var(--cap-text);
-  font:600 .98rem/1.1 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-  padding:10px 12px; border-radius:12px; white-space:nowrap;
-  transition:background .18s ease,color .18s ease,transform .06s ease;
-}
-.cap button:hover{ background:rgba(255,255,255,.08); }
-.cap button.is-active{ background:rgba(255,255,255,.10); color:#fff; }
-
-/* Subrayado animado */
-.cap-ink{
-  position:absolute; left:0; bottom:0; height:2px; width:0;
-  background:#86b7ff; border-radius:2px; opacity:.95;
-  transition:left .25s ease,width .25s ease,opacity .25s ease;
-}
-
-/* —— MÓVIL: scroll horizontal con snap, centrado visual, fade en bordes —— */
-@media (max-width: 820px){
-  .cap{ width:calc(100% - 12px); }
-  .cap-brand{ display:none; }
-
-  .cap-track{
-    justify-content:flex-start;               /* el contenedor desliza */
-    overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
-    gap:6px; touch-action: pan-x;
-    /* fade en extremos para indicar que hay más */
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
-    scroll-snap-type:x mandatory;
+/* ====== Móvil: SCROLL HORIZONTAL EN EL MISMO DIV (sin ancho fijo) ====== */
+@media (max-width: 720px){
+  .glass-capsule{
+    /* ocupar el ancho visible, sin “ancho fijo” */
+    width:calc(100% - 16px) !important;
+    padding:.55rem .6rem;
   }
-  .cap-track::-webkit-scrollbar{ display:none; }
-  .cap button{ scroll-snap-align: center; padding:9px 10px; font-size:.95rem; }
+  .capsule-track{
+    justify-content:flex-start !important;   /* deja de centrarse */
+    overflow-x:auto !important;              /* << desliza horizontal */
+    -webkit-overflow-scrolling:touch;        /* inercia iOS */
+    scrollbar-width:none;                    /* oculta barra FF */
+    gap:.4rem;
+    /* fades en bordes para indicar que hay más */
+    -webkit-mask-image:linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+            mask-image:linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+    scroll-snap-type:x proximity;
+  }
+  .capsule-track::-webkit-scrollbar{ display:none; } /* oculta barra Chrome/iOS */
+  .capsule-track > *{
+    padding:.5rem .6rem;
+    font-size:.92rem;
+    scroll-snap-align:center;
+  }
 }
-
-/* Espaciador para que el hero no quede tapado */
-.cap-spacer{ height:66px; }
-@media (max-width:820px){ .cap-spacer{ height:58px; } }
 
 
 </style>
-
+<script>
+  (function(){
+    const track = document.querySelector('.capsule-track');
+    if(!track) return;
+    track.addEventListener('click', e=>{
+      const b = e.target.closest('button, a');
+      if(!b) return;
+      // centra el item dentro del carril en móvil
+      if (matchMedia('(max-width: 720px)').matches) {
+        b.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+      }
+    });
+  })();
+</script>
 
 
 
