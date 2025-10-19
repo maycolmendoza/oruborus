@@ -68,11 +68,14 @@
       <!-- <span class="font-semibold text-base">Oruborus</span> -->
     </div>
     <nav class="flex items-center text-sm font-medium">
-      <button onclick="loadModule('inicio')" class="hover:text-red-400">Inicio</button>
-      <button onclick="loadModule('explora')" class="hover:text-red-400">Explora</button>
-      <button onclick="loadModule('favoritos')" class="hover:text-red-400">Favoritos</button>
-      <button onclick="loadModule('convocatorias')" class="hover:text-red-400">Catalogo</button>
-      <button onclick="loadModule('contacto')" class="hover:text-red-400">Contacto</button>
+
+  <button data-goto="inicio"        class="hover:text-red-400">Inicio</button>
+  <button data-goto="explora"       class="hover:text-red-400">Explora</button>
+  <button data-goto="agenda"       class="hover:text-red-400">Agenda</button>
+  <button data-goto="catalogo" class="hover:text-red-400">Catálogo</button>
+  <button data-goto="siguenos"     class="hover:text-red-400">Siguenos</button>
+  <button data-goto="contacto"      class="hover:text-red-400">Contacto</button>
+
     </nav>
   </div>
 
@@ -90,7 +93,7 @@
 
 
 
-<section
+<section id="inicio"
   class="relative z-0 min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden">
 
   <!-- VIDEO de fondo -->
@@ -252,7 +255,9 @@
 
 
 
-<!-- Conoce Oruborus --> <section id="conoce" class="py-28 bg-gradient-to-br from-[#eee] to-[#eee] relative overflow-hidden"> <div class="max-w-7xl mx-auto px-3 grid md:grid-cols-2 gap-12 items-center"> <!-- Texto --> <div data-aos="fade-right"> <h3 class="text-sm uppercase tracking-widest text-orange-500 font-semibold mb-3"> Conoce Oruborus </h3> <h2 class="text-5xl font-extrabold text-gray-900 leading-tight tracking-tight mb-6"> Tecnología pensada para <span class="text-orange-500">tu negocio</span> </h2> <p class="text-lg text-gray-700 mb-6 leading-relaxed"> En <span class="font-semibold text-orange-500">Oruborus Startup</span> impulsamos la transformación digital con soluciones innovadoras que combinan <strong>IA, automatización y desarrollo a medida</strong>. Nuestro objetivo: que tu negocio funcione mejor, más rápido y a un precio justo. </p> <!-- Lista mejorada --> <ul class="space-y-5 text-gray-700 text-lg"> <li class="flex items-start gap-3"> <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow"> 🚀 </span> Asistentes inteligentes y agentes de IA listos para optimizar tu trabajo. </li> <li class="flex items-start gap-3"> <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow"> ⚙️ </span> Automatización de procesos para ahorrar tiempo y recursos. </li> <li class="flex items-start gap-3"> <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow"> 💻 </span> Aplicaciones web y móviles adaptadas a tu negocio. </li> <li class="flex items-start gap-3"> <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow"> 📊 </span> Análisis de datos y paneles de control personalizados. </li> </ul> <!-- Botón --> <div class="mt-8"> <button onclick="loadModule('contacto')" class="px-8 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition"> Solicitar una propuesta </button> </div> </div> <!-- Imagen con logo --> <div data-aos="fade-left" class="relative flex justify-center items-center"> <div class="bg-white p-8 rounded-3xl shadow-2xl border border-gray-200 hover:scale-105 transition"> <!-- Oruborus (versión vector flat, editable) --> <svg viewBox="0 0 512 512" width="256" height="256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Oruborus"> <defs> <!-- Gradiente del anillo --> <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"> <stop offset="0%" stop-color="#FF6A3A"/> <stop offset="100%" stop-color="#E84A1A"/> </linearGradient> <!-- Gradiente del cuerpo interno (peach) --> <linearGradient id="innerGrad" x1="0" y1="0" x2="1" y2="1"> <stop offset="0%" stop-color="#FEC6A9"/> <stop offset="100%" stop-color="#F59B7B"/> </linearGradient> </defs> <!-- ANILLO EXTERIOR (donut con fill-rule evenodd) --> <path fill="url(#ringGrad)" fill-rule="evenodd" d=" M256,24 A232,232 0 1 1 255.99,24 Z M256,96 A160,160 0 1 0 256,96 Z "/> <!-- CUERPO INTERIOR (círculo + notch para formar la Q) --> <!-- Es un círculo recortado por una “cola” en la parte inferior-derecha --> <path fill="url(#innerGrad)" fill-rule="evenodd" d=" M256,120 A136,136 0 1 1 255.99,120 Z M356,330 C 338,350 314,366 287,374 C 298,356 306,338 311,319 C 316,301 318,282 318,262 C 318,204 271,158 214,158 C 181,158 152,173 132,196 C 150,155 193,128 242,126 C 304,124 356,172 356,236 C 356,269 356,300 356,330 Z "/> <!-- OPCIONAL: pequeño realce interno (sutil) --> <path fill="rgba(255,255,255,0.14)" d=" M256,120 A136,136 0 0 1 370,188 Q 340,158 298,144 Q 276,136 256,136 Q 236,136 214,144 Q 192,152 176,164 Q 208,132 256,120 Z "/> </svg> <p class="text-center text-gray-600 max-w-xs"> Somos tu aliado tecnológico para llevar tus ideas al siguiente nivel. </p> </div> </div> </div> </section>
+<!-- Conoce Oruborus --> 
+ <section id="explora" class="py-28 bg-gradient-to-br from-[#eee] to-[#eee] relative overflow-hidden"> <div class="max-w-7xl mx-auto px-3 grid md:grid-cols-2 gap-12 items-center"> <!-- Texto --> <div data-aos="fade-right"> <h3 class="text-sm uppercase tracking-widest text-orange-500 font-semibold mb-3"> Conoce Oruborus </h3> <h2 class="text-5xl font-extrabold text-gray-900 leading-tight tracking-tight mb-6"> Tecnología pensada para <span class="text-orange-500">tu negocio</span> </h2> <p class="text-lg text-gray-700 mb-6 leading-relaxed"> En <span class="font-semibold text-orange-500">Oruborus Startup</span> impulsamos la transformación digital con soluciones innovadoras que combinan <strong>IA, automatización y desarrollo a medida</strong>. Nuestro objetivo: que tu negocio funcione mejor, más rápido y a un precio justo. </p> <!-- Lista mejorada --> <ul class="space-y-5 text-gray-700 text-lg"> <li class="flex items-start gap-3"> <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow"> 🚀 </span> Asistentes inteligentes y agentes de IA listos para optimizar tu trabajo. </li> <li class="flex items-start gap-3"> <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow"> ⚙️ </span> Automatización de procesos para ahorrar tiempo y recursos. </li> <li class="flex items-start gap-3"> <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow"> 💻 </span> Aplicaciones web y móviles adaptadas a tu negocio. </li> <li class="flex items-start gap-3"> <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow"> 📊 </span> Análisis de datos y paneles de control personalizados. </li> </ul> <!-- Botón --> <div class="mt-8"> 
+  <button onclick="loadModule('contacto')" class="px-8 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition"> Solicitar una propuesta </button> </div> </div> <!-- Imagen con logo --> <div data-aos="fade-left" class="relative flex justify-center items-center"> <div class="bg-white p-8 rounded-3xl shadow-2xl border border-gray-200 hover:scale-105 transition"> <!-- Oruborus (versión vector flat, editable) --> <svg viewBox="0 0 512 512" width="256" height="256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Oruborus"> <defs> <!-- Gradiente del anillo --> <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"> <stop offset="0%" stop-color="#FF6A3A"/> <stop offset="100%" stop-color="#E84A1A"/> </linearGradient> <!-- Gradiente del cuerpo interno (peach) --> <linearGradient id="innerGrad" x1="0" y1="0" x2="1" y2="1"> <stop offset="0%" stop-color="#FEC6A9"/> <stop offset="100%" stop-color="#F59B7B"/> </linearGradient> </defs> <!-- ANILLO EXTERIOR (donut con fill-rule evenodd) --> <path fill="url(#ringGrad)" fill-rule="evenodd" d=" M256,24 A232,232 0 1 1 255.99,24 Z M256,96 A160,160 0 1 0 256,96 Z "/> <!-- CUERPO INTERIOR (círculo + notch para formar la Q) --> <!-- Es un círculo recortado por una “cola” en la parte inferior-derecha --> <path fill="url(#innerGrad)" fill-rule="evenodd" d=" M256,120 A136,136 0 1 1 255.99,120 Z M356,330 C 338,350 314,366 287,374 C 298,356 306,338 311,319 C 316,301 318,282 318,262 C 318,204 271,158 214,158 C 181,158 152,173 132,196 C 150,155 193,128 242,126 C 304,124 356,172 356,236 C 356,269 356,300 356,330 Z "/> <!-- OPCIONAL: pequeño realce interno (sutil) --> <path fill="rgba(255,255,255,0.14)" d=" M256,120 A136,136 0 0 1 370,188 Q 340,158 298,144 Q 276,136 256,136 Q 236,136 214,144 Q 192,152 176,164 Q 208,132 256,120 Z "/> </svg> <p class="text-center text-gray-600 max-w-xs"> Somos tu aliado tecnológico para llevar tus ideas al siguiente nivel. </p> </div> </div> </div> </section>
 
 
 
@@ -303,7 +308,7 @@
 
 
     <!-- Agendar -->
-    <section id="agendar" class="relative py-28 bg-[#fdf4ff] text-center">
+    <section id="agenda" class="relative py-28 bg-[#fdf4ff] text-center">
       <div class="max-w-6xl mx-auto px-6" data-aos="fade-up">
         <h2 class="text-4xl font-bold text-gray-800 mb-4">
           Agenda una reunión personalizada
@@ -981,5 +986,6 @@ document.addEventListener('keydown',e=>{
     </script>
 
 <script src="T61388/index.js"></script>
+<script src="T61388/loadmodule.js"></script>
 </body>
 </html>

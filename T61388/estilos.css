@@ -351,3 +351,9 @@ p {
   }
   .glass-capsule nav button:hover{ background: rgba(255,255,255,.16); }
 }
+
+
+html { scroll-behavior: smooth; }
+
+/* evita que el header tape el inicio de la sección */
+[id] { scroll-margin-top: calc(var(--cap-h, 72px) + 12px); }
