@@ -4,7 +4,7 @@
 (() => {
   const FORM_ID = "subscribeForm";
   const INPUT_ID = "email";
-  const ENDPOINT = "https://script.google.com/macros/s/AKfycbwRi_TT-0bUuWsi39dtTkE-tuPtRTjvKiNARS9GESbpYAL2PbfDHKJMdA7wYInR-QCo/exec"; // <- Pega aquí tu URL de Apps Script
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbzmFVza-Y_1GR-jzb3wxZ-jnaeOgF9ZqhR2E_pgv0toR3WVtA_i3SYxVdIRachY7gXc/exec"; // <- Pega aquí tu URL de Apps Script
 
   const emailRegex =
     /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;

@@ -1,0 +1,29 @@
+/* Scope para no chocar */
+.ocf-scope { position: relative; }
+
+/* Botón: estados de envío */
+.ocf-btn-busy { opacity: .8; pointer-events: none; filter: saturate(.8); }
+
+/* Toast minimalista (colores por estado) */
+.ocf-toast {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3.25rem;
+  margin: 0 auto;
+  width: max-content;
+  max-width: 95%;
+  padding: .6rem .9rem;
+  border-radius: .75rem;
+  font-size: .9rem;
+  color: #0f172a;
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 8px 28px rgba(0,0,0,.35);
+  transform: translateY(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .22s ease, transform .22s ease;
+}
+.ocf-toast--show { opacity: 1; transform: translateY(0); }
+.ocf-toast--ok { background: #ecfdf5; color:#065f46; border:1px solid #34d399; }
+.ocf-toast--err { background: #fef2f2; color:#7f1d1d; border:1px solid #f87171; }
