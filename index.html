@@ -853,265 +853,384 @@
     </div>
 
     <!-- ===================== CATÁLOGO ===================== -->
-    <section
-      id="catalogo"
-      style="background-color: #0b1220"
-      class="relative py-28 overflow-hidden text-center bg-[#0b1220]"
-    >
-      <!-- textura & brillos suaves -->
-      <div class="pointer-events-none absolute inset-0 opacity-[.07]"></div>
-      <div
-        class="pointer-events-none absolute inset-0 bg-[radial-gradient(1000px_600px_at_50%_-10%,rgba(255,255,255,.12),transparent_60%)]"
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 bg-[radial-gradient(1000px_500px_at_50%_120%,rgba(255,255,255,.08),transparent_70%)]"
-      ></div>
-
-      <div class="relative max-w-7xl mx-auto px-6">
-        <h2
-          class="text-3xl md:text-5xl font-extrabold tracking-tight text-white drop-shadow mb-3"
-        >
-          Catálogo de soluciones
-        </h2>
-        <p class="text-white/70 text-base md:text-lg max-w-3xl mx-auto mb-10">
-          Explora algunos de nuestros trabajos y prototipos. Haz clic para
-          verlos en grande.
-        </p>
-
-        <!-- Carrusel -->
-        <div class="relative">
-          <!-- Flechas (desktop) -->
-          <button
-            id="catPrev"
-            aria-label="Anterior"
-            class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/90 hover:bg-white shadow-lg"
-          >
-            &#x276E;
+  <!-- ====== ORU • SHOP CARDS (Catálogo) ====== -->
+<div class="relative max-w-7xl mx-auto px-6 mt-6">
+  <div id="oruShopTrack"
+       class="flex gap-6 overflow-x-auto px-2 md:px-10 py-2 scroll-smooth select-none snap-x snap-mandatory">
+    
+    <!-- ORUPET (PRODUCTO / NUEVO) -->
+    <article class="oru-shop-card shrink-0 snap-start">
+      <figure class="oru-shop-media">
+        <img src="assets/Collar Orupet para tu perrito.png" alt="ORUPET" class="oru-shop-img" loading="lazy">
+        <div class="oru-shop-tags">
+          <span class="oru-tag oru-tag-producto">Producto</span>
+          <span class="oru-tag oru-tag-nuevo">Nuevo</span>
+        </div>
+      </figure>
+      <div class="oru-shop-body">
+        <h3 class="oru-shop-title">ORUPET</h3>
+        <p class="oru-shop-sub">Collares pasivos QR/NFC para mascotas.</p>
+        <div class="oru-shop-cta">
+          <button class="oru-add-btn" data-add='{"id":"orupet","titulo":"ORUPET","tipo":"Producto"}'>
+            Agregar
           </button>
-          <button
-            id="catNext"
-            aria-label="Siguiente"
-            class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/90 hover:bg-white shadow-lg"
-          >
-            &#x276F;
-          </button>
-
-          <!-- Track -->
-          <div
-            id="catTrack"
-            class="flex gap-6 overflow-x-auto px-2 md:px-10 py-2 scroll-smooth scrollbar-hide select-none snap-x snap-mandatory"
-          >
-            <!-- Card -->
-            <article
-              class="group relative w-[300px] md:w-[360px] lg:w-[420px] shrink-0 snap-start rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-white/10 backdrop-blur-xl"
-            >
-              <figure class="relative aspect-[16/10] overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop"
-                  data-full="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2000&auto=format&fit=crop"
-                  alt="Asistente de IA"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06] cursor-zoom-in"
-                  loading="lazy"
-                />
-                <button
-                  class="like-btn absolute top-3 right-3 z-10 p-2 rounded-full bg-white/90 hover:bg-white shadow"
-                  data-id="c1"
-                >
-                  <svg
-                    class="heart-icon w-5 h-5 text-gray-700"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"
-                    />
-                  </svg>
-                </button>
-              </figure>
-              <figcaption class="text-left p-5">
-                <h3 class="text-white font-semibold text-lg">
-                  Asistente de IA
-                </h3>
-                <p class="text-white/70 text-sm">
-                  Atiende con voz y automatiza tareas.
-                </p>
-              </figcaption>
-            </article>
-
-            <!-- Card 2 -->
-            <article
-              class="group relative w-[300px] md:w-[360px] lg:w-[420px] shrink-0 snap-start rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-white/10 backdrop-blur-xl"
-            >
-              <figure class="relative aspect-[16/10] overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"
-                  data-full="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2000&auto=format&fit=crop"
-                  alt="Panel de datos"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06] cursor-zoom-in"
-                  loading="lazy"
-                />
-                <button
-                  class="like-btn absolute top-3 right-3 z-10 p-2 rounded-full bg-white/90 hover:bg-white shadow"
-                  data-id="c2"
-                >
-                  <svg
-                    class="heart-icon w-5 h-5 text-gray-700"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"
-                    />
-                  </svg>
-                </button>
-              </figure>
-              <figcaption class="text-left p-5">
-                <h3 class="text-white font-semibold text-lg">Panel de datos</h3>
-                <p class="text-white/70 text-sm">
-                  Dashboards y analítica ejecutiva.
-                </p>
-              </figcaption>
-            </article>
-
-            <!-- Duplicar más <article> cambiando data-id y src/data-full -->
-          </div>
         </div>
       </div>
+    </article>
 
-      <!-- Lightbox -->
-      <div
-        id="lb"
-        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-xl"
-      >
-        <button
-          id="lbClose"
-          aria-label="Cerrar"
-          class="absolute top-5 right-6 text-white/90 hover:text-white text-4xl font-bold"
-        >
-          &times;
-        </button>
-        <button
-          id="lbPrev"
-          aria-label="Anterior"
-          class="hidden md:flex absolute left-6 text-white/90 hover:text-white text-3xl"
-        >
-          &#x276E;
-        </button>
-        <button
-          id="lbNext"
-          aria-label="Siguiente"
-          class="hidden md:flex absolute right-6 text-white/90 hover:text-white text-3xl"
-        >
-          &#x276F;
-        </button>
-        <img
-          id="lbImg"
-          alt="Vista previa"
-          class="max-w-[92vw] max-h-[82vh] rounded-2xl shadow-2xl object-contain"
-        />
+    <!-- SERVICIOS -->
+    <article class="oru-shop-card shrink-0 snap-start">
+      <figure class="oru-shop-media">
+        <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"
+             alt="Diseño de páginas web" class="oru-shop-img" loading="lazy">
+        <div class="oru-shop-tags"><span class="oru-tag oru-tag-servicio">Servicio</span></div>
+      </figure>
+      <div class="oru-shop-body">
+        <h3 class="oru-shop-title">Diseño de páginas web</h3>
+        <p class="oru-shop-sub">Sitios modernos, rápidos y accesibles.</p>
+        <div class="oru-shop-cta">
+          <button class="oru-add-btn" data-add='{"id":"web","titulo":"Diseño de páginas web","tipo":"Servicio"}'>
+            Agregar
+          </button>
+        </div>
       </div>
-    </section>
+    </article>
 
-    <script>
-      /* Likes persistentes */
-      document.querySelectorAll(".like-btn").forEach((btn) => {
-        const id = btn.dataset.id,
-          icon = btn.querySelector(".heart-icon");
-        let liked = localStorage.getItem("liked_" + id) === "true";
-        const paint = () => {
-          icon.classList.toggle("text-red-500", liked);
-          icon.classList.toggle("fill-current", liked);
-          icon.classList.toggle("text-gray-700", !liked);
-        };
-        paint();
-        btn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          liked = !liked;
-          localStorage.setItem("liked_" + id, liked);
-          paint();
-        });
-      });
+    <article class="oru-shop-card shrink-0 snap-start">
+      <figure class="oru-shop-media">
+        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop"
+             alt="Sistemas web" class="oru-shop-img" loading="lazy">
+        <div class="oru-shop-tags"><span class="oru-tag oru-tag-servicio">Servicio</span></div>
+      </figure>
+      <div class="oru-shop-body">
+        <h3 class="oru-shop-title">Sistemas web</h3>
+        <p class="oru-shop-sub">Backoffice, dashboards, admin panels.</p>
+        <div class="oru-shop-cta">
+          <button class="oru-add-btn" data-add='{"id":"sistemas","titulo":"Sistemas web","tipo":"Servicio"}'>
+            Agregar
+          </button>
+        </div>
+      </div>
+    </article>
 
-      /* Carrusel: flechas + arrastre */
-      const track = document.getElementById("catTrack");
-      document.getElementById("catPrev").onclick = () =>
-        track.scrollBy({ left: -450, behavior: "smooth" });
-      document.getElementById("catNext").onclick = () =>
-        track.scrollBy({ left: 450, behavior: "smooth" });
+    <article class="oru-shop-card shrink-0 snap-start">
+      <figure class="oru-shop-media">
+        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&auto=format&fit=crop"
+             alt="Apps PWA" class="oru-shop-img" loading="lazy">
+        <div class="oru-shop-tags"><span class="oru-tag oru-tag-servicio">Servicio</span></div>
+      </figure>
+      <div class="oru-shop-body">
+        <h3 class="oru-shop-title">Apps PWA</h3>
+        <p class="oru-shop-sub">Aplicaciones instalables y offline.</p>
+        <div class="oru-shop-cta">
+          <button class="oru-add-btn" data-add='{"id":"pwa","titulo":"Apps PWA","tipo":"Servicio"}'>
+            Agregar
+          </button>
+        </div>
+      </div>
+    </article>
 
-      let down = false,
-        startX = 0,
-        startScroll = 0;
-      const start = (e) => {
-        down = true;
-        track.classList.add("cursor-grabbing");
-        startX = e.pageX || e.touches[0].pageX;
-        startScroll = track.scrollLeft;
-      };
-      const move = (e) => {
-        if (!down) return;
-        const x = e.pageX || e.touches[0].pageX;
-        track.scrollLeft = startScroll - (x - startX) * 1.2;
-      };
-      const stop = () => {
-        down = false;
-        track.classList.remove("cursor-grabbing");
-      };
-      track.addEventListener("mousedown", start);
-      track.addEventListener("touchstart", start, { passive: true });
-      track.addEventListener("mousemove", move);
-      track.addEventListener("touchmove", move, { passive: true });
-      ["mouseleave", "mouseup", "touchend", "touchcancel"].forEach((ev) =>
-        track.addEventListener(ev, stop)
-      );
+    <article class="oru-shop-card shrink-0 snap-start">
+      <figure class="oru-shop-media">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop"
+             alt="Automatizaciones" class="oru-shop-img" loading="lazy">
+        <div class="oru-shop-tags"><span class="oru-tag oru-tag-servicio">Servicio</span></div>
+      </figure>
+      <div class="oru-shop-body">
+        <h3 class="oru-shop-title">Automatizaciones</h3>
+        <p class="oru-shop-sub">Bots, flujos y procesos sin fricción.</p>
+        <div class="oru-shop-cta">
+          <button class="oru-add-btn" data-add='{"id":"automations","titulo":"Automatizaciones","tipo":"Servicio"}'>
+            Agregar
+          </button>
+        </div>
+      </div>
+    </article>
 
-      /* Lightbox */
-      const lb = document.getElementById("lb"),
-        lbImg = document.getElementById("lbImg");
-      const lbPrev = document.getElementById("lbPrev"),
-        lbNext = document.getElementById("lbNext");
-      const lbClose = document.getElementById("lbClose");
-      const thumbs = [...track.querySelectorAll("img")];
-      let i = -1;
+    <article class="oru-shop-card shrink-0 snap-start">
+      <figure class="oru-shop-media">
+        <img src="https://images.unsplash.com/photo-1551281044-8f734fdc2a5b?q=80&w=1200&auto=format&fit=crop"
+             alt="Integraciones y APIs" class="oru-shop-img" loading="lazy">
+        <div class="oru-shop-tags"><span class="oru-tag oru-tag-servicio">Servicio</span></div>
+      </figure>
+      <div class="oru-shop-body">
+        <h3 class="oru-shop-title">Integraciones y APIs</h3>
+        <p class="oru-shop-sub">Conecta pagos, envíos, ERPs y más.</p>
+        <div class="oru-shop-cta">
+          <button class="oru-add-btn" data-add='{"id":"apis","titulo":"Integraciones y APIs","tipo":"Servicio"}'>
+            Agregar
+          </button>
+        </div>
+      </div>
+    </article>
 
-      function open(n) {
-        i = n;
-        lbImg.src = thumbs[i].dataset.full || thumbs[i].src;
-        lb.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
+    <article class="oru-shop-card shrink-0 snap-start">
+      <figure class="oru-shop-media">
+        <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"
+             alt="Panel de datos" class="oru-shop-img" loading="lazy">
+        <div class="oru-shop-tags"><span class="oru-tag oru-tag-servicio">Servicio</span></div>
+      </figure>
+      <div class="oru-shop-body">
+        <h3 class="oru-shop-title">Panel de datos</h3>
+        <p class="oru-shop-sub">BI y analítica ejecutiva.</p>
+        <div class="oru-shop-cta">
+          <button class="oru-add-btn" data-add='{"id":"bi","titulo":"Panel de datos","tipo":"Servicio"}'>
+            Agregar
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <article class="oru-shop-card shrink-0 snap-start">
+      <figure class="oru-shop-media">
+        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop"
+             alt="Asistente de IA" class="oru-shop-img" loading="lazy">
+        <div class="oru-shop-tags"><span class="oru-tag oru-tag-servicio">Servicio</span></div>
+      </figure>
+      <div class="oru-shop-body">
+        <h3 class="oru-shop-title">Asistente de IA</h3>
+        <p class="oru-shop-sub">Atiende con voz y automatiza tareas.</p>
+        <div class="oru-shop-cta">
+          <button class="oru-add-btn" data-add='{"id":"ia","titulo":"Asistente de IA","tipo":"Servicio"}'>
+            Agregar
+          </button>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- FAB carrito -->
+<button id="oruCartFab" class="oru-cart-fab" aria-label="Abrir carrito">
+  <span class="oru-cart-dot" id="oruCartCount">0</span>
+  <svg viewBox="0 0 24 24" class="oru-cart-ico"><path d="M3 3h2l.4 2M7 13h10l3-7H6.4M7 13L5.4 5M7 13l-2 9h14l-2-9M10 21a1 1 0 100-2 1 1 0 000 2zm6 0a1 1 0 100-2 1 1 0 000 2z" fill="currentColor"/></svg>
+</button>
+
+<!-- Panel deslizante -->
+<aside id="oruCartPanel" class="oru-cart-panel" aria-hidden="true">
+  <div class="oru-cart-head">
+    <h4>Tu selección</h4>
+    <button id="oruCartClose" class="oru-x" aria-label="Cerrar">×</button>
+  </div>
+  <div id="oruCartList" class="oru-cart-list"></div>
+  <div class="oru-cart-foot">
+    <button id="oruCartClear" class="oru-clear">Vaciar</button>
+    <a id="oruCartWapp" class="oru-wapp" href="#" target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
+  </div>
+</aside>
+<div id="oruCartBackdrop" class="oru-cart-backdrop" aria-hidden="true"></div>
+<style>
+  /* ===== ORU SHOP (namespaced) ===== */
+.oru-shop-card{
+  width:300px; background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12); backdrop-filter:blur(10px);
+  border-radius:18px; overflow:hidden; box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+@media (min-width:768px){ .oru-shop-card{ width:360px } }
+@media (min-width:1024px){ .oru-shop-card{ width:420px } }
+
+.oru-shop-media{ position:relative; aspect-ratio:16/10; overflow:hidden }
+.oru-shop-img{ width:100%; height:100%; object-fit:cover; transform:scale(1); transition:transform .5s }
+.oru-shop-card:hover .oru-shop-img{ transform:scale(1.06) }
+
+.oru-shop-tags{ position:absolute; top:.6rem; left:.6rem; display:flex; gap:.4rem }
+.oru-tag{
+  font:600 12px/1.2 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  padding:.28rem .5rem; border-radius:999px; backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.25); color:#fff;
+}
+.oru-tag-producto{ background:linear-gradient(135deg,#22c55e,#16a34a) }
+.oru-tag-servicio{ background:linear-gradient(135deg,#60a5fa,#2563eb) }
+.oru-tag-nuevo{ background:linear-gradient(135deg,#fb7185,#ec4899) }
+
+.oru-shop-body{ padding:14px 16px 16px; text-align:left }
+.oru-shop-title{ color:#fff; margin:0 0 2px; font-weight:700; font-size:1.05rem }
+.oru-shop-sub{ color:rgba(255,255,255,.7); margin:0 0 10px; font-size:.92rem }
+.oru-shop-cta{ display:flex; gap:.5rem }
+
+.oru-add-btn{
+  padding:.55rem .9rem; border-radius:12px; background:#111; color:#fff;
+  border:1px solid rgba(255,255,255,.18);
+  transition:transform .15s, background .2s; cursor:pointer
+}
+.oru-add-btn:hover{ background:#000; transform:translateY(-1px) }
+.oru-add-btn.is-added{ background:#16a34a; border-color:#169a4a }
+.oru-add-btn.is-added::after{ content:" ✓"; font-weight:700 }
+
+/* ===== FAB carrito ===== */
+.oru-cart-fab{
+  position:fixed; right:16px; bottom:16px; z-index:60;
+  background:linear-gradient(135deg,#111827,#0b1220); color:#fff;
+  padding:14px 16px; border-radius:16px; border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 14px 40px rgba(0,0,0,.35); display:flex; align-items:center; gap:10px;
+}
+.oru-cart-ico{ width:22px; height:22px }
+.oru-cart-dot{
+  min-width:22px; height:22px; line-height:22px; border-radius:999px; text-align:center;
+  font:700 12px/22px system-ui; background:#ef4444; color:#fff; display:inline-block;
+}
+
+/* ===== Panel deslizante ===== */
+.oru-cart-backdrop{
+  position:fixed; inset:0; background:rgba(0,0,0,.45); backdrop-filter:blur(2px);
+  opacity:0; pointer-events:none; transition:opacity .2s; z-index:70;
+}
+.oru-cart-panel{
+  position:fixed; right:-380px; top:0; height:100dvh; width:360px; max-width:88vw;
+  background:#0b1220; color:#fff; z-index:80; border-left:1px solid rgba(255,255,255,.1);
+  display:flex; flex-direction:column; transition:right .25s;
+}
+.oru-cart-panel.is-open{ right:0 }
+.oru-cart-backdrop.is-open{ opacity:1; pointer-events:auto }
+
+.oru-cart-head{ display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.1) }
+.oru-cart-head h4{ margin:0; font:800 16px system-ui }
+.oru-x{ font-size:28px; line-height:1; background:transparent; color:#fff; border:none; cursor:pointer }
+
+.oru-cart-list{ padding:10px 12px; overflow:auto; flex:1; display:flex; flex-direction:column; gap:10px }
+.oru-item{
+  display:flex; justify-content:space-between; align-items:center; gap:10px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
+  border-radius:12px; padding:10px 12px;
+}
+.oru-item h6{ margin:0; font:700 14px system-ui }
+.oru-item small{ color:#9fb0d8 }
+.oru-rm{ background:#ef4444; color:#fff; border:none; border-radius:10px; padding:6px 8px; cursor:pointer }
+.oru-rm:hover{ filter:brightness(.95) }
+
+.oru-cart-foot{ padding:12px; border-top:1px solid rgba(255,255,255,.1); display:flex; gap:8px }
+.oru-clear{
+  background:#111; color:#fff; border:1px solid rgba(255,255,255,.18);
+  border-radius:12px; padding:10px 12px; cursor:pointer; flex:0 0 auto
+}
+.oru-wapp{
+  background:linear-gradient(135deg,#10b981,#16a34a); color:#fff; text-align:center;
+  border-radius:12px; padding:12px; text-decoration:none; font-weight:700; flex:1
+}
+
+/* ===== Track scrollable hints (móvil) ===== */
+#oruShopTrack{ -webkit-overflow-scrolling:touch }
+#oruShopTrack::-webkit-scrollbar{ display:none } /* opcional */
+
+</style>
+<script>
+(() => {
+  const WAPP_NUMBER = "51999999999"; // <-- TU número (sin +)
+  const storeKey = "oru_cart_v1";
+
+  const q  = s => document.querySelector(s);
+  const qa = s => [...document.querySelectorAll(s)];
+
+  const $count   = q("#oruCartCount");
+  const $fab     = q("#oruCartFab");
+  const $panel   = q("#oruCartPanel");
+  const $list    = q("#oruCartList");
+  const $close   = q("#oruCartClose");
+  const $clear   = q("#oruCartClear");
+  const $wapp    = q("#oruCartWapp");
+  const $back    = q("#oruCartBackdrop");
+
+  let cart = load();
+
+  // INIT
+  renderCart();
+  hydrateButtons();
+
+  // Delegación: agregar/quitar desde cards
+  document.addEventListener("click", (ev) => {
+    const addBtn = ev.target.closest(".oru-add-btn");
+    if (addBtn && addBtn.dataset.add) {
+      const item = JSON.parse(addBtn.dataset.add);
+      toggleItem(item);
+      // feedback en botón
+      if (inCart(item.id)) {
+        addBtn.classList.add("is-added");
+        addBtn.textContent = "Quitar";
+      } else {
+        addBtn.classList.remove("is-added");
+        addBtn.textContent = "Agregar";
       }
-      function close() {
-        lb.classList.add("hidden");
-        lbImg.src = "";
-        document.body.style.overflow = "";
-      }
-      function next() {
-        open((i + 1) % thumbs.length);
-      }
-      function prev() {
-        open((i - 1 + thumbs.length) % thumbs.length);
-      }
+    }
 
-      thumbs.forEach((img, idx) =>
-        img.addEventListener("click", () => open(idx))
-      );
-      lbClose.addEventListener("click", close);
-      lb.addEventListener("click", (e) => {
-        if (e.target === lb) close();
-      });
-      lbNext.addEventListener("click", next);
-      lbPrev.addEventListener("click", prev);
-      document.addEventListener("keydown", (e) => {
-        if (lb.classList.contains("hidden")) return;
-        if (e.key === "Escape") close();
-        if (e.key === "ArrowRight") next();
-        if (e.key === "ArrowLeft") prev();
-      });
-    </script>
+    const rmBtn = ev.target.closest(".oru-rm");
+    if (rmBtn && rmBtn.dataset.id) {
+      remove(rmBtn.dataset.id);
+    }
+  });
+
+  // FAB y panel
+  $fab?.addEventListener("click", openPanel);
+  $close?.addEventListener("click", closePanel);
+  $back?.addEventListener("click", closePanel);
+
+  // Vaciar
+  $clear?.addEventListener("click", () => {
+    cart = [];
+    save(); renderCart(); hydrateButtons();
+  });
+
+  function openPanel(){ $panel.classList.add("is-open"); $back.classList.add("is-open"); }
+  function closePanel(){ $panel.classList.remove("is-open"); $back.classList.remove("is-open"); }
+
+  function hydrateButtons(){
+    qa(".oru-add-btn").forEach(btn => {
+      try{
+        const item = JSON.parse(btn.dataset.add || "{}");
+        if (item.id && inCart(item.id)){
+          btn.classList.add("is-added"); btn.textContent = "Quitar";
+        } else {
+          btn.classList.remove("is-added"); btn.textContent = "Agregar";
+        }
+      }catch(e){}
+    });
+  }
+
+  function inCart(id){ return cart.some(x => x.id === id); }
+
+  function toggleItem(item){
+    if (inCart(item.id)){
+      cart = cart.filter(x => x.id !== item.id);
+    } else {
+      cart.push(item);
+    }
+    save(); renderCart();
+  }
+
+  function remove(id){
+    cart = cart.filter(x => x.id !== id);
+    save(); renderCart(); hydrateButtons();
+  }
+
+  function renderCart(){
+    // contador
+    $count.textContent = cart.length;
+
+    // listado
+    $list.innerHTML = cart.map(x => `
+      <div class="oru-item">
+        <div>
+          <h6>${x.titulo}</h6>
+          <small>${x.tipo}</small>
+        </div>
+        <button class="oru-rm" data-id="${x.id}">Quitar</button>
+      </div>
+    `).join("") || `<div class="oru-item"><small>No has agregado nada todavía.</small></div>`;
+
+    // enlace WhatsApp
+    const msg = cart.length
+      ? `Hola, quiero consultar por:%0A${cart.map(i => `• ${i.titulo} (${i.tipo})`).join("%0A")}`
+      : "Hola, quiero consultar sus servicios.";
+    $wapp.href = `https://wa.me/${WAPP_NUMBER}?text=${msg}`;
+  }
+
+  function save(){ localStorage.setItem(storeKey, JSON.stringify(cart)); }
+  function load(){
+    try { return JSON.parse(localStorage.getItem(storeKey) || "[]"); } catch(e){ return []; }
+  }
+})();
+</script>
+
 
     <!-- Wave con mismo fondo que #contacto -->
     <div

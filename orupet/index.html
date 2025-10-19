@@ -530,8 +530,8 @@
             <span class="text-emerald-700">contacto inmediato.</span>
           </h1>
           <p class="mt-4 text-lg text-gray-600 max-w-xl">
-            Escanéalo y abre la ficha pública con botón de WhatsApp.
-            <b>Sin app. Sin baterías.</b> No invasivo para tu mascota.
+            Acércalo y listo: contacto inmediato<br>
+            <b>Cómodo y elegante.</b> No invasivo para tu mascota.
           </p>
           <div class="mt-6 flex flex-wrap gap-3">
             <a
@@ -547,128 +547,18 @@
           </div>
           <div class="mt-6 flex gap-2 text-xs">
             <span class="px-3 py-1 rounded-full ring-1">QR</span>
-            <span class="px-3 py-1 rounded-full ring-1">NFC</span>
+            <span class="px-3 py-1 rounded-full ring-1">Tiempo real</span>
             <span class="px-3 py-1 rounded-full ring-1">Sin batería</span>
-            <span class="px-3 py-1 rounded-full ring-1">Contacto privado</span>
+            <span class="px-3 py-1 rounded-full ring-1">Seguro</span>
           </div>
         </div>
 
-        <!-- Visual del hero con pop-out 3D -->
-        <div class="reveal flex justify-center lg:justify-end">
-          <div id="hero3d" class="hero-3d relative inline-block select-none">
-            <div id="collar3d" class="pop-3d">
-              <!-- PNG/SVG principal -->
-              <img
-                id="collarImg"
-                src="rtc.png"
-                alt="Collar Orupet de cuero con placa QR/NFC"
-                class="w-[min(560px,92vw)] lg:w-[600px]"
-              />
-
-              <!-- Sombra profunda (se crea con la misma silueta): -->
-              <div class="depth-shadow" aria-hidden="true"></div>
-
-              <!-- Tus capas de luz existentes -->
-              <div
-                id="collarLight"
-                aria-hidden="true"
-                class="pointer-events-none absolute inset-0"
-              ></div>
-              <div
-                id="medalShine"
-                aria-hidden="true"
-                class="pointer-events-none absolute"
-              ></div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
     <!-- ========== ORUPET • Sección Tag + Ondas (Full-screen) ========== -->
     <!-- ============ HOW IT WORKS (pantalla completa con Lottie) ============ -->
-    <section
-      id="how-it-works"
-      class="relative min-h-[100svh] overflow-hidden grid lg:grid-cols-2 place-items-center px-6 py-16"
-    >
-      <!-- Glow de fondo (sutil) -->
-      <div
-        class="pointer-events-none absolute -z-10 left-1/2 top-1/3 -translate-x-1/2 w-[1200px] h-[1200px] rounded-full"
-        style="
-          background: radial-gradient(
-            closest-side,
-            rgba(16, 185, 129, 0.1),
-            transparent 70%
-          );
-        "
-      ></div>
 
-      <!-- Columna texto -->
-      <div class="max-w-xl w-full">
-        <p
-          class="text-xs uppercase tracking-[.18em] text-emerald-700/80 font-semibold"
-        >
-          Nuevo • QR + NFC • 100% pasivo
-        </p>
-        <h2 class="mt-3 text-4xl sm:text-5xl font-extrabold leading-tight">
-          Acércalo y listo:
-          <span class="text-emerald-700">contacto inmediato.</span>
-        </h2>
-        <ul class="mt-6 space-y-5 text-gray-700">
-          <li>
-            <strong>Escanea o toca</strong>: con <b>NFC</b> (1–3&nbsp;cm) o la
-            <b>cámara</b> (QR) se abre tu ficha pública.
-          </li>
-          <li>
-            <strong>Privado por diseño</strong>: el contacto se hace por
-            <b>WhatsApp/Email relay</b>; tu número no se muestra.
-          </li>
-          <li>
-            <strong>Sin baterías</strong>: 100% pasivo. Funciona en iPhone y
-            Android.
-          </li>
-        </ul>
-        <div class="mt-6 flex gap-3">
-          <a
-            href="#comprar"
-            class="px-5 py-3 rounded-full bg-black text-white shadow-[0_14px_40px_rgba(0,0,0,.12)]"
-            >Comprar ahora</a
-          >
-          <a
-            href="#como"
-            class="px-5 py-3 rounded-full ring-1 ring-black/10 hover:ring-black/20 bg-white"
-            >Ver cómo funciona</a
-          >
-        </div>
-      </div>
-
-      <!-- Columna animación -->
-      <div class="relative w-full max-w-[560px] aspect-square select-none">
-        <!-- Sombra 3D suave debajo -->
-        <div
-          class="absolute -z-10 left-1/2 bottom-6 -translate-x-1/2 w-[88%] h-[14%] rounded-[999px]"
-          style="
-            filter: blur(24px);
-            background: radial-gradient(
-              closest-side,
-              rgba(0, 0, 0, 0.25),
-              transparent 70%
-            );
-          "
-        ></div>
-
-        <!-- Contenedor Lottie -->
-        <div id="tagLottie" class="w-full h-full"></div>
-
-        <!-- Fallback imagen (por si no carga la animación) -->
-        <img
-          id="tagFallback"
-          alt="Oruborus Tag"
-          src="https://dummyimage.com/800x800/ffffff/aaa.png&text=ORUPET+TAG"
-          class="absolute inset-0 w-full h-full object-contain hidden"
-        />
-      </div>
-    </section>
 
     <!-- Lottie-web CDN -->
     <script
