@@ -64,14 +64,17 @@
 <!-- Header cápsula 100% responsivo y centrado -->
 <!-- Header cápsula FINAL -->
 <!-- NAV CÁPSULA FINAL -->
-<div id="navCapsule" class="navcaps">
-  <nav class="navrow" role="navigation" aria-label="Navegación principal">
-    <button data-goto="inicio">Inicio</button>
+<div id="capsuleHeader" class="cap">
+  <div class="cap-brand">Orúboros</div>
+
+  <nav class="cap-track">
+    <button data-goto="inicio"   class="is-active">Inicio</button>
     <button data-goto="explora">Explora</button>
     <button data-goto="agenda">Agenda</button>
     <button data-goto="catalogo">Catálogo</button>
     <button data-goto="siguenos">Síguenos</button>
     <button data-goto="contacto">Contacto</button>
+    <span class="cap-ink" aria-hidden="true"></span>
   </nav>
 </div>
 
@@ -79,130 +82,89 @@
 
 <style>
 :root{
-  --safe-top: env(safe-area-inset-top, 0px);
-  --cap-h: 72px; /* se recalcula; da espacio al hero */
+  --safe-top: env(safe-area-inset-top,0px);
+  --cap-max: 1120px;
+  --cap-bg: #0d1a28;
+  --cap-bg2:#0f2238;
+  --cap-text:#e8f0ff;
+  --cap-bord: rgba(255,255,255,.08);
+  --cap-shadow: 0 14px 36px rgba(0,0,0,.28);
 }
 
-/* ===== CÁPSULA centrada y fluida ===== */
-.navcaps{
-  position: fixed;
-  top: max(12px, calc(12px + var(--safe-top)));
-  left: 0;                 /* centrado robusto */
-  right: 0;                /* centrado robusto */
-  margin: 0 auto;          /* centrado robusto */
-
-  z-index: 1000;
-  width: calc(100vw - 16px);     /* ocupa el ancho disponible */
-  max-width: 1120px;             /* límite desktop */
-  box-sizing: border-box;
-
-  padding: .60rem .70rem;
-  border-radius: 9999px;
-
-  /* contraste real sobre fondos claros */
-  background: linear-gradient(135deg,#0b1a2a 0%, #1f2937 100%);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,.12);
-  box-shadow: 0 10px 30px rgba(0,0,0,.26);
-
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-  backdrop-filter: blur(10px) saturate(140%);
+/* Cápsula fija, centrada */
+.cap{
+  position:fixed; z-index:1000;
+  top: calc(10px + var(--safe-top));
+  left:50%; transform: translateX(-50%);
+  width:min(var(--cap-max), calc(100% - 16px));
+  display:grid; grid-template-columns:auto 1fr; align-items:center; column-gap:12px;
+  padding:10px 12px; border-radius:9999px;
+  color:var(--cap-text);
+  background: linear-gradient(180deg,var(--cap-bg2),var(--cap-bg));
+  border:1px solid var(--cap-bord);
+  box-shadow: var(--cap-shadow);
+  backdrop-filter: blur(14px) saturate(130%);
 }
 
-/* Pista desplazable (móvil) con fades laterales */
-.navrow{
-  display: flex;
-  align-items: center;
-  gap: .40rem;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x proximity;
-
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
-          mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+/* Chip de marca (se oculta en móvil para ganar ancho) */
+.cap-brand{
+  padding:6px 10px; border-radius:9999px; font-weight:700; letter-spacing:.2px;
+  background: rgba(255,255,255,.06); color:#c7d6ff;
 }
-.navrow::-webkit-scrollbar{ display:none; }
-.navrow{ scrollbar-width: none; }
+
+/* Pista de navegación (centrada en desktop) */
+.cap-track{
+  position:relative;
+  display:flex; align-items:center; gap:8px;
+  justify-content:center;                     /* CENTRADO EN ESCRITORIO */
+  padding:2px; overflow:visible;
+}
 
 /* Botones */
-.navrow > button{
-  flex: 0 0 auto;            /* no se rompen de línea */
-  white-space: nowrap;
-  scroll-snap-align: start;
-
-  color: inherit;
-  background: transparent;
-  border: 0;
-  font: inherit;
-  padding: .50rem .74rem;
-  border-radius: 9999px;
-
-  opacity: .95;
-  transition: background .2s, opacity .15s, transform .08s;
+.cap button{
+  appearance:none; border:0; background:transparent;
+  color:var(--cap-text);
+  font:600 .98rem/1.1 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  padding:10px 12px; border-radius:12px; white-space:nowrap;
+  transition:background .18s ease,color .18s ease,transform .06s ease;
 }
-.navrow > button:hover{ background: rgba(255,255,255,.14); opacity: 1; }
-.navrow > button:active{ transform: translateY(1px); }
-.navrow > button.is-active{
-  background: rgba(255,255,255,.22);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+.cap button:hover{ background:rgba(255,255,255,.08); }
+.cap button.is-active{ background:rgba(255,255,255,.10); color:#fff; }
+
+/* Subrayado animado */
+.cap-ink{
+  position:absolute; left:0; bottom:0; height:2px; width:0;
+  background:#86b7ff; border-radius:2px; opacity:.95;
+  transition:left .25s ease,width .25s ease,opacity .25s ease;
 }
 
-/* Empuje global para que el hero no quede tapado */
-.page-offset{ padding-top: calc(var(--cap-h) + 20px); }
+/* —— MÓVIL: scroll horizontal con snap, centrado visual, fade en bordes —— */
+@media (max-width: 820px){
+  .cap{ width:calc(100% - 12px); }
+  .cap-brand{ display:none; }
 
-/* Móvil: más compacto */
-@media (max-width: 640px){
-  .navcaps{ padding: .52rem .58rem; }
-  .navrow{ gap: .32rem; }
-  .navrow > button{ padding: .44rem .60rem; font-size: .92rem; }
+  .cap-track{
+    justify-content:flex-start;               /* el contenedor desliza */
+    overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    gap:6px; touch-action: pan-x;
+    /* fade en extremos para indicar que hay más */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
+    scroll-snap-type:x mandatory;
+  }
+  .cap-track::-webkit-scrollbar{ display:none; }
+  .cap button{ scroll-snap-align: center; padding:9px 10px; font-size:.95rem; }
 }
+
+/* Espaciador para que el hero no quede tapado */
+.cap-spacer{ height:66px; }
+@media (max-width:820px){ .cap-spacer{ height:58px; } }
 
 
 </style>
-  <script>
-(() => {
-  const cap  = document.getElementById('capsuleHeader');
-  const nav  = cap?.querySelector('.cap-track');
-  if(!cap || !nav) return;
 
-  const root = document.documentElement;
-  const buttons = [...nav.querySelectorAll('button[data-goto]')];
 
-  // Ajusta variable --cap-h según la altura real del header
-  const setCapHeight = () => {
-    root.style.setProperty('--cap-h', Math.ceil(cap.getBoundingClientRect().height) + 'px');
-  };
-  setCapHeight();
-  addEventListener('resize', setCapHeight, {passive:true});
-  addEventListener('scroll', setCapHeight, {passive:true});
 
-  // Encoge en scroll
-  addEventListener('scroll', () => {
-    cap.classList.toggle('shrink', scrollY > 18);
-  }, {passive:true});
-
-  // goto
-  const goto = id => {
-    const sec = document.getElementById(id);
-    if(!sec) return;
-    sec.scrollIntoView({behavior:'smooth', block:'start'});
-    buttons.forEach(b => b.classList.toggle('is-active', b.dataset.goto === id));
-  };
-  buttons.forEach(b => b.addEventListener('click', () => goto(b.dataset.goto)));
-
-  // scroll-spy
-  const ids = buttons.map(b => b.dataset.goto);
-  const targets = ids.map(id => document.getElementById(id)).filter(Boolean);
-  const io = new IntersectionObserver((ents)=>{
-    ents.forEach(e=>{
-      if(!e.isIntersecting) return;
-      const id = e.target.id;
-      buttons.forEach(b => b.classList.toggle('is-active', b.dataset.goto === id));
-    });
-  }, {rootMargin:'-45% 0px -55% 0px', threshold: 0});
-  targets.forEach(t => io.observe(t));
-})();
-</script>
 
 
 

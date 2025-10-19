@@ -23,9 +23,9 @@
             <circle class="oru-loader-coreline" cx="50" cy="50" r="28"></circle>
           </svg>
         </div>
-        <h1 class="oru-loader-title"><span>ORÚBOROS</span> <span>Technology</span></h1>
+        <h1 class="oru-loader-title"><span>Oruboros <span></span></h1>
         <p class="oru-loader-sub">Inicializando módulos…</p>
-        <p class="oru-loader-online"><span class="oru-loader-dot"></span>online • tiempo real</p>
+        <p class="oru-loader-online"><span class="oru-loader-dot"></span>online • Hecho en Nuevo Chimbote
       </div>
     </div>
   `;
