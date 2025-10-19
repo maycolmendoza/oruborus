@@ -4,6 +4,10 @@
         display: none;
       }
 
+      img {
+    pointer-events: none;
+    user-select: none; /* También útil para evitar la selección de texto alrededor */
+}
       .scrollbar-hide {
         -ms-overflow-style: none;
         scrollbar-width: none;

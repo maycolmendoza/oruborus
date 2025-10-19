@@ -25,7 +25,7 @@
         </div>
         <h1 class="oru-loader-title"><span>Oruboros <span></span></h1>
         <p class="oru-loader-sub">Inicializando módulos…</p>
-        <p class="oru-loader-online"><span class="oru-loader-dot"></span>online • Hecho en Nuevo Chimbote
+        <p class="oru-loader-online"><span class="oru-loader-dot"></span> Hecho en Nuevo Chimbote
       </div>
     </div>
   `;
