@@ -1,0 +1,50 @@
+/* Toast */
+.oru-toast{
+  position: fixed; left: 50%; top: 14px; transform: translateX(-50%) translateY(-10px);
+  background: #0f172a; color:#fff; padding:.62rem .9rem; border-radius:10px; z-index: 9999;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18); opacity:0; transition: transform .18s ease, opacity .18s ease;
+  font: 600 14px/1.2 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+.oru-toast.ok{ background:#0f172a; }
+.oru-toast.err{ background:#b4232b; }
+.oru-toast.show{ opacity:1; transform: translateX(-50%) translateY(0); }
+
+/* Botón loading */
+button .spin{
+  width:14px; height:14px; border-radius:50%; border:2px solid rgba(255,255,255,.45); border-top-color:#fff;
+  display:inline-block; vertical-align:-2px; margin-right:.5rem; animation: oru-spin .7s linear infinite;
+}
+@keyframes oru-spin{ to{ transform: rotate(360deg) } }
+
+/* Confetti */
+.oru-confetti{
+  position: fixed; top:-10px; width:8px; height:10px; background: linear-gradient(180deg,#9b5cff,#ff3fa4);
+  transform: rotate(var(--rot, 0deg)); opacity:.95; border-radius:2px; z-index:9998;
+  animation: fall 1.6s ease-in forwards;
+}
+@keyframes fall{
+  0%   { transform: translate3d(0,0,0) rotate(var(--rot)); }
+  100% { transform: translate3d(calc(var(--dx,0) * 40vw), 95vh, 0) rotate(360deg); opacity:.6; }
+}
+
+/* Input inválido */
+.is-invalid{
+  outline: 2px solid #ef4444 !important;
+  outline-offset: 2px;
+}
+.is-done{ background: linear-gradient(90deg,#16a34a,#22c55e) !important; }
+
+/* (opcional) estilos rápidos del input/contenedor del ejemplo */
+.subscribe-card{ background:#262a46; padding:18px; border-radius:12px; color:#fff; }
+.subscribe-card h4{ margin:0 0 8px; }
+.subscribe-card input{
+  width:100%; background:#fff; border:none; border-radius:10px; padding:.75rem .9rem; font:inherit;
+  box-shadow: 0 6px 16px rgba(0,0,0,.12);
+}
+.subscribe-card button{
+  width:100%; margin-top:10px; border:none; color:#fff; font-weight:700; padding:.8rem 1rem; border-radius:10px;
+  background: linear-gradient(90deg,#a21caf,#f43f5e);
+  box-shadow: 0 10px 22px rgba(244,63,94,.35); cursor:pointer;
+  transition: transform .06s ease, filter .15s ease;
+}
+.subscribe-card button:active{ transform: translateY(1px); }

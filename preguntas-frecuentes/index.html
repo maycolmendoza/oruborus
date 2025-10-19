@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Preguntas Frecuentes • ORÚBOROS / ORUPET</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   ORÚBOROS • FAQ (aislado con .faq-*) — v1
+   ========================================================= */
+:root{
+  --faq-cap-h:72px;
+  --safe-top: env(safe-area-inset-top,0px);
+  --accent:#2563eb; /* azul de acento */
+}
+
+/* NAMESPACE BASE */
+.faq{
+  --ink-900:#0f172a; --ink-700:#334155; --ink-600:#475569;
+  --ring:rgba(15,23,42,.10); --paper:#fff;
+  font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+  color:var(--ink-900); line-height:1.55;
+  margin:0; background:#fff;
+}
+
+/* ============== CÁPSULA / NAV ============== */
+.faq-cap{
+  position:fixed; top:calc(12px + var(--safe-top)); left:50%; transform:translateX(-50%);
+  z-index:1000;
+  display:flex; align-items:center; gap:.25rem;
+  padding:.45rem .55rem;
+  background:rgba(248,250,252,.92);
+  backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:28px;
+  box-shadow:0 8px 24px rgba(2,6,23,.14);
+  width:fit-content; max-width:min(96vw,1120px);
+  transition: padding .2s ease, box-shadow .2s ease, transform .35s ease;
+}
+.faq-cap.shrink{ padding:.38rem .48rem; box-shadow:0 6px 18px rgba(2,6,23,.12); }
+
+.faq-cap a{
+  flex:0 0 auto; white-space:nowrap; scroll-snap-align:start;
+  min-height:38px; padding:.46rem .70rem;
+  font-weight:600; letter-spacing:.01em; line-height:1;
+  color:#0f172a; text-decoration:none; opacity:.98;
+  border-radius:12px;
+  transition:background .18s ease, color .18s ease, box-shadow .18s ease, transform .06s ease;
+}
+.faq-cap a:hover{ background:rgba(37,99,235,.10); }
+.faq-cap a:focus-visible{ outline:none; box-shadow:0 0 0 2px rgba(37,99,235,.45); }
+.faq-cap a.is-active{
+  color:#0b2447; background:rgba(37,99,235,.16);
+  box-shadow:inset 0 0 0 1px rgba(37,99,235,.35);
+}
+.faq-cap a.is-active::after{
+  content:""; display:block; height:3px; border-radius:999px;
+  background:var(--accent); margin-top:6px; transform:translateY(-2px);
+}
+
+/* pista desplazable con fade */
+.faq-cap-track{
+  display:block; max-width:min(96vw, 1120px);
+  overflow-x:auto; -webkit-overflow-scrolling:touch;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+  scrollbar-width:none;
+}
+.faq-cap-track::-webkit-scrollbar{ display:none; }
+.faq-cap-track nav{
+  display:flex; align-items:center; gap:.35rem; padding:2px;
+  scroll-snap-type:x proximity;
+}
+
+@media (max-width:640px){
+  .faq-cap{ width:calc(100% - 16px); padding:.55rem .6rem; }
+  .faq-cap-track{ max-width:100%; }
+  .faq-cap a{ padding:.42rem .60rem; font-size:.93rem; }
+}
+
+/* ============== HERO SÓLIDO ============== */
+.faq-hero{
+  background:#0B2447; color:#EAF2FF;
+  padding: calc(var(--faq-cap-h) + 48px) 0 88px;
+}
+.faq-wrap{ max-width:1200px; margin:0 auto; padding:0 20px; }
+.faq-hero .kicker{ text-transform:uppercase; letter-spacing:.14em; font-weight:800; color:#9FC2FF; }
+.faq-hero h1{
+  margin:.2rem 0 .4rem; font-size:clamp(2.2rem,5.2vw,3.2rem); line-height:1.06;
+  color:#fff; font-weight:800;
+}
+.faq-hero p{ margin:.25rem 0 0; max-width:70ch; color:#CFE3FF; }
+
+/* ============== LAYOUT ============== */
+.faq-main{ max-width:1200px; margin:0 auto; padding:16px 20px 28px; }
+.faq-grid{
+  display:grid; grid-template-columns:280px 1fr; gap: clamp(16px,2vw,24px);
+  margin-top: clamp(16px, 2.6vw, 24px);
+}
+@media (max-width:980px){ .faq-grid{ grid-template-columns:1fr; } }
+
+/* TOC lateral */
+.faq-toc{
+  position:sticky; top: calc(96px + var(--safe-top));
+  align-self:start; background:var(--paper); border:1px solid var(--ring);
+  border-radius:16px; box-shadow:0 8px 24px rgba(15,23,42,.05);
+  padding:14px;
+}
+.faq-toc h3{ margin:0 0 6px; font-size:.95rem; font-weight:800; color:var(--ink-700); }
+.faq-toc p{ margin:0 0 8px; color:var(--ink-600); font-size:.9rem; }
+.faq-toc .toc-nav{ display:grid; gap:8px; }
+.faq-toc .toc-nav a{
+  display:block; line-height:1.35; word-break:break-word;
+  padding:8px 10px; border-radius:10px; color:var(--ink-900);
+  text-decoration:none; transition:background .2s ease, box-shadow .2s ease;
+}
+.faq-toc .toc-nav a:hover{ background:rgba(15,23,42,.06); }
+.faq-toc .toc-nav a.is-active{ box-shadow:0 0 0 2px rgba(15,23,42,.14) inset; }
+
+/* TOC móvil */
+.faq-toc-toggle{
+  display:none; width:100%; align-items:center; justify-content:space-between;
+  gap:.6rem; font-weight:800; color:var(--ink-900);
+  background:#fff; border:1px solid var(--ring); border-radius:12px; padding:.7rem .9rem;
+}
+@media (max-width:980px){
+  .faq-toc-toggle{ display:flex; }
+  .faq-toc .toc-nav{ display:none; margin-top:10px; }
+  .faq-toc.is-open .toc-nav{ display:block; }
+}
+
+/* ============== CARDS Y ACCORDIONS ============== */
+.faq-card{
+  background:#fff; border:1px solid var(--ring); border-radius:16px;
+  box-shadow:0 10px 24px rgba(15,23,42,.05);
+  padding: clamp(16px, 2.4vw, 24px);
+}
+
+.faq-search{
+  display:flex; align-items:center; gap:.6rem;
+  padding:.65rem .8rem; border:1px solid var(--ring); border-radius:12px;
+  background:#fff; margin-bottom:12px;
+}
+.faq-search input{
+  width:100%; border:none; outline:none; font:inherit; color:inherit; background:transparent;
+}
+
+/* acordeón accesible */
+.faq-qa{ border-top:1px solid rgba(15,23,42,.06); }
+.faq-qa:first-of-type{ border-top:none; }
+.faq-q{
+  width:100%; text-align:left; padding:14px 6px; background:transparent; border:none; cursor:pointer;
+  font-weight:700; font-size:clamp(16px,2.4vw,18px); display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+.faq-q:hover{ color:#0b2447; }
+.faq-q:focus-visible{ outline:2px solid rgba(37,99,235,.45); border-radius:8px; }
+.faq-q .chev{ transition: transform .22s ease; }
+.faq-q[aria-expanded="true"] .chev{ transform: rotate(180deg); }
+
+.faq-a{
+  max-height:0; overflow:hidden; transition:max-height .24s ease;
+  color:#334155;
+}
+.faq-a p, .faq-a ul{ margin:.25rem 0 .9rem; }
+
+/* FOOTER */
+.faq-foot{ color:#64748b; font-size:.95rem; padding:18px 0 28px; }
+
+/* móvil: tipografía y targets */
+@media (max-width:600px){
+  .faq-hero{ padding: calc(var(--faq-cap-h) + 36px) 0 64px; }
+  .faq-q{ min-height:44px; }
+}
+</style>
+</head>
+
+<body class="faq">
+
+  <!-- CÁPSULA -->
+  <header class="faq-cap" id="faqCap">
+    <div class="faq-cap-track">
+      <nav>
+        <a href="#generales" class="is-active">Generales</a>
+        <a href="#compra">Compra y activación</a>
+        <a href="#uso">Uso del collar</a>
+        <a href="#seguridad">Seguridad y datos</a>
+        <a href="#envios">Envíos y garantía</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="faq-hero">
+    <div class="faq-wrap">
+      <div class="kicker">Resolvemos tus dudas</div>
+      <h1>Preguntas Frecuentes</h1>
+      <p>Encuentra respuestas rápidas sobre ORÚBOROS y nuestro producto <strong>ORUPET</strong>: compra,
+        activación, uso del collar, privacidad y más.</p>
+    </div>
+  </section>
+
+  <!-- CONTENIDO -->
+  <main class="faq-main">
+    <section class="faq-grid">
+      <!-- TOC -->
+      <aside class="faq-toc" id="toc">
+        <button class="faq-toc-toggle" id="tocBtn" aria-expanded="false">
+          Secciones
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+        <nav class="toc-nav">
+          <a class="is-active" href="#generales">Generales</a>
+          <a href="#compra">Compra y activación</a>
+          <a href="#uso">Uso del collar</a>
+          <a href="#seguridad">Seguridad y datos</a>
+          <a href="#envios">Envíos y garantía</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+      </aside>
+
+      <!-- SECCIONES -->
+      <div>
+        <!-- Generales -->
+        <article class="faq-card" id="generales">
+          <div class="faq-search" role="search">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79L20 21.5 21.5 20 15.5 14Zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z"/></svg>
+            <input id="faqSearch" type="search" placeholder="Buscar en las preguntas…" autocomplete="off" />
+          </div>
+
+          <div class="faq-qa">
+            <button class="faq-q" aria-expanded="false" aria-controls="g1" id="q-g1">
+              ¿Qué es ORUPET?
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-a" id="g1" role="region" aria-labelledby="q-g1">
+              <p>ORUPET es un collar pasivo (QR/NFC) diseñado por ORÚBOROS que permite identificar rápidamente a tu mascota y contactarte sin exponer tu número real.</p>
+            </div>
+          </div>
+
+          <div class="faq-qa">
+            <button class="faq-q" aria-expanded="false" aria-controls="g2" id="q-g2">
+              ¿Necesita batería o recarga?
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-a" id="g2" role="region" aria-labelledby="q-g2">
+              <p>No. Es pasivo: funciona con QR/NFC y nuestra plataforma de avisos/alertas.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Compra y activación -->
+        <article class="faq-card" id="compra">
+          <h2 style="margin-top:0">Compra y activación</h2>
+          <div class="faq-qa">
+            <button class="faq-q" aria-expanded="false" aria-controls="c1" id="q-c1">
+              ¿Cómo activo el collar?
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-a" id="c1" role="region" aria-labelledby="q-c1">
+              <p>Escanea el QR o acerca el collar con NFC al móvil. Te guiamos para crear la ficha y enlazar el producto.</p>
+            </div>
+          </div>
+
+          <div class="faq-qa">
+            <button class="faq-q" aria-expanded="false" aria-controls="c2" id="q-c2">
+              Perdí el código de activación
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-a" id="c2" role="region" aria-labelledby="q-c2">
+              <p>Escríbenos desde la sección de contacto con el número de serie; verificaremos la propiedad y te ayudamos a recuperarlo.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Uso -->
+        <article class="faq-card" id="uso">
+          <h2 style="margin-top:0">Uso del collar</h2>
+          <div class="faq-qa">
+            <button class="faq-q" aria-expanded="false" aria-controls="u1" id="q-u1">
+              ¿Qué pasa si alguien escanea el collar?
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-a" id="u1" role="region" aria-labelledby="q-u1">
+              <p>Verá la ficha pública de tu mascota y un botón de “contacto relay” (WhatsApp/Email) para comunicarse contigo sin revelar tu número real.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Seguridad -->
+        <article class="faq-card" id="seguridad">
+          <h2 style="margin-top:0">Seguridad y datos</h2>
+          <div class="faq-qa">
+            <button class="faq-q" aria-expanded="false" aria-controls="s1" id="q-s1">
+              ¿Cómo protegen mi privacidad?
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-a" id="s1" role="region" aria-labelledby="q-s1">
+              <p>Usamos contacto relay y cifrado en tránsito. No vendemos datos ni mostramos publicidad basada en perfiles. Consulta la Política de Privacidad para el detalle legal.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Envíos -->
+        <article class="faq-card" id="envios">
+          <h2 style="margin-top:0">Envíos y garantía</h2>
+          <div class="faq-qa">
+            <button class="faq-q" aria-expanded="false" aria-controls="e1" id="q-e1">
+              ¿Hacen envíos internacionales?
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-a" id="e1" role="region" aria-labelledby="q-e1">
+              <p>Sí, a varios países. Los tiempos y costos se calculan en el checkout según tu dirección.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Contacto -->
+        <article class="faq-card" id="contacto">
+          <h2 style="margin-top:0">Contacto</h2>
+          <p>Si tu pregunta no aparece aquí, escríbenos:</p>
+          <ul>
+            <li>Email: <a href="mailto:soporte@oruboros.com">soporte@oruboros.com</a></li>
+            <li>WhatsApp: <a href="https://wa.me/51999999999" target="_blank" rel="noreferrer">+51 999 999 999</a></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <footer class="faq-foot">
+      © ORÚBOROS — Hecho con ❤️ para perros y gatos.
+    </footer>
+  </main>
+
+<script>
+/* ===== Altura dinámica de la cápsula (espaciado del hero) ===== */
+(function(){
+  const cap = document.getElementById('faqCap');
+  const root = document.documentElement;
+  function setH(){
+    const h = Math.ceil(cap.getBoundingClientRect().height);
+    root.style.setProperty('--faq-cap-h', (h + 16) + 'px');
+  }
+  setH();
+  addEventListener('resize', setH, {passive:true});
+  addEventListener('scroll', setH,  {passive:true});
+})();
+
+/* ===== Compacta cápsula al hacer scroll ===== */
+(function(){
+  const cap = document.getElementById('faqCap');
+  addEventListener('scroll', ()=> cap.classList.toggle('shrink', scrollY>24), {passive:true});
+})();
+
+/* ===== TOC móvil ===== */
+(function(){
+  const toc = document.getElementById('toc');
+  const btn = document.getElementById('tocBtn');
+  if(!toc || !btn) return;
+  btn.addEventListener('click', ()=>{
+    const open = toc.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true':'false');
+  });
+  toc.querySelectorAll('.toc-nav a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      if (matchMedia('(max-width:980px)').matches){
+        toc.classList.remove('is-open'); btn.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+})();
+
+/* ===== Acordeones accesibles + deep link ===== */
+(function(){
+  const allQ = document.querySelectorAll('.faq-q');
+  function closeAll(except){
+    allQ.forEach(q=>{
+      if(q !== except){
+        q.setAttribute('aria-expanded','false');
+        const p = document.getElementById(q.getAttribute('aria-controls'));
+        if(p){ p.style.maxHeight = 0; }
+      }
+    });
+  }
+  allQ.forEach(q=>{
+    const panel = document.getElementById(q.getAttribute('aria-controls'));
+    q.addEventListener('click', ()=>{
+      const open = q.getAttribute('aria-expanded') === 'true';
+      if(!open){ closeAll(q); }
+      q.setAttribute('aria-expanded', String(!open));
+      if(panel){
+        panel.style.maxHeight = !open ? (panel.scrollHeight + 'px') : 0;
+        if(!open){ history.replaceState(null, '', '#'+panel.id); }
+      }
+    });
+  });
+  // abrir si llega con hash
+  if(location.hash){
+    const target = document.querySelector(location.hash);
+    const btn = target && document.querySelector('[aria-controls="'+target.id+'"]');
+    if(btn && target){
+      btn.click();
+      setTimeout(()=> target.scrollIntoView({behavior:'smooth', block:'start'}), 120);
+    }
+  }
+})();
+
+/* ===== Scroll-spy: sincroniza cápsula y TOC ===== */
+(function(){
+  const sections = [...document.querySelectorAll('.faq-card[id]')];
+  const headLinks = [...document.querySelectorAll('.faq-cap a[href^="#"]')];
+  const tocLinks  = [...document.querySelectorAll('.faq-toc .toc-nav a[href^="#"]')];
+  const activate = (id) => {
+    headLinks.forEach(a=>a.classList.toggle('is-active', a.getAttribute('href')===id));
+    tocLinks.forEach(a=>a.classList.toggle('is-active', a.getAttribute('href')===id));
+  };
+  const io = new IntersectionObserver((ents)=>{
+    ents.forEach(e=>{ if(e.isIntersecting) activate('#'+e.target.id); });
+  }, {rootMargin:'-45% 0px -45% 0px', threshold:0});
+  sections.forEach(s=>io.observe(s));
+})();
+
+/* ===== Buscador simple ===== */
+(function(){
+  const input = document.getElementById('faqSearch');
+  if(!input) return;
+  input.addEventListener('input', ()=>{
+    const q = input.value.trim().toLowerCase();
+    document.querySelectorAll('.faq-qa').forEach(block=>{
+      const txt = block.innerText.toLowerCase();
+      block.style.display = txt.includes(q) ? '' : 'none';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
