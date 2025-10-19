@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Política de Privacidad • ORÚBOROS / ORUPET</title>
+
+<!-- TIPOGRAFÍA -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+    /* =========================================================
+   ORÚBOROS • LEGAL (aislado con .legal-*) — v1.1
+   ========================================================= */
+:root{
+  --cap-h:72px;
+  --safe-top: env(safe-area-inset-top,0px);
+  --accent:#2563eb;                 /* azul de acento (ajústalo si quieres) */
+}
+
+body{ margin:0; background:#fff; }
+
+/* NAMESPACE BASE */
+.legal{
+  --ink-900:#0f172a; --ink-700:#334155; --ink-600:#475569;
+  --ring:rgba(15,23,42,.10); --paper:#fff; --bg:#fff;
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
+  color:var(--ink-900); line-height:1.55;
+}
+
+/* ============== HEADER / CÁPSULA (refinado) ============== */
+.legal-cap{
+  position:fixed; top:calc(12px + var(--safe-top)); left:50%; transform:translateX(-50%);
+  z-index:1000;
+  display:flex; align-items:center; gap:.25rem;
+  padding:.45rem .55rem;                                /* más delgada */
+  background: rgba(248,250,252,.92);                    /* gris claro translúcido */
+  backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:28px;                                   /* pill suave */
+  box-shadow:0 8px 24px rgba(2,6,23,.14);
+  width:fit-content; max-width:min(96vw,1120px);
+  transition: padding .2s ease, box-shadow .2s ease, transform .35s ease;
+}
+.legal-cap.shrink{ padding:.38rem .48rem; box-shadow:0 6px 18px rgba(2,6,23,.12); }
+
+/* links dentro de la cápsula */
+.legal-cap a{
+  flex:0 0 auto; white-space:nowrap; scroll-snap-align:start;
+  min-height:38px;                                       /* target cómodo */
+  padding:.46rem .70rem;
+  font-weight:600; letter-spacing:.01em; line-height:1;
+  color:#0f172a; text-decoration:none; opacity:.98;
+  border-radius:12px;
+  transition: background .18s ease, color .18s ease, box-shadow .18s ease, transform .06s ease;
+}
+.legal-cap a:hover{ background:rgba(37,99,235,.10); }    /* hover tenue */
+.legal-cap a:focus-visible{
+  outline:none; box-shadow:0 0 0 2px rgba(37,99,235,.45);
+}
+/* activo: sin negro, con azul suave */
+.legal-cap a.is-active{
+  color:#0b2447;
+  background: rgba(37,99,235,.16);
+  box-shadow: inset 0 0 0 1px rgba(37,99,235,.35);
+}
+/* micro-indicador opcional bajo el activo */
+.legal-cap a.is-active::after{
+  content:""; display:block; height:3px; border-radius:999px;
+  background: var(--accent); margin-top:6px; transform:translateY(-2px);
+}
+
+/* pista desplazable con fade (UNA sola definición, sin duplicados) */
+.legal-cap-track{
+  display:block; max-width:min(96vw, 1120px);
+  overflow-x:auto; -webkit-overflow-scrolling:touch;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+  scrollbar-width:none;
+}
+.legal-cap-track::-webkit-scrollbar{ display:none; }
+.legal-cap-track nav{
+  display:flex; align-items:center; gap:.35rem; padding:2px;
+  scroll-snap-type:x proximity;
+}
+
+/* móvil */
+@media (max-width:640px){
+  .legal-cap{ width:calc(100% - 16px); padding:.55rem .6rem; }
+  .legal-cap-track{ max-width:100%; }
+  .legal-cap a{ padding:.42rem .60rem; font-size:.93rem; }
+}
+
+/* ================= HERO SÓLIDO (se mantiene) ================= */
+.legal-hero{
+  background:#0B2447; color:#EAF2FF;
+  padding: calc(var(--cap-h) + 48px) 0 88px;
+}
+.legal-hero .legal-wrap{ max-width:1200px; margin:0 auto; padding:0 20px; }
+.legal-hero .kicker{ text-transform:uppercase; letter-spacing:.14em; font-weight:800; color:#9FC2FF; }
+.legal-hero h1{
+  margin:.2rem 0 .4rem; font-size:clamp(2.2rem,5.2vw,3.2rem); line-height:1.06;
+  color:#fff; font-weight:800;
+}
+.legal-hero p{ margin:.25rem 0 0; max-width:70ch; color:#CFE3FF; }
+
+/* ============== LAYOUT DE CONTENIDO ============== */
+.legal-main{ max-width:1200px; margin:0 auto; padding:16px 20px 28px; }
+.legal-grid{
+  display:grid; grid-template-columns:280px 1fr; gap:clamp(16px,2vw,24px);
+  margin-top:clamp(16px, 2.6vw, 24px);
+}
+@media (max-width:980px){ .legal-grid{ grid-template-columns:1fr; } }
+
+/* TOC limpio (columna izquierda) */
+.legal-toc{
+  position:sticky; top: calc(96px + var(--safe-top));
+  align-self:start; background:var(--paper); border:1px solid var(--ring);
+  border-radius:16px; box-shadow:0 8px 24px rgba(15,23,42,.05);
+  padding:14px;
+}
+.legal-toc h3{ margin:0 0 6px; font-size:.95rem; font-weight:800; color:var(--ink-700); }
+.legal-toc p{ margin:0 0 8px; color:var(--ink-600); font-size:.9rem; }
+
+.toc-nav{ display:grid; gap:8px; }                      /* evita apilamientos raros */
+.toc-nav a{
+  display:block; line-height:1.35; word-break:break-word;
+  padding:8px 10px; border-radius:10px; color:var(--ink-900);
+  text-decoration:none; transition:background .2s ease, box-shadow .2s ease;
+}
+.toc-nav a:hover{ background:rgba(15,23,42,.06); }
+.toc-nav a.is-active{ box-shadow:0 0 0 2px rgba(15,23,42,.14) inset; }
+
+/* Botón móvil del TOC */
+.legal-toc-toggle{
+  display:none; width:100%; align-items:center; justify-content:space-between;
+  gap:.6rem; font-weight:800; color:var(--ink-900);
+  background:#fff; border:1px solid var(--ring); border-radius:12px; padding:.7rem .9rem;
+}
+@media (max-width:980px){
+  .legal-toc-toggle{ display:flex; }
+  .legal-toc .toc-nav{ display:none; margin-top:10px; }
+  .legal-toc.is-open .toc-nav{ display:block; }
+}
+
+/* CARDS */
+.legal-card{
+  background:#fff; border:1px solid var(--ring); border-radius:16px;
+  box-shadow:0 10px 24px rgba(15,23,42,.05);
+  padding: clamp(16px, 2.4vw, 24px);
+}
+.legal-card h2{ margin:.15rem 0 .5rem; font-size:clamp(20px,3.2vw,28px); line-height:1.12; }
+.legal-card h3{ margin:1rem 0 .4rem; font-size:clamp(16px,2.6vw,20px); }
+.legal-card p, .legal-card li{ color:var(--ink-700); }
+.legal-muted{ color:var(--ink-600); }
+
+/* CHECKLIST */
+.legal-check{ list-style:none; padding:0; margin:.25rem 0; display:grid; gap:8px; }
+.legal-check li::before{ content:"✔"; margin-right:.6rem; color:#16a34a; font-weight:800; }
+
+/* FOOTER */
+.legal-foot{ color:#64748b; font-size:.95rem; padding:18px 0 28px; }
+
+/* MÓVIL: tipografía y targets */
+@media (max-width:600px){
+  .legal-hero{ padding: calc(var(--cap-h) + 36px) 0 64px; }
+  .legal-card h2{ font-size:clamp(1.1rem,5vw,1.4rem); }
+  .legal-card h3{ font-size:clamp(1rem,4.6vw,1.15rem); }
+  .toc-nav a, .legal-cap a{ min-height:44px; }
+}
+
+</style>
+</head>
+
+<body class="legal">
+
+  <!-- CÁPSULA / NAV -->
+<header class="legal-cap" id="cap">
+  <div class="legal-cap-track" id="capTrack">
+    <nav>
+      <a href="#que-datos" class="is-active">Qué datos</a>
+      <a href="#para-que">Para qué</a>
+      <a href="#base-legal">Base legal</a>
+      <a href="#conservacion">Conservación</a>
+      <a href="#derechos">Derechos</a>
+      <a href="#cookies">Cookies</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+  <!-- HERO SÓLIDO -->
+  <section class="legal-hero">
+    <div class="legal-wrap">
+      <div class="kicker">Transparencia primero</div>
+      <h1>Política de Privacidad</h1>
+      <p>
+        Cómo <strong>Orúboros</strong> y su producto <strong>ORUPET</strong> tratan tus datos cuando usas nuestros collares pasivos (QR/NFC),
+        generas alertas y accedes a nuestras páginas.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTENIDO -->
+  <main class="legal-main">
+    <section class="legal-grid">
+   <aside class="legal-toc" id="toc">
+  <button class="legal-toc-toggle" id="tocBtn" aria-expanded="false">
+    Contenido
+    <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+  </button>
+
+  <nav class="toc-nav">
+    <a class="is-active" href="#que-datos">Qué datos recopilamos</a>
+    <a href="#para-que">Para qué usamos los datos</a>
+    <a href="#base-legal">Base legal</a>
+    <a href="#conservacion">Conservación</a>
+    <a href="#derechos">Tus derechos</a>
+    <a href="#cookies">Cookies</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</aside>
+
+
+      <!-- CARDS -->
+      <div>
+        <article class="legal-card" id="que-datos">
+          <h2>Qué datos recopilamos</h2>
+          <ul class="legal-check">
+            <li><strong>Identificadores del producto</strong> (OrupetID, QR/NFC, número de serie).</li>
+            <li><strong>Ficha de la mascota</strong> (nombre, foto, estado: en casa, perdido, encontrado).</li>
+            <li><strong>Contacto relay</strong> (WhatsApp/Email relay; tu número real no se expone).</li>
+            <li><strong>Ubicación aproximada</strong> al crear/actualizar una alerta o un avistamiento.</li>
+            <li><strong>Datos técnicos</strong> (IP abreviada, dispositivo/navegador para seguridad/soporte).</li>
+          </ul>
+          <p class="legal-muted">No vendemos datos personales ni mostramos publicidad basada en perfiles.</p>
+        </article>
+
+        <article class="legal-card" id="para-que">
+          <h2>Para qué usamos los datos</h2>
+          <ul class="legal-check">
+            <li><strong>Prestar el servicio</strong>: fichas públicas y placas listas para redes.</li>
+            <li><strong>Contacto seguro</strong> vía WhatsApp/Email relay.</li>
+            <li><strong>Alertas/avistamientos</strong>: hora y zona durante estados de pérdida/encontrado.</li>
+            <li><strong>Mejoras y soporte</strong>: métricas agregadas y prevención de abuso.</li>
+            <li><strong>Obligaciones legales</strong> cuando corresponda.</li>
+          </ul>
+        </article>
+
+        <article class="legal-card" id="base-legal">
+          <h2>Base legal</h2>
+          <ul>
+            <li><strong>Ejecución del contrato</strong> (funcionamiento del collar/servicio).</li>
+            <li><strong>Interés legítimo</strong> (seguridad, fraude, soporte esencial).</li>
+            <li><strong>Consentimiento</strong> (funciones opcionales: alertas, compartir placas).</li>
+            <li><strong>Cumplimiento legal</strong> (atender requerimientos/derechos).</li>
+          </ul>
+        </article>
+
+        <article class="legal-card" id="conservacion">
+          <h2>Plazos de conservación</h2>
+          <ul>
+            <li><strong>Cuenta y fichas</strong>: mientras uses el servicio o hasta que las elimines.</li>
+            <li><strong>Alertas y avistamientos</strong>: durante la alerta y un periodo limitado de auditoría.</li>
+            <li><strong>Logs técnicos</strong>: rotación corta; después anonimizamos o borramos.</li>
+          </ul>
+        </article>
+
+        <article class="legal-card" id="derechos">
+          <h2>Tus derechos</h2>
+          <ul class="legal-check">
+            <li><strong>Acceso</strong>, <strong>rectificación</strong> y <strong>supresión</strong>.</li>
+            <li><strong>Oposición</strong> y <strong>limitación</strong> del tratamiento, según el caso.</li>
+            <li><strong>Portabilidad</strong> de los datos que nos facilitaste.</li>
+          </ul>
+          <p class="legal-muted">Para ejercerlos, usa la sección “Contacto”. Respondemos dentro de plazos legales.</p>
+        </article>
+
+        <article class="legal-card" id="cookies">
+          <h2>Cookies y tecnologías similares</h2>
+          <p>Usamos cookies esenciales para operar el servicio y medición agregada para mejorar la experiencia.</p>
+          <ul>
+            <li><strong>Esenciales</strong>: sesión, seguridad, preferencias.</li>
+            <li><strong>Medición agregada</strong>: analítica sin identificación directa; puedes desactivarla en tu navegador.</li>
+          </ul>
+        </article>
+
+        <article class="legal-card" id="contacto">
+          <h2>Contacto</h2>
+          <ul class="legal-check">
+            <li>Email: <a href="mailto:privacidad@oruboros.com">privacidad@oruboros.com</a></li>
+            <li>WhatsApp: <a href="https://wa.me/51999999999" target="_blank" rel="noreferrer">+51 999 999 999</a></li>
+            <li>Asunto sugerido: <em>“Derechos de datos – ORUPET”</em></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <footer class="legal-foot">
+      © ORÚBOROS — Hecho con ❤️ para perros y gatos.
+    </footer>
+  </main>
+
+<script>
+/* ===== Altura dinámica de la cápsula para despegar el hero ===== */
+(function(){
+  const cap = document.getElementById('cap');
+  if(!cap) return;
+  const root = document.documentElement;
+  const setH = () => {
+    const h = Math.ceil(cap.getBoundingClientRect().height);
+    root.style.setProperty('--cap-h', (h + 16) + 'px'); // 16px de aire
+  };
+  setH();
+  addEventListener('resize', setH, {passive:true});
+  addEventListener('scroll',  setH, {passive:true});
+})();
+
+/* ===== Compacta la cápsula al hacer scroll ===== */
+(function(){
+  const cap = document.getElementById('cap');
+  if(!cap) return;
+  addEventListener('scroll', ()=> cap.classList.toggle('shrink', scrollY>24), {passive:true});
+})();
+
+/* ===== TOC móvil (acordeón) ===== */
+(function(){
+  const toc = document.getElementById('toc');
+  const btn = document.getElementById('tocBtn');
+  if(!toc || !btn) return;
+  btn.addEventListener('click', ()=>{
+    const open = toc.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true':'false');
+  });
+  toc.querySelectorAll('.toc-nav a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      if (matchMedia('(max-width:980px)').matches){
+        toc.classList.remove('is-open'); btn.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+})();
+
+/* ===== Scroll-spy: sincroniza TOC y cápsula ===== */
+(function(){
+  const sections = [...document.querySelectorAll('.legal-card[id]')];
+  const tocLinks = [...document.querySelectorAll('.legal-toc a[href^="#"]')];
+  const capLinks = [...document.querySelectorAll('.legal-cap a[href^="#"]')];
+
+  const activate = (id) => {
+    tocLinks.forEach(a => a.classList.toggle('is-active', a.getAttribute('href')===id));
+    capLinks.forEach(a => a.classList.toggle('is-active', a.getAttribute('href')===id));
+  };
+
+  const io = new IntersectionObserver((ents)=>{
+    ents.forEach(e=>{
+      if(e.isIntersecting) activate('#'+e.target.id);
+    });
+  }, {rootMargin:'-45% 0px -45% 0px', threshold:0});
+
+  sections.forEach(s=>io.observe(s));
+})();
+</script>
+
+<script>
+(function(){
+  const track = document.getElementById('capTrack');
+  if(!track) return;
+  let isDown = false, startX = 0, scrollL = 0;
+
+  const start = e => { isDown = true; startX = (e.pageX || e.touches?.[0].pageX) - track.offsetLeft; scrollL = track.scrollLeft; };
+  const move  = e => {
+    if(!isDown) return;
+    const x = (e.pageX || e.touches?.[0].pageX) - track.offsetLeft;
+    track.scrollLeft = scrollL - (x - startX);
+  };
+  const end = () => isDown = false;
+
+  track.addEventListener('mousedown', start);
+  track.addEventListener('touchstart', start, {passive:true});
+  document.addEventListener('mousemove', move);
+  document.addEventListener('touchmove', move, {passive:true});
+  document.addEventListener('mouseup', end);
+  document.addEventListener('touchend', end);
+})();
+</script>
+
+</body>
+</html>

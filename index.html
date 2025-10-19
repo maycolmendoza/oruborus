@@ -26,6 +26,7 @@
 
   <!-- Favicon -->
   <link rel="icon" href="/assets/favicon.ico" type="image/png" />
+  <link rel="stylesheet" href="T61388/estilos.css">
 
   <!-- Color del navegador -->
   <meta name="theme-color" content="#D32F2F" />
@@ -42,233 +43,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Oruborus</title>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-
-    
-
-  
-    html {
-        scroll-behavior: smooth;
-      }
-      
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-      
-      ::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      
-      ::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 6px;
-        backdrop-filter: blur(10px);
-        border: 2px solid transparent;
-        background-clip: padding-box;
-        transition: background 0.3s ease;
-      }
-      
-      ::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 255, 255, 0.4);
-      }
-      
-    .glass-capsule {
-      position: fixed;
-      top: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 50;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 2rem;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(24px) saturate(150%);
-      -webkit-backdrop-filter: blur(24px) saturate(150%);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
-      transition: all 0.3s ease-in-out;
-    }
-    .glass-capsule.shrink {
-      transform: translateX(-50%) scale(0.95);
-      padding: 0.5rem 1.5rem;
-    }
-    .glass-capsule nav button {
-      margin: 0 0.5rem;
-    }
-
-    /* ===== Capsule Header – mejoras solo CSS ===== */
-
-/* tipografía y tamaño fluido */
-.glass-capsule {
-  font-size: clamp(.85rem, 1.6vw, .95rem);
-  color: #0f172a;                /* legible en claros */
-  text-shadow: 0 1px 0 rgba(0,0,0,.18); /* ayuda sobre fondos muy claros */
-   background: rgba(255, 255, 255, 0.01);    /* más contraste por defecto */
-  border: 1px solid rgba(15,23,42,.12); /* ring sutil */
-  box-shadow: 0 8px 30px rgba(0,0,0,.18);
-}
-
-/* mejor fondo cuando hay soporte de blur */
-@supports (backdrop-filter: blur(10px)) {
-  .glass-capsule {
-    background: rgba(255,255,255,.55);
-    backdrop-filter: blur(18px) saturate(150%);
-    -webkit-backdrop-filter: blur(18px) saturate(150%);
-    border-color: rgba(15,23,42,.10);
-  }
-}
-
-/* modo oscuro del SO: se invierten tonos para seguir siendo legible */
-@media (prefers-color-scheme: dark) {
-  .glass-capsule {
-    color: #fff;
-    text-shadow: 0 1px 0 rgba(0,0,0,.35);
-    background: rgba(15,23,42,.60);     /* slate-900 translúcido */
-    border-color: rgba(255,255,255,.14);
-    box-shadow: 0 8px 34px rgba(0,0,0,.35);
-  }
-}
-
-/* botones dentro de la cápsula: mejor hit area, pill y contraste */
-.glass-capsule nav button {
-  margin: 0 .375rem;             /* más compacto */
-  padding: .5rem .9rem;          /* área clicable cómoda */
-  border-radius: 9999px;
-  color: inherit;                /* hereda para claro/oscuro */
-  background: transparent;
-  transition: color .2s, background .2s, transform .12s, opacity .2s;
-  opacity: .95;
-}
-
-/* hover/active únicamente con CSS (sin JS) */
-.glass-capsule nav button:hover {
-  color: #fb7185;                /* rose-400 */
-  background: rgba(255,255,255,.55);
-}
-@media (prefers-color-scheme: dark) {
-  .glass-capsule nav button:hover {
-    background: rgba(255,255,255,.16);
-    color: #fff;
-  }
-}
-
-/* foco accesible (teclado) */
-.glass-capsule nav button:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(251,113,133,.6); /* anillo rosa */
-  background: rgba(255,255,255,.65);
-}
-
-/* estado “activo” opcional SIN JS: añade .is-active o aria-current="page" desde tu HTML si quieres marcar la sección actual */
-.glass-capsule nav button.is-active,
-.glass-capsule nav button[aria-current="page"] {
-  background: rgba(255,255,255,.7);
-  color: #0f172a;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.08);
-}
-@media (prefers-color-scheme: dark) {
-  .glass-capsule nav button.is-active,
-  .glass-capsule nav button[aria-current="page"] {
-    background: rgba(255,255,255,.16);
-    color: #fff;
-  }
-}
-
-/* responsive: cápsula más compacta en pantallas muy pequeñas */
-@media (max-width: 480px) {
-  .glass-capsule { padding: .6rem 1rem; }
-  .glass-capsule nav { gap: .25rem; }
-}
-
-/* opcional: si el nav llega a desbordar, escóndele el scrollbar */
-.glass-capsule nav {
-  overflow-x: auto;
-  -ms-overflow-style: none; scrollbar-width: none;
-}
-.glass-capsule nav::-webkit-scrollbar { display: none; }
-
-  </style>
-<style>
-  /* Safe area para iPhone con notch */
-:root {
-  --safe-top: env(safe-area-inset-top, 0px);
-}
-
-.glass-capsule {
-  top: calc(1rem + var(--safe-top));
-}
-
-/* Ajuste de cápsula en pantallas pequeñas */
-@media (max-width: 480px) {
-  .glass-capsule {
-    width: calc(100% - 1.25rem);
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0.55rem 0.9rem;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: rgba(255, 255, 255, 0.9);
-  }
-  .glass-capsule nav button {
-    margin: 0 0.35rem;
-  }
-}
-
-/* Tipografía fluida */
-h1, h2 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-}
-p {
-  font-size: clamp(1rem, 2.6vw, 1.125rem);
-  line-height: 1.6;
-}
-
-/* Botones fluidos */
-.btn-responsive {
-  width: 100%;
-}
-@media (min-width: 640px) {
-  .btn-responsive {
-    width: auto;
-  }
-}
-
-/* Olas más bajas en móvil */
-.wave-responsive {
-  height: clamp(48px, 8vw, 100px);
-}
-
-
-/*aa*/
-/* mejora contraste en fondos claros/oscuros (ya lo tienes, refuerzo sutil) */
-.glass-capsule{
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(15,23,42,.12);
-  box-shadow: 0 8px 30px rgba(0,0,0,.18);
-}
-@supports (backdrop-filter: blur(12px)){
-  .glass-capsule{
-    background: rgba(255,255,255,.35);
-    backdrop-filter: blur(18px) saturate(150%);
-    -webkit-backdrop-filter: blur(18px) saturate(150%);
-  }
-}
-@media (prefers-color-scheme: dark){
-  .glass-capsule{
-    background: rgba(15,23,42,.60);
-    border-color: rgba(255,255,255,.14);
-    color:#fff;
-  }
-  .glass-capsule nav button:hover{ background: rgba(255,255,255,.16); }
-}
-
-</style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8761678790702142"
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8761678790702142"
      crossorigin="anonymous"></script>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -301,49 +76,9 @@ p {
     </nav>
   </div>
 
-  <style>
-    @keyframes slideUp {
-      0% { transform: translateY(0); }
-      25% { transform: translateY(-1.5rem); }
-      50% { transform: translateY(-3rem); }
-      75% { transform: translateY(-4.5rem); }
-      100% { transform: translateY(0); }
-    }
-  
-    .animate-carousel {
-      display: flex;
-      flex-direction: column;
-      animation: slideUp 10s infinite ease-in-out;
-    }
-  </style>
   
 
 
-  <!-- Hero Section -->
-<!-- Hero Reimaginado -->
-<!-- HERO -->
- <style>
-  /* Safe area iOS si no la tienes ya */
-:root { --safe-top: env(safe-area-inset-top, 0px); }
-
-/* Carrusel: scroll-snap y scrollbars discretos */
-.scrollbar-hide::-webkit-scrollbar { display: none; }
-.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-
-.carousel-snap {
-  scroll-snap-type: x mandatory;
-  overscroll-behavior-x: contain;
-}
-
-.card-snap { scroll-snap-align: start; }
-
-/* Bordes laterales suaves del carrusel (fade) */
-.carousel-mask {
-  -webkit-mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%);
-          mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%);
-}
-
- </style>
 
 
 
@@ -388,75 +123,7 @@ p {
       Construimos soluciones inteligentes para empresas y comunidades.
     </p>
 
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap');
 
-      :root{
-        --ink:#fff;
-        --ink-dim:rgba(255,255,255,.88);
-      }
-
-      /* OPCIONAL: viñeteado muy sutil en los bordes del video (puedes quitarlo si no quieres) */
-      .video-wrap::after{
-        content:"";
-        position:absolute; inset:0; pointer-events:none;
-        background: radial-gradient(120% 90% at 50% 55%, transparent 60%, rgba(0,0,0,.32) 100%);
-      }
-
-      /* TITULO GRANDE (slogan) */
-      .hero-title-large{
-        font-family:'Montserrat',system-ui,sans-serif;
-        font-weight:800;
-        margin:0 0 .25rem;
-        text-align:center;
-        line-height:1.05;
-        font-size:clamp(2.4rem,7vw,4.6rem);
-        letter-spacing:-.01em;
-        color:var(--ink);
-        -webkit-text-stroke:.8px rgba(0,0,0,.18);
-        text-shadow:
-          0 2px 4px rgba(0,0,0,.35),
-          0 10px 28px rgba(0,0,0,.35),
-          0 0 1px rgba(0,0,0,.22);
-      }
-
-      /* TITULO PEQUEÑO (apoyo) */
-      .hero-title-small{
-        font-family:'Montserrat',system-ui,sans-serif;
-        font-weight:700;
-        margin:.1rem 0 .6rem;
-        text-align:center;
-        line-height:1.2;
-        font-size:clamp(1.05rem,2.8vw,1.35rem);
-        color:var(--ink-dim);
-        text-shadow:
-          0 2px 3px rgba(0,0,0,.35),
-          0 8px 20px rgba(0,0,0,.25);
-      }
-
-      /* ROTADOR PROFESIONAL */
-      .hero-subtitle{
-        margin:.2rem auto 0;
-        font-family:'Montserrat',system-ui,sans-serif;
-        font-weight:600;
-        color:var(--ink-dim);
-        max-width: 900px;
-        text-align:center;
-        font-size:clamp(1rem,2.6vw,1.12rem);
-        min-height:1.6em;
-        transition:opacity .55s ease, transform .55s ease;
-        will-change:opacity, transform;
-        text-shadow:
-          0 2px 3px rgba(0,0,0,.35),
-          0 8px 20px rgba(0,0,0,.25);
-      }
-      .fade-out{ opacity:0; transform: translateY(6px); }
-      .fade-in { opacity:1; transform: translateY(0); }
-
-      @media (prefers-reduced-motion: reduce){
-        .hero-subtitle{ transition:none }
-      }
-    </style>
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -543,18 +210,6 @@ p {
       btn.classList.toggle('text-yellow-400');
     }
   </script>
-  <style>
-    .scrollbar-hide::-webkit-scrollbar {
-      display: none;
-    }
-    .scrollbar-hide {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-  </style>
-  
-    
-  
 
 <!-- Conoce Oruborus -->
  <!-- Wave bridge: intermedio entre HERO y CONOCE -->
@@ -908,10 +563,7 @@ p {
   </div>
 </section>
 
-<style>
-  .scrollbar-hide::-webkit-scrollbar{display:none}
-  .scrollbar-hide{scrollbar-width:none;-ms-overflow-style:none}
-</style>
+
 
 <script>
 /* Likes persistentes */
@@ -971,19 +623,6 @@ document.addEventListener('keydown',e=>{
 });
 </script>
 
-
-    <style>
-      .scrollbar-hide::-webkit-scrollbar {
-        display: none;
-      }
-
-      .scrollbar-hide {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-    </style>
-
-    <!---followme-->
 
 
 
@@ -1245,9 +884,8 @@ document.addEventListener('keydown',e=>{
           <div>
             <h3 class="text-white font-semibold mb-2">Contacto</h3>
             <ul class="space-y-2 text-white/70 text-sm">
-              <li class="flex items-center gap-2 hover:text-pink-400 transition"><span>📞</span> +51 999 999 999</li>
-              <li class="flex items-center gap-2 hover:text-pink-400 transition"><span>📧</span> info@oruborus.pe</li>
-              <li class="flex items-center gap-2 hover:text-pink-400 transition"><span>📍</span> Chimbote, Perú</li>
+              <li class="flex items-center gap-2 hover:text-pink-400 transition"><span>📧</span> oruborostech@gmail.com.</li>
+              <li class="flex items-center gap-2 hover:text-pink-400 transition"><span>📍</span> Nuevo Chimbote, Perú</li>
             </ul>
           </div>
       
@@ -1256,7 +894,7 @@ document.addEventListener('keydown',e=>{
             <h3 class="text-white font-semibold mb-2">Soporte</h3>
             <ul class="space-y-2 text-white/70 text-sm hover:[&>li:hover]:text-white cursor-pointer">
               <li>Preguntas frecuentes</li>
-              <li>Políticas de privacidad</li>
+              <li><a href="Politicas/">Políticas de privacidad</a></li>
               <li>Devoluciones</li>
             </ul>
           </div>
@@ -1333,5 +971,7 @@ document.addEventListener('keydown',e=>{
     <script>
       AOS.init({ once: true });
     </script>
+
+<script src="T61388/index.js"></script>
 </body>
 </html>
