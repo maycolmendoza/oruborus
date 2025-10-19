@@ -61,109 +61,149 @@
 
 <body class="bg-gray-900 text-white min-h-screen">
   <!-- Capsule Header -->
-<div id="capsuleHeader" class="glass-capsule">
-  <div class="flex items-center gap-2">
-    <!-- marca/loguito opcional -->
-  </div>
-
-  <!-- NUEVO: pista desplazable -->
-  <div class="cap-track" id="capTrack" aria-label="Secciones principales">
-    <nav class="cap-nav text-sm font-medium" role="navigation">
-      <button data-goto="inicio"     class="cap-link">Inicio</button>
-      <button data-goto="explora"    class="cap-link">Explora</button>
-      <button data-goto="agenda"     class="cap-link">Agenda</button>
-      <button data-goto="catalogo"   class="cap-link">Catálogo</button>
-      <button data-goto="siguenos"   class="cap-link">Síguenos</button>
-      <button data-goto="contacto"   class="cap-link">Contacto</button>
-    </nav>
-  </div>
+<!-- Header cápsula 100% responsivo y centrado -->
+<!-- Header cápsula FINAL -->
+<!-- NAV CÁPSULA FINAL -->
+<div id="navCapsule" class="navcaps">
+  <nav class="navrow" role="navigation" aria-label="Navegación principal">
+    <button data-goto="inicio">Inicio</button>
+    <button data-goto="explora">Explora</button>
+    <button data-goto="agenda">Agenda</button>
+    <button data-goto="catalogo">Catálogo</button>
+    <button data-goto="siguenos">Síguenos</button>
+    <button data-goto="contacto">Contacto</button>
+  </nav>
 </div>
+
+
+
 <style>
-  /* contenedor actual de tu cápsula puede quedarse igual; solo añadimos reglas nuevas */
-.glass-capsule{
-  max-width:min(96vw, 1120px);
+:root{
+  --safe-top: env(safe-area-inset-top, 0px);
+  --cap-h: 72px; /* se recalcula; da espacio al hero */
 }
 
-/* Pista desplazable con fade lateral */
-.cap-track{
-  display:block;
-  overflow-x:auto;
+/* ===== CÁPSULA centrada y fluida ===== */
+.navcaps{
+  position: fixed;
+  top: max(12px, calc(12px + var(--safe-top)));
+  left: 0;                 /* centrado robusto */
+  right: 0;                /* centrado robusto */
+  margin: 0 auto;          /* centrado robusto */
+
+  z-index: 1000;
+  width: calc(100vw - 16px);     /* ocupa el ancho disponible */
+  max-width: 1120px;             /* límite desktop */
+  box-sizing: border-box;
+
+  padding: .60rem .70rem;
+  border-radius: 9999px;
+
+  /* contraste real sobre fondos claros */
+  background: linear-gradient(135deg,#0b1a2a 0%, #1f2937 100%);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 10px 30px rgba(0,0,0,.26);
+
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+}
+
+/* Pista desplazable (móvil) con fades laterales */
+.navrow{
+  display: flex;
+  align-items: center;
+  gap: .40rem;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  /* Bordes con fade para indicar que hay más */
+  scroll-snap-type: x proximity;
+
   -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
           mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
-  /* que el contenido no “salte” verticalmente */
-  padding: 2px;
 }
-.cap-track::-webkit-scrollbar{ display:none; }
-.cap-track{ scrollbar-width:none; }
+.navrow::-webkit-scrollbar{ display:none; }
+.navrow{ scrollbar-width: none; }
 
-/* Nav interno: fila sin wrap + snap */
-.cap-nav{
-  display:flex; align-items:center; gap:.5rem;
-  scroll-snap-type: x proximity;
-  min-height: 44px; /* confort táctil */
-}
+/* Botones */
+.navrow > button{
+  flex: 0 0 auto;            /* no se rompen de línea */
+  white-space: nowrap;
+  scroll-snap-align: start;
 
-/* Enlaces/botones dentro de la cápsula */
-.cap-link{
-  flex:0 0 auto;                /* evita que hagan wrap */
-  white-space:nowrap;
-  scroll-snap-align:start;
   color: inherit;
   background: transparent;
   border: 0;
-  padding: .6rem .9rem;
+  font: inherit;
+  padding: .50rem .74rem;
   border-radius: 9999px;
-  opacity: .95;
-  transition: background .2s ease, opacity .2s ease, transform .12s ease;
-}
-.cap-link:hover{ background: rgba(255,255,255,.08); opacity: 1; }
-.cap-link.is-active{ background: rgba(0,0,0,.66); color:#fff; }
 
-/* Compacto en móviles */
-@media (max-width: 560px){
-  .glass-capsule{ width: calc(100% - 16px); }
-  .cap-link{ padding: .5rem .7rem; font-size: .92rem; }
+  opacity: .95;
+  transition: background .2s, opacity .15s, transform .08s;
 }
+.navrow > button:hover{ background: rgba(255,255,255,.14); opacity: 1; }
+.navrow > button:active{ transform: translateY(1px); }
+.navrow > button.is-active{
+  background: rgba(255,255,255,.22);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+/* Empuje global para que el hero no quede tapado */
+.page-offset{ padding-top: calc(var(--cap-h) + 20px); }
+
+/* Móvil: más compacto */
+@media (max-width: 640px){
+  .navcaps{ padding: .52rem .58rem; }
+  .navrow{ gap: .32rem; }
+  .navrow > button{ padding: .44rem .60rem; font-size: .92rem; }
+}
+
 
 </style>
-
   <script>
-    <script>
-(function(){
-  const track = document.getElementById('capTrack');
-  if(!track) return;
+(() => {
+  const cap  = document.getElementById('capsuleHeader');
+  const nav  = cap?.querySelector('.cap-track');
+  if(!cap || !nav) return;
 
-  // Arrastre con mouse/touch
-  let down=false, startX=0, sx=0;
-  const start = e => { down=true; startX = (e.pageX || e.touches?.[0].pageX) - track.offsetLeft; sx = track.scrollLeft; };
-  const move  = e => {
-    if(!down) return;
-    const x = (e.pageX || e.touches?.[0].pageX) - track.offsetLeft;
-    track.scrollLeft = sx - (x - startX);
+  const root = document.documentElement;
+  const buttons = [...nav.querySelectorAll('button[data-goto]')];
+
+  // Ajusta variable --cap-h según la altura real del header
+  const setCapHeight = () => {
+    root.style.setProperty('--cap-h', Math.ceil(cap.getBoundingClientRect().height) + 'px');
   };
-  const end = () => down=false;
+  setCapHeight();
+  addEventListener('resize', setCapHeight, {passive:true});
+  addEventListener('scroll', setCapHeight, {passive:true});
 
-  track.addEventListener('mousedown', start);
-  track.addEventListener('touchstart', start, {passive:true});
-  document.addEventListener('mousemove', move);
-  document.addEventListener('touchmove', move, {passive:true});
-  document.addEventListener('mouseup', end);
-  document.addEventListener('touchend', end);
+  // Encoge en scroll
+  addEventListener('scroll', () => {
+    cap.classList.toggle('shrink', scrollY > 18);
+  }, {passive:true});
 
-  // Desplazamiento horizontal con rueda (Shift o deltaX)
-  track.addEventListener('wheel', (e)=>{
-    const dx = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
-    if(dx){
-      e.preventDefault();
-      track.scrollLeft += dx;
-    }
-  }, {passive:false});
+  // goto
+  const goto = id => {
+    const sec = document.getElementById(id);
+    if(!sec) return;
+    sec.scrollIntoView({behavior:'smooth', block:'start'});
+    buttons.forEach(b => b.classList.toggle('is-active', b.dataset.goto === id));
+  };
+  buttons.forEach(b => b.addEventListener('click', () => goto(b.dataset.goto)));
+
+  // scroll-spy
+  const ids = buttons.map(b => b.dataset.goto);
+  const targets = ids.map(id => document.getElementById(id)).filter(Boolean);
+  const io = new IntersectionObserver((ents)=>{
+    ents.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const id = e.target.id;
+      buttons.forEach(b => b.classList.toggle('is-active', b.dataset.goto === id));
+    });
+  }, {rootMargin:'-45% 0px -55% 0px', threshold: 0});
+  targets.forEach(t => io.observe(t));
 })();
 </script>
 
-  </script>
 
 
 

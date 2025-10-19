@@ -24,11 +24,6 @@
 
           @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap');
 
-      :root{
-        --ink:#fff;
-        --ink-dim:rgba(255,255,255,.88);
-      }
-
       /* OPCIONAL: viñeteado muy sutil en los bordes del video (puedes quitarlo si no quieres) */
       .video-wrap::after{
         content:"";
@@ -91,8 +86,6 @@
       }
 
 
-        /* Safe area iOS si no la tienes ya */
-:root { --safe-top: env(safe-area-inset-top, 0px); }
 
 /* Carrusel: scroll-snap y scrollbars discretos */
 .scrollbar-hide::-webkit-scrollbar { display: none; }
@@ -160,149 +153,26 @@
         background: rgba(255, 255, 255, 0.4);
       }
       
-    .glass-capsule {
-      position: fixed;
-      top: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 50;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 2rem;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(24px) saturate(150%);
-      -webkit-backdrop-filter: blur(24px) saturate(150%);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
-      transition: all 0.3s ease-in-out;
-    }
-    .glass-capsule.shrink {
-      transform: translateX(-50%) scale(0.95);
-      padding: 0.5rem 1.5rem;
-    }
-    .glass-capsule nav button {
-      margin: 0 0.5rem;
-    }
+
+
 
     /* ===== Capsule Header – mejoras solo CSS ===== */
 
-/* tipografía y tamaño fluido */
-.glass-capsule {
-  font-size: clamp(.85rem, 1.6vw, .95rem);
-  color: #0f172a;                /* legible en claros */
-  text-shadow: 0 1px 0 rgba(0,0,0,.18); /* ayuda sobre fondos muy claros */
-   background: rgba(255, 255, 255, 0.01);    /* más contraste por defecto */
-  border: 1px solid rgba(15,23,42,.12); /* ring sutil */
-  box-shadow: 0 8px 30px rgba(0,0,0,.18);
-}
 
-/* mejor fondo cuando hay soporte de blur */
-@supports (backdrop-filter: blur(10px)) {
-  .glass-capsule {
-    background: rgba(255,255,255,.55);
-    backdrop-filter: blur(18px) saturate(150%);
-    -webkit-backdrop-filter: blur(18px) saturate(150%);
-    border-color: rgba(15,23,42,.10);
-  }
-}
 
-/* modo oscuro del SO: se invierten tonos para seguir siendo legible */
-@media (prefers-color-scheme: dark) {
-  .glass-capsule {
-    color: #fff;
-    text-shadow: 0 1px 0 rgba(0,0,0,.35);
-    background: rgba(15,23,42,.60);     /* slate-900 translúcido */
-    border-color: rgba(255,255,255,.14);
-    box-shadow: 0 8px 34px rgba(0,0,0,.35);
-  }
-}
-
-/* botones dentro de la cápsula: mejor hit area, pill y contraste */
-.glass-capsule nav button {
-  margin: 0 .375rem;             /* más compacto */
-  padding: .5rem .9rem;          /* área clicable cómoda */
-  border-radius: 9999px;
-  color: inherit;                /* hereda para claro/oscuro */
-  background: transparent;
-  transition: color .2s, background .2s, transform .12s, opacity .2s;
-  opacity: .95;
-}
-
-/* hover/active únicamente con CSS (sin JS) */
-.glass-capsule nav button:hover {
-  color: #fb7185;                /* rose-400 */
-  background: rgba(255,255,255,.55);
-}
-@media (prefers-color-scheme: dark) {
-  .glass-capsule nav button:hover {
-    background: rgba(255,255,255,.16);
-    color: #fff;
-  }
-}
-
-/* foco accesible (teclado) */
-.glass-capsule nav button:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(251,113,133,.6); /* anillo rosa */
-  background: rgba(255,255,255,.65);
-}
-
-/* estado “activo” opcional SIN JS: añade .is-active o aria-current="page" desde tu HTML si quieres marcar la sección actual */
-.glass-capsule nav button.is-active,
-.glass-capsule nav button[aria-current="page"] {
-  background: rgba(255,255,255,.7);
-  color: #0f172a;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.08);
-}
-@media (prefers-color-scheme: dark) {
-  .glass-capsule nav button.is-active,
-  .glass-capsule nav button[aria-current="page"] {
-    background: rgba(255,255,255,.16);
-    color: #fff;
-  }
-}
 
 /* responsive: cápsula más compacta en pantallas muy pequeñas */
-@media (max-width: 480px) {
-  .glass-capsule { padding: .6rem 1rem; }
-  .glass-capsule nav { gap: .25rem; }
-}
 
 /* opcional: si el nav llega a desbordar, escóndele el scrollbar */
-.glass-capsule nav {
-  overflow-x: auto;
-  -ms-overflow-style: none; scrollbar-width: none;
-}
-.glass-capsule nav::-webkit-scrollbar { display: none; }
 
-  </style>
-<style>
-  /* Safe area para iPhone con notch */
-:root {
-  --safe-top: env(safe-area-inset-top, 0px);
-}
 
-.glass-capsule {
-  top: calc(1rem + var(--safe-top));
-}
+ 
+
+
+
 
 /* Ajuste de cápsula en pantallas pequeñas */
-@media (max-width: 480px) {
-  .glass-capsule {
-    width: calc(100% - 1.25rem);
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0.55rem 0.9rem;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: rgba(255, 255, 255, 0.9);
-  }
-  .glass-capsule nav button {
-    margin: 0 0.35rem;
-  }
-}
+
 
 /* Tipografía fluida */
 h1, h2 {
@@ -329,28 +199,7 @@ p {
 }
 
 
-/*aa*/
-/* mejora contraste en fondos claros/oscuros (ya lo tienes, refuerzo sutil) */
-.glass-capsule{
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(15,23,42,.12);
-  box-shadow: 0 8px 30px rgba(0,0,0,.18);
-}
-@supports (backdrop-filter: blur(12px)){
-  .glass-capsule{
-    background: rgba(255,255,255,.35);
-    backdrop-filter: blur(18px) saturate(150%);
-    -webkit-backdrop-filter: blur(18px) saturate(150%);
-  }
-}
-@media (prefers-color-scheme: dark){
-  .glass-capsule{
-    background: rgba(15,23,42,.60);
-    border-color: rgba(255,255,255,.14);
-    color:#fff;
-  }
-  .glass-capsule nav button:hover{ background: rgba(255,255,255,.16); }
-}
+
 
 
 html { scroll-behavior: smooth; }
