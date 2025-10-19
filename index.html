@@ -896,12 +896,18 @@ document.addEventListener('keydown',e=>{
           <!-- Suscripción -->
           <div>
             <h3 class="text-white font-semibold mb-2">Suscríbete</h3>
-            <form onsubmit="event.preventDefault(); suscribirse();" class="flex flex-col gap-3">
+
+        
+
+
+
+
+            <form id="subscribeForm" class="flex flex-col gap-3">
               <div class="flex items-center rounded-lg bg-white px-3 py-2 text-sm text-black shadow-sm">
                 <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
                   viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
                     d="M16 12H8m0 0l4-4m-4 4l4 4" /></svg>
-                <input id="inputCorreo" type="email" placeholder="Tu correo"
+                <input id="email" type="email" placeholder="Tu correo"
                   class="bg-transparent outline-none w-full">
               </div>
               <button type="submit"
@@ -909,6 +915,10 @@ document.addEventListener('keydown',e=>{
                 Unirme
               </button>
             </form>
+
+
+            <script src="T61388/subscribe.js"></script>
+            <script src="T61388/suscrito.css"></script>
           </div>
       
         </div>

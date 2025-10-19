@@ -4,7 +4,7 @@
 (() => {
   const FORM_ID = "subscribeForm";
   const INPUT_ID = "email";
-  const ENDPOINT = "YOUR_APPS_SCRIPT_WEB_APP_URL"; // <- Pega aquí tu URL de Apps Script
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbwRi_TT-0bUuWsi39dtTkE-tuPtRTjvKiNARS9GESbpYAL2PbfDHKJMdA7wYInR-QCo/exec"; // <- Pega aquí tu URL de Apps Script
 
   const emailRegex =
     /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -63,15 +63,14 @@
     }
 
     try {
-      const res = await fetch(ENDPOINT, {
-        method: "POST",
-        mode: "cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          source: location.origin + location.pathname,
-        }),
-      });
+     const res = await fetch(ENDPOINT, {
+   method: "POST",
+   // Simple Request => NO preflight => llega a Apps Script
+   headers: { "Content-Type": "text/plain;charset=utf-8" },
+   body: JSON.stringify({ email, source: location.origin + location.pathname }),
+ });
+    
+   
 
       const data = await res.json().catch(() => ({}));
       if (!res.ok || data.status !== "ok") {
