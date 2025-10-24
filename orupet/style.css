@@ -1,0 +1,71 @@
+:root{
+    --wa-green:#25D366;   /* verde WhatsApp */
+    --wa-green-dark:#1fb457;
+    --wa-size:56px;       /* diámetro del botón */
+  }
+  .wa-btn{
+    position:fixed;
+    left:18px;             /* posición izquierda */
+    bottom:22px;           /* margen inferior */
+    z-index:9999;
+    width:var(--wa-size);
+    height:var(--wa-size);
+    border-radius:50%;
+    background:var(--wa-green);
+    display:grid;
+    place-items:center;
+    box-shadow:0 10px 24px rgba(0,0,0,.28);
+    text-decoration:none;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    overflow:visible;
+    isolation:isolate;
+  }
+  .wa-btn:hover{ transform:translateY(-2px) scale(1.03); background:var(--wa-green-dark); box-shadow:0 14px 30px rgba(0,0,0,.32); }
+  .wa-btn:focus{ outline:3px solid rgba(37,211,102,.4); outline-offset:4px; }
+
+  .wa-btn svg{ width:26px; height:26px; fill:#fff; }
+
+  /* Pulso sutil */
+  .wa-btn::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:var(--wa-green);
+    opacity:.35;
+    z-index:-1;
+    animation:wa-pulse 2.4s ease-in-out infinite;
+  }
+
+  /* Onda expansiva */
+  .wa-btn::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    border:2px solid rgba(37,211,102,.4);
+    transform:scale(1);
+    opacity:0;
+    animation:wa-ripple 2.4s ease-out infinite;
+  }
+
+  @keyframes wa-pulse{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.06); }
+  }
+  @keyframes wa-ripple{
+    0%{ transform:scale(1); opacity:.0; }
+    40%{ opacity:.6; }
+    100%{ transform:scale(1.6); opacity:0; }
+  }
+
+  /* Respeta preferencias de movimiento reducido */
+  @media (prefers-reduced-motion: reduce){
+    .wa-btn::after, .wa-btn::before{ animation:none; }
+  }
+
+  /* Un poco más pequeño en pantallas muy chicas (opcional) */
+  @media (max-width:380px){
+    :root{ --wa-size:50px; }
+    .wa-btn svg{ width:22px; height:22px; }
+  }
