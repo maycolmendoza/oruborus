@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>ORUPET • Collar de cuero QR/NFC</title>
+    <title>ORUPETS • Collar de cuero</title>
 
     <!-- Inter + Tailwind -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -496,6 +496,122 @@
   </head>
 
   <body class="font-sans antialiased">
+    
+
+    <!-- INTRO OruPets · HERO -->
+<section id="intro-orupets" class="relative overflow-hidden">
+  <!-- Fondo reactivo por slide (usa CSS var --hero-bg) -->
+  <div class="absolute inset-0 -z-10 transition-colors duration-700"
+       style="background: radial-gradient(900px 600px at 80% 20%, var(--hero-bg, #f6f6f6), #ffffff)"></div>
+
+  <!-- Carrusel -->
+  <div class="container mx-auto px-4 pt-10">
+    <div class="relative select-none" id="carousel">
+      <div class="overflow-hidden rounded-2xl shadow-lg">
+        <ul class="flex transition-transform duration-500 ease-out" id="track" style="touch-action: pan-y;">
+          <!-- SLIDE 1 · Marrón -->
+          <li class="min-w-full grid place-items-center p-6"
+              data-bg="#d4b08a"
+              data-badge="NUEVO · QR + NFC · 100% PASIVO"
+              data-h1="Adquiere el collar OruPet"
+              data-h2="Ideal para tu mascota"
+              aria-label="Collar cuero marrón con tag QR">
+            <img src="collar-marron.jpg" alt="Collar OruPet de cuero marrón con tag QR"
+                 class="max-h-[56vh] w-auto object-contain" />
+          </li>
+
+          <!-- SLIDE 2 · Negro -->
+          <li class="min-w-full grid place-items-center p-6"
+              data-bg="#b0b7bf"
+              data-badge="QR + NFC · Contacto inmediato"
+              data-h1="OruPet, seguridad que luce"
+              data-h2="Encuentra a tu mascota rápido">
+            <img src="collar-negro.jpg" alt="Collar OruPet negro con herrajes metálicos"
+                 class="max-h-[56vh] w-auto object-contain" />
+          </li>
+
+          <!-- SLIDE 3 · Verde oliva -->
+          <li class="min-w-full grid place-items-center p-6"
+              data-bg="#b8c6b2"
+              data-badge="Resistente · 100% pasivo"
+              data-h1="Diseño cómodo y elegante"
+              data-h2="Pensado para uso diario">
+            <img src="collar-oliva.jpg" alt="Collar OruPet verde oliva con tag QR"
+                 class="max-h-[56vh] w-auto object-contain" />
+          </li>
+        </ul>
+      </div>
+
+      <!-- Controles -->
+      <button id="prev" class="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 backdrop-blur px-3 py-2 shadow hover:scale-105 transition" aria-label="Anterior">‹</button>
+      <button id="next" class="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 backdrop-blur px-3 py-2 shadow hover:scale-105 transition" aria-label="Siguiente">›</button>
+
+      <!-- Puntos -->
+      <div id="dots" class="mt-4 flex justify-center gap-2"></div>
+    </div>
+  </div>
+
+  <!-- Texto reactivo (debajo del carrusel en móviles/tablets) -->
+  <div class="container mx-auto px-4 pb-12">
+    <div class="mt-6 text-center" id="copy">
+      <p id="badge" class="text-xs uppercase tracking-widest text-emerald-700/80 font-semibold">NUEVO · QR + NFC · 100% PASIVO</p>
+      <h1 id="h1" class="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.1]">
+        Adquiere el collar OruPet
+      </h1>
+      <h2 id="h2" class="mt-2 text-emerald-700 text-2xl sm:text-3xl font-extrabold">
+        Ideal para tu mascota
+      </h2>
+
+      <p class="mt-4 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+        100% tecnología pasiva, no invasiva. Contacto inmediato al escanear.
+      </p>
+
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href="#planes"
+           class="px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-400 text-white shadow-lg hover:scale-105 transition">
+          Comprar ahora
+        </a>
+        <a href="#como"
+           class="px-6 py-3 rounded-full bg-white ring-1 ring-black/10 hover:ring-black/20">
+          Ver cómo funciona
+        </a>
+      </div>
+
+      <div class="mt-6 flex flex-wrap justify-center gap-2 text-xs">
+        <span class="px-3 py-1 rounded-full ring-1">QR</span>
+        <span class="px-3 py-1 rounded-full ring-1">Tiempo real</span>
+        <span class="px-3 py-1 rounded-full ring-1">Sin batería</span>
+        <span class="px-3 py-1 rounded-full ring-1">Seguro</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- NAV -->
     <header class="fixed top-0 inset-x-0 z-50 navglass border-b border-black/5">
        <!-- Cápsula -->
@@ -510,61 +626,9 @@
       </nav>
     </div>
     </header>
-    <div class="h-14"></div>
-
-    <!-- PANEL 1 • HERO -->
-    <section id="hero" class="panel overflow-hidden relative" >
 
 
-      <div
-        class="absolute -top-40 -right-40 w-[720px] h-[720px] rounded-full bg-[radial-gradient(closest-side,rgba(16,185,129,.22),transparent_70%)] pointer-events-none"
-      ></div>
-
-
-
-
-
-
-      
-      <div class="container grid lg:grid-cols-2 gap-10 items-center">
-        <div class="reveal">
-          <p
-            class="text-xs uppercase tracking-widest text-emerald-700/80 font-semibold"
-          >
-            Nuevo · QR + NFC · 100% pasivo
-          </p>
-          <h1
-            class="mt-3 text-5xl sm:text-6xl font-extrabold tracking-tight leading-[1.05]"
-          >
-            Collar pasivo,
-            <span class="text-emerald-700">contacto inmediato.</span>
-          </h1>
-          <p class="mt-4 text-lg text-gray-600 max-w-xl">
-            Acércalo y listo: contacto inmediato<br>
-            <b>Cómodo y elegante.</b> No invasivo para tu mascota.
-          </p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a
-              href="#planes"
-              class="px-5 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-400 text-white shadow-lg"
-              >Comprar ahora</a
-            >
-            <a
-              href="#como"
-              class="px-5 py-3 rounded-full bg-white ring-1 ring-black/10 hover:ring-black/20"
-              >Ver cómo funciona</a
-            >
-          </div>
-          <div class="mt-6 flex gap-2 text-xs">
-            <span class="px-3 py-1 rounded-full ring-1">QR</span>
-            <span class="px-3 py-1 rounded-full ring-1">Tiempo real</span>
-            <span class="px-3 py-1 rounded-full ring-1">Sin batería</span>
-            <span class="px-3 py-1 rounded-full ring-1">Seguro</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
+   
 
     <!-- ========== ORUPET • Sección Tag + Ondas (Full-screen) ========== -->
     <!-- ============ HOW IT WORKS (pantalla completa con Lottie) ============ -->
@@ -2004,6 +2068,7 @@
 </a>
 
 <script src="index.js"></script>
+<script src="slides.js"></script>
   </body>
 </html>
 
