@@ -498,20 +498,17 @@
   <body class="font-sans antialiased">
     <!-- NAV -->
     <header class="fixed top-0 inset-x-0 z-50 navglass border-b border-black/5">
-      <div class="container h-14 flex items-center justify-between">
-        <a href="#" class="font-extrabold tracking-tight">ORUPET</a>
-        <nav class="hidden md:flex gap-6 text-sm text-gray-600">
-          <a href="#como" class="hover:text-black">Cómo funciona</a>
-          <a href="#posters" class="hover:text-black">Placas/alertas</a>
-          <a href="#planes" class="hover:text-black">Planes</a>
-          <a href="#contacto" class="hover:text-black">Contacto</a>
-        </nav>
-        <a
-          href="#planes"
-          class="px-4 py-2 rounded-full bg-black text-white shadow-lg"
-          >Comprar</a
-        >
-      </div>
+       <!-- Cápsula -->
+    <div id="ob-nav" class="ob-nav">
+      <nav class="ob-nav__track" id="ob-nav-track">
+        <button class="ob-nav__btn is-active" data-goto="inicio">Orupets</button>
+        <button class="ob-nav__btn" data-goto="explora">Explora</button>
+        <button class="ob-nav__btn" data-goto="agenda">Agenda</button>
+        <button class="ob-nav__btn" data-goto="catalogo">Catálogo</button>
+        <button class="ob-nav__btn" data-goto="siguenos">Síguenos</button>
+        <button class="ob-nav__btn" data-goto="contacto">Contacto</button>
+      </nav>
+    </div>
     </header>
     <div class="h-14"></div>
 

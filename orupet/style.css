@@ -1,3 +1,113 @@
+    :root {
+        --ob-safe-top: env(safe-area-inset-top, 0px);
+      }
+
+      /* ===== CÁPSULA ===== */
+      .ob-nav {
+        position: fixed;
+        top: calc(12px + var(--ob-safe-top));
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+
+        display: flex;
+        align-items: center;
+
+        padding: 0.62rem 0.78rem;
+        border-radius: 9999px;
+
+        /* visible sobre fondos claros/oscros */
+        background: linear-gradient(180deg, #0e2134, #0b1726);
+        color: #e7f0ff;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+        -webkit-backdrop-filter: blur(18px) saturate(150%);
+        backdrop-filter: blur(18px) saturate(150%);
+
+        width: max-content;
+        max-width: min(96vw, 1120px);
+        overflow: visible;
+        transition: transform 0.25s ease, padding 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      /* Estado encogido al hacer scroll */
+      .ob-nav.ob-nav--shrink {
+        transform: translateX(-50%) scale(0.96);
+        padding: 0.48rem 0.62rem;
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+      }
+
+      /* Pista de botones */
+      .ob-nav__track {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      /* Botones */
+      .ob-nav__btn {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font: 600 0.95rem/1 Inter, system-ui, -apple-system, Segoe UI, Roboto,
+          Arial, sans-serif;
+        padding: 0.55rem 0.7rem;
+        border-radius: 0.8rem;
+        white-space: nowrap;
+        transition: background 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+      }
+      .ob-nav__btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .ob-nav__btn.is-active {
+        background: rgba(255, 255, 255, 0.16);
+        color: #fff;
+      }
+
+      /* ===== MÓVIL: la cápsula se achica y la pista se desliza horizontalmente ===== */
+      @media (max-width: 768px) {
+        .ob-nav {
+          width: calc(100% - 16px);
+          padding: 0.5rem 0.55rem;
+        }
+        .ob-nav__track {
+          justify-content: flex-start; /* deja de centrarse */
+          overflow-x: auto; /* scroll horizontal */
+          -webkit-overflow-scrolling: touch; /* inercia iOS */
+          scrollbar-width: none; /* oculta barra FF */
+
+          /* fades laterales para indicar que hay más */
+          -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0,
+            #000 12px,
+            #000 calc(100% - 12px),
+            transparent 100%
+          );
+          mask-image: linear-gradient(
+            to right,
+            transparent 0,
+            #000 12px,
+            #000 calc(100% - 12px),
+            transparent 100%
+          );
+
+          scroll-snap-type: x proximity;
+          gap: 0.4rem;
+        }
+        .ob-nav__track::-webkit-scrollbar {
+          display: none;
+        }
+        .ob-nav__btn {
+          padding: 0.5rem 0.6rem;
+          font-size: 0.92rem;
+          scroll-snap-align: center;
+        }
+      }
+
 :root{
     --wa-green:#25D366;   /* verde WhatsApp */
     --wa-green-dark:#1fb457;
