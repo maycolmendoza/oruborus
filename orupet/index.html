@@ -507,7 +507,7 @@
   <!-- Carrusel -->
   <div class="container mx-auto px-4 pt-10">
     <div class="relative select-none" id="carousel">
-      <div class="overflow-hidden rounded-2xl shadow-lg">
+      <div class="overflow-hidden rounded-2xl">
         <ul class="flex transition-transform duration-500 ease-out" id="track" style="touch-action: pan-y;">
           <!-- SLIDE 1 · Marrón -->
           <li class="min-w-full grid place-items-center p-6"
@@ -516,7 +516,7 @@
               data-h1="Adquiere el collar OruPet"
               data-h2="Ideal para tu mascota"
               aria-label="Collar cuero marrón con tag QR">
-            <img src="collar-marron.jpg" alt="Collar OruPet de cuero marrón con tag QR"
+            <img src="img/canela.webp" alt="Collar OruPet de cuero marrón con tag QR"
                  class="max-h-[56vh] w-auto object-contain" />
           </li>
 
@@ -527,7 +527,7 @@
               data-h1="OruPet, seguridad que luce"
               data-h2="Encuentra a tu mascota rápido">
             <img src="collar-negro.jpg" alt="Collar OruPet negro con herrajes metálicos"
-                 class="max-h-[56vh] w-auto object-contain" />
+                 class="max-h-[96vh] w-auto object-contain" />
           </li>
 
           <!-- SLIDE 3 · Verde oliva -->
@@ -1716,295 +1716,131 @@
 
 
 
+<!-- ============================== -->
+<!-- SECCIÓN: PLANES (OruPet)      -->
+<!-- ============================== -->
+<section id="planes" class="relative overflow-hidden py-24">
+  <!-- Halos -->
+  <div class="pointer-events-none absolute -top-48 -left-24 w-[900px] h-[900px] rounded-full bg-[radial-gradient(closest-side,rgba(16,185,129,.12),transparent_70%)] -z-10"></div>
+  <div class="pointer-events-none absolute -bottom-64 -right-28 w-[880px] h-[880px] rounded-full bg-[radial-gradient(closest-side,rgba(99,102,241,.08),transparent_70%)] -z-10"></div>
 
+  <div class="container mx-auto px-4">
+    <!-- Encabezado -->
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Elige tu <span class="text-emerald-700">plan</span></h2>
+      <p class="mt-4 text-lg text-gray-600">
+        Comienza gratis. Cuando necesites más control y alertas instantáneas, activa <b>OruPet+</b>.
+      </p>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- =========== PRICING • pantalla completa (aislado) =========== -->
-    <section id="prx-pricing" class="prx-sec" aria-label="Planes Orupet">
-      <div class="prx-wrap">
-        <header class="prx-head prx-reveal">
-          <h2 class="prx-title">Elige tu plan</h2>
-          <p class="prx-sub">
-            Activa y recibe <strong>1 mes ilimitado</strong>. Luego, Basic o
-            Premium.
-          </p>
-        </header>
-
-        <div class="prx-grid">
-          <!-- Trial -->
-          <article class="prx-card prx-reveal" data-plan="trial">
-            <div class="prx-card-in">
-              <h3 class="prx-h3">Cortesía 1 mes</h3>
-              <p class="prx-muted">
-                Todo ilimitado por 30 días desde la activación.
-              </p>
-              <ul class="prx-list">
-                <li>Mapas y alertas ilimitadas</li>
-                <li>Placas listas para redes</li>
-                <li>Soporte prioritario</li>
-              </ul>
-              <a href="#comprar" class="prx-cta">Activar ahora</a>
-            </div>
-          </article>
-
-          <!-- Basic -->
-          <article class="prx-card prx-reveal" data-plan="basic">
-            <div class="prx-card-in">
-              <h3 class="prx-h3">Basic — S/ 5</h3>
-              <p class="prx-muted">
-                3 avistamientos y 3 diseños de placa / mes.
-              </p>
-              <ul class="prx-list">
-                <li>Ficha pública</li>
-                <li>WhatsApp/email relay</li>
-                <li>Mapas limitados (3/mes)</li>
-              </ul>
-              <a href="#comprar" class="prx-cta">Elegir Basic</a>
-            </div>
-          </article>
-
-          <!-- Premium -->
-          <article
-            class="prx-card prx-reveal prx-featured"
-            data-plan="premium"
-            aria-label="Plan recomendado"
-          >
-            <span class="prx-badge">Recomendado</span>
-            <div class="prx-card-in">
-              <h3 class="prx-h3">Premium — S/ 9.90</h3>
-              <p class="prx-muted">Todo ilimitado + futuras funciones.</p>
-              <ul class="prx-list">
-                <li>Mapas y alertas ilimitadas</li>
-                <li>Diseños de placas ilimitados</li>
-                <li>Próximas funciones incluidas</li>
-              </ul>
-              <a href="#comprar" class="prx-cta prx-cta--primary"
-                >Actualizar a Premium</a
-              >
-            </div>
-          </article>
+    <!-- Tarjetas -->
+    <div class="mt-12 grid gap-6 lg:grid-cols-2">
+      <!-- Plan Gratis -->
+      <article class="relative rounded-3xl bg-white/80 backdrop-blur-xl ring-1 ring-black/5 shadow-[0_16px_40px_rgba(0,0,0,.06)] p-6 sm:p-8 hover:-translate-y-0.5 transition">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-bold">OruPet <span class="text-emerald-700">Básico</span></h3>
+            <p class="mt-1 text-gray-600">Lo esencial para identificar y proteger.</p>
+          </div>
+          <span class="px-3 py-1 text-xs rounded-full bg-emerald-600/10 text-emerald-700 ring-1 ring-emerald-200">Gratis</span>
         </div>
-      </div>
-    </section>
 
-    <style>
-      /* ====== NAMESPACE prx- ====== */
-      .prx-sec {
-        min-height: 100svh;
-        scroll-snap-align: start;
-        display: grid;
-        place-items: center;
-        background: radial-gradient(
-            1100px 800px at 90% -10%,
-            rgba(99, 102, 241, 0.1),
-            transparent 60%
-          ),
-          linear-gradient(180deg, #f7f8fb, #ffffff);
-        padding: clamp(40px, 6vh, 72px) 20px;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
+        <ul class="mt-6 space-y-3 text-sm text-gray-700">
+          <li class="flex gap-3"><span class="check">✓</span><span>1 mascota activa.</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span>Ficha digital <b>ilimitada</b> (datos, fotos, salud, documentos).</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span>Recibes avisos cuando alguien <b>escanea</b> o <b>reporta</b>.</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span><b>Hasta 5</b> ubicaciones o reportes <b>por mes</b> visibles.</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span>Historial visible: <b>48 h</b> o los <b>últimos 5 eventos</b>.</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span>Notificación por <b>email</b> (con leve retraso).</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span><b>1 contacto</b> de confianza.</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span>Recompensa opcional visible.</span></li>
+          <li class="flex gap-3 opacity-80">
+            <span class="lock">🔒</span>
+            <span>Eventos extra se guardan, pero se muestran con candado. <span class="tip" title="Desbloquéalos con OruPet+">¿Cómo desbloqueo?</span></span>
+          </li>
+        </ul>
 
-      /* Wrapper */
-      .prx-wrap {
-        width: min(1200px, 100%);
-      }
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#crear-cuenta" class="px-6 py-3 rounded-full bg-emerald-600 text-white font-medium shadow-lg hover:opacity-95 transition">Crear ficha (Gratis)</a>
+          <a href="#mas-detalles-basico" class="px-6 py-3 rounded-full bg-white ring-1 ring-black/10 hover:ring-black/20">Ver detalles</a>
+        </div>
+      </article>
 
-      /* Head */
-      .prx-head {
-        text-align: center;
-        margin-bottom: clamp(24px, 3vh, 40px);
-      }
-      .prx-title {
-        font-size: clamp(34px, 5.6vw, 56px);
-        line-height: 1.05;
-        font-weight: 900;
-        margin: 0;
-      }
-      .prx-sub {
-        margin: 0.5rem 0 0;
-        color: #475569;
-        font-size: clamp(14px, 2.4vw, 18px);
-      }
+      <!-- Plan Plus -->
+      <article class="relative rounded-3xl bg-white/90 backdrop-blur-xl ring-1 ring-amber-200 shadow-[0_24px_60px_rgba(0,0,0,.10)] p-6 sm:p-8 border border-amber-100 hover:-translate-y-0.5 transition">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-bold">OruPet<span class="text-amber-600">+</span></h3>
+            <p class="mt-1 text-gray-600">Control total y tranquilidad inmediata.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="px-3 py-1 text-xs rounded-full bg-black/5 ring-1 ring-black/10">S/ <b>8</b> / mes</span>
+            <span class="px-3 py-1 text-xs rounded-full bg-indigo-600 text-white">Recomendado</span>
+          </div>
+        </div>
 
-      /* Grid */
-      .prx-grid {
-        display: grid;
-        gap: clamp(16px, 2.2vw, 24px);
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-      @media (max-width: 980px) {
-        .prx-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (max-width: 680px) {
-        .prx-grid {
-          grid-template-columns: 1fr;
-        }
-      }
+        <div class="mt-4 inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full bg-emerald-600/10 text-emerald-700 ring-1 ring-emerald-200">
+          <span class="h-2 w-2 rounded-full bg-emerald-600"></span>
+          En vivo <span class="text-gray-400">(cuando hay actividad)</span>
+        </div>
 
-      /* Cards */
-      .prx-card {
-        position: relative;
-        border-radius: 24px;
-        background: #fff;
-        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.1),
-          0 1px 0 rgba(0, 0, 0, 0.06) inset;
-        transform: translateY(22px) scale(0.98);
-        opacity: 0.001;
-        will-change: transform, opacity;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-        perspective: 900px;
-      }
-      .prx-card-in {
-        padding: clamp(22px, 3.2vw, 28px);
-        transform: rotateX(0) rotateY(0);
-        transition: transform 0.18s ease;
-      }
-      /* tilt sutil */
-      .prx-card:hover .prx-card-in {
-        transform: rotateX(2deg) rotateY(-2deg);
-      }
-      .prx-card:hover {
-        box-shadow: 0 30px 70px rgba(15, 23, 42, 0.14),
-          0 1px 0 rgba(0, 0, 0, 0.06) inset;
-        transform: translateY(-2px) scale(1.005);
-      }
+        <ul class="mt-6 space-y-3 text-sm text-gray-700">
+          <li class="flex gap-3"><span class="check">✓</span><span><b>Mascotas ilimitadas</b>.</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span><b>Ubicaciones y reportes ilimitados</b>.</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span><b>Actualizaciones automáticas en tiempo real</b> cuando alguien escanea o reporta.</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span>Historial extendido (p. ej. <b>90 días</b>).</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span><b>Notificaciones instantáneas</b> (email + push; WhatsApp con consentimiento).</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span><b>Hasta 10 contactos</b> de confianza.</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span><b>Generador de diseños ilimitado</b>, sin marca de agua; guarda & reimprime.</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span>Panel con <b>estadísticas</b> (horas, zonas, actividad).</span></li>
+          <li class="flex gap-3"><span class="check">✓</span><span>Soporte prioritario y <b>perfil verificado</b>.</span></li>
+        </ul>
 
-      /* Featured */
-      .prx-featured {
-        outline: 2px solid rgba(99, 102, 241, 0.45);
-        outline-offset: -2px;
-        background: linear-gradient(
-          180deg,
-          rgba(99, 102, 241, 0.06),
-          transparent 40%
-        );
-      }
-      .prx-badge {
-        position: absolute;
-        right: 16px;
-        top: 14px;
-        font-size: 12px;
-        font-weight: 800;
-        color: #fff;
-        background: linear-gradient(90deg, #6366f1, #06b6d4);
-        padding: 6px 10px;
-        border-radius: 999px;
-      }
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#suscripcion" class="px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-400 text-white font-medium shadow-lg hover:scale-[1.01] transition">Activar OruPet+ — S/8/mes</a>
+          <a href="#detalles-plus" class="px-6 py-3 rounded-full bg-white ring-1 ring-black/10 hover:ring-black/20">Ver todo lo que incluye</a>
+        </div>
+      </article>
+    </div>
 
-      /* Content */
-      .prx-h3 {
-        font-size: clamp(20px, 3.4vw, 24px);
-        margin: 0 0 6px;
-        font-weight: 900;
-      }
-      .prx-muted {
-        color: #64748b;
-        margin: 0 0 14px;
-        font-size: clamp(13px, 2.4vw, 16px);
-      }
+    <!-- Notas y comparativa -->
+    <p class="mt-8 text-center text-xs text-gray-500">
+      *Las actualizaciones aparecen automáticamente cuando se registra un <b>escaneo</b> o un <b>reporte</b>. OruPet Collar 1 no rastrea en todo momento.
+      Estamos desarrollando una versión mejorada para <b>Tiempo Real</b>.
+    </p>
 
-      .prx-list {
-        margin: 12px 0 18px;
-        padding: 0;
-        list-style: none;
-        color: #111;
-        display: grid;
-        gap: 10px;
-        font-size: clamp(14px, 2.6vw, 16px);
-      }
-      .prx-list li {
-        position: relative;
-        padding-left: 26px;
-      }
-      .prx-list li::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0.35em;
-        width: 16px;
-        height: 16px;
-        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%235c53ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>')
-          no-repeat center/contain;
-      }
+  
+  </div>
+</section>
 
-      /* Buttons */
-      .prx-cta {
-        display: inline-block;
-        font-weight: 800;
-        border-radius: 999px;
-        padding: 12px 18px;
-        background: #fff;
-        color: #111;
-        border: 1px solid rgba(0, 0, 0, 0.16);
-        transition: background 0.2s ease, color 0.2s ease,
-          border-color 0.2s ease, transform 0.1s ease;
-      }
-      .prx-cta:hover {
-        background: #111;
-        color: #fff;
-        border-color: #111;
-      }
-      .prx-cta:active {
-        transform: translateY(1px);
-      }
+<!-- Utilidades mínimas -->
+<style>
+  #planes .check{
+    display:inline-grid; place-items:center;
+    width:20px; height:20px; border-radius:9999px;
+    background:#10b981; color:#fff; font-weight:700; font-size:12px;
+    box-shadow:0 4px 14px rgba(16,185,129,.25)
+  }
+  #planes .lock{
+    display:inline-grid; place-items:center;
+    width:20px; height:20px; border-radius:9999px; font-size:14px;
+    background:rgba(0,0,0,.06); color:#444; font-weight:700;
+  }
+  #planes .tip{ text-decoration: underline; text-underline-offset: 3px; cursor:help; }
+</style>
 
-      .prx-cta--primary {
-        background: #111;
-        color: #fff;
-        border-color: #111;
-      }
-      .prx-cta--primary:hover {
-        filter: brightness(1.05);
-      }
 
-      /* Reveal on scroll */
-      .prx-reveal {
-        opacity: 0.001;
-        transform: translateY(26px) scale(0.98);
-      }
-      .prx-reveal.is-visible {
-        opacity: 1;
-        transform: none;
-        transition: opacity 0.8s cubic-bezier(0.2, 0.6, 0.2, 1),
-          transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
-      }
-    </style>
 
-    <script>
-      /* ===== Entrada suave al deslizar + scroll-snap ===== */
-      (() => {
-        const io = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((e) => {
-              if (e.isIntersecting) {
-                e.target.classList.add("is-visible");
-                // no desconectamos para que cuando vuelvas suba otra vez suave
-              }
-            });
-          },
-          { threshold: 0.18 }
-        );
 
-        document
-          .querySelectorAll("#prx-pricing .prx-reveal, #prx-pricing .prx-card")
-          .forEach((el) => io.observe(el));
-      })();
-    </script>
+
+
+
+
+
+
+
+
+
 
     <!-- PANEL 6 • CONTACTO + FOOTER -->
     <section id="contacto" class="panel bg-paper">
