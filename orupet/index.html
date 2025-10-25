@@ -618,10 +618,11 @@
     <div id="ob-nav" class="ob-nav">
       <nav class="ob-nav__track" id="ob-nav-track">
         <button class="ob-nav__btn is-active" data-goto="inicio">Orupets</button>
-        <button class="ob-nav__btn" data-goto="explora">Explora</button>
-        <button class="ob-nav__btn" data-goto="agenda">Agenda</button>
-        <button class="ob-nav__btn" data-goto="catalogo">Catálogo</button>
-        <button class="ob-nav__btn" data-goto="siguenos">Síguenos</button>
+        <button class="ob-nav__btn" data-goto="explora">Pasos</button>
+        <button class="ob-nav__btn" data-goto="agenda">Datos</button>
+        <button class="ob-nav__btn" data-goto="catalogo">Alertas</button>
+         <button class="ob-nav__btn" data-goto="catalogo">Reportes</button>
+        <button class="ob-nav__btn" data-goto="siguenos">Ubicaciones</button>
         <button class="ob-nav__btn" data-goto="contacto">Contacto</button>
       </nav>
     </div>
@@ -973,477 +974,761 @@
       })();
     </script>
 
-    <!-- PANEL 3 • POSTERS / GENERADOR DEMO -->
-    <!-- =========== ORUPET Posters (aislado) =========== -->
-    <section
-      id="opg-posters"
-      class="opg-sec"
-      aria-label="Alertas listas para redes"
-    >
-      <div class="opg-wrap">
-        <header class="opg-head">
+
+
+
+
+
+
+
+
+
+
+<!-- ========================= -->
+<!-- SECCIÓN: CÓMO FUNCIONA   -->
+<!-- ========================= -->
+<section id="como" class="relative overflow-hidden py-16 sm:py-20">
+  <!-- halo suave de fondo -->
+  <div class="pointer-events-none absolute -top-40 -left-40 w-[720px] h-[720px] rounded-full bg-[radial-gradient(closest-side,rgba(16,185,129,.14),transparent_70%)] -z-10"></div>
+
+  <div class="container mx-auto px-4">
+    <!-- Título -->
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-xs uppercase tracking-widest text-emerald-700/80 font-semibold">Fácil y rápido</p>
+      <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight">¿Cómo funciona OruPet?</h2>
+      <p class="mt-3 text-gray-600">Sigue estos pasos y tu mascota siempre tendrá una forma segura de volver a casa.</p>
+    </div>
+
+    <!-- Pasos -->
+    <ol class="mt-10 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Paso 1 -->
+      <li class="group relative rounded-2xl bg-white ring-1 ring-black/10 p-5 shadow-sm hover:shadow-md transition">
+        <div class="flex items-start gap-3">
+          <span class="inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-emerald-600 text-white font-bold">1</span>
           <div>
-            <h2 class="opg-title">Alertas listas para redes</h2>
-            <p class="opg-lead">
-              Diseños automáticos con estado, foto, zona y teléfonos.
-              <strong>Marca ORUPET integrada.</strong>
-            </p>
+            <div class="flex items-center gap-2">
+              <!-- ícono collar -->
+              <svg class="h-5 w-5 text-emerald-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4 7a3 3 0 0 1 3-3h10a3 3 0 1 1 0 6H7A3 3 0 0 1 4 7Zm13 0a1 1 0 1 0 0-2H7a1 1 0 1 0 0 2h10Z"/><path d="M12 11a3 3 0 0 0-3 3v5a3 3 0 1 0 6 0v-5a3 3 0 0 0-3-3Z"/>
+              </svg>
+              <h3 class="font-semibold">Coloca el collar</h3>
+            </div>
+            <p class="mt-1 text-sm text-gray-600">Ajusta el OruPet al cuello, cómodo y seguro.</p>
           </div>
-          <button id="opgShuffle" class="opg-btn">Aleatorizar</button>
-        </header>
+        </div>
+      </li>
 
-        <div id="opgGrid" class="opg-grid"><!-- posters render here --></div>
-      </div>
-    </section>
+      <!-- Paso 2 -->
+      <li class="group relative rounded-2xl bg-white ring-1 ring-black/10 p-5 shadow-sm hover:shadow-md transition">
+        <div class="flex items-start gap-3">
+          <span class="inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-emerald-600 text-white font-bold">2</span>
+          <div>
+            <div class="flex items-center gap-2">
+              <!-- ícono qr/nfc -->
+              <svg class="h-5 w-5 text-emerald-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M3 3h6v6H3V3Zm2 2v2h2V5H5Zm10-2h6v6h-6V3Zm2 2v2h2V5h-2ZM3 15h6v6H3v-6Zm2 2v2h2v-2H5Zm10 0h2v2h-2v-2Zm4 0h2v4h-4v-2h2v-2Zm-4 4h2v2h-2v-2Z"/>
+              </svg>
+              <h3 class="font-semibold">Escanea o acerca</h3>
+            </div>
+            <p class="mt-1 text-sm text-gray-600">QR o NFC: cualquier teléfono puede leerlo.</p>
+          </div>
+        </div>
+      </li>
 
-    <style>
-      /* ====== NAMESPACE: .opg-* (no colisiona con nada) ====== */
-      .opg-sec {
-        min-height: 100svh;
-        background: radial-gradient(
-            900px 600px at 90% -10%,
-            rgba(16, 185, 129, 0.1),
-            transparent 60%
-          ),
-          #f6f7f9;
-        overflow: hidden;
-      }
-      .opg-wrap {
-        max-width: 1200px;
-        margin: auto;
-        padding: 56px 20px 80px;
-      }
-      .opg-head {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 16px;
-        align-items: end;
-      }
-      .opg-title {
-        margin: 0;
-        font-weight: 900;
-        line-height: 1.04;
-        font-size: clamp(28px, 3.6vw, 44px);
-      }
-      .opg-lead {
-        margin: 8px 0 0;
-        color: #374151;
-      }
-      .opg-btn {
-        background: #111;
-        color: #fff;
-        border: 0;
-        border-radius: 999px;
-        padding: 10px 16px;
-        font-weight: 800;
-        cursor: pointer;
-      }
-      .opg-btn:active {
-        transform: translateY(1px);
-      }
+      <!-- Paso 3 -->
+      <li class="group relative rounded-2xl bg-white ring-1 ring-black/10 p-5 shadow-sm hover:shadow-md transition">
+        <div class="flex items-start gap-3">
+          <span class="inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-emerald-600 text-white font-bold">3</span>
+          <div>
+            <div class="flex items-center gap-2">
+              <!-- ícono contacto -->
+              <svg class="h-5 w-5 text-emerald-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M2 5a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H8v2h3a1 1 0 1 1 0 2H8v2h3a3 3 0 0 1 3 3v2H2V5Zm6 3h1a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h3Z"/>
+              </svg>
+              <h3 class="font-semibold">Contacto inmediato</h3>
+            </div>
+            <p class="mt-1 text-sm text-gray-600">Aparecen tus datos verificados para devolverlo.</p>
+          </div>
+        </div>
+      </li>
 
-      /* Grid */
-      .opg-grid {
-        margin-top: 24px;
-        display: grid;
-        gap: 18px;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-      @media (max-width: 1024px) {
-        .opg-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (max-width: 640px) {
-        .opg-grid {
-          grid-template-columns: 1fr;
-        }
-      }
+      <!-- Paso 4 -->
+      <li class="group relative rounded-2xl bg-white ring-1 ring-black/10 p-5 shadow-sm hover:shadow-md transition">
+        <div class="flex items-start gap-3">
+          <span class="inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-emerald-600 text-white font-bold">4</span>
+          <div>
+            <div class="flex items-center gap-2">
+              <!-- ícono ubicación -->
+              <svg class="h-5 w-5 text-emerald-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/>
+              </svg>
+              <h3 class="font-semibold">Ubicación y seguridad</h3>
+            </div>
+            <p class="mt-1 text-sm text-gray-600">Comparte ubicación y confirma entrega de tu mascota.</p>
+          </div>
+        </div>
+      </li>
+    </ol>
 
-      /* Poster base */
-      .opg-card {
-        position: relative;
-        aspect-ratio: 3/4;
-        border-radius: 14px;
-        overflow: hidden;
-        background: #fff;
-        box-shadow: 0 14px 38px rgba(15, 23, 42, 0.12),
-          0 1px 0 rgba(0, 0, 0, 0.08) inset;
-        transform: translateY(12px);
-        opacity: 0.001;
-        animation: opgRise 0.6s ease 0.06s both;
-      }
-      @keyframes opgRise {
-        to {
-          transform: none;
-          opacity: 1;
-        }
-      }
-      /* Textura papel */
-      .opg-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        background: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.03),
-            transparent 30%
-          ),
-          repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 8px,
-            rgba(0, 0, 0, 0.018) 9px
-          );
-        mix-blend-mode: multiply;
-      }
-      /* Cinta adhesiva */
-      .opg-tape {
-        position: absolute;
-        width: 86px;
-        height: 22px;
-        left: 14px;
-        top: 12px;
-        background: linear-gradient(90deg, #f6e9a6, #f1da7a);
-        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
-        transform: rotate(-7deg);
-        opacity: 0.95;
-        border-radius: 3px;
-      }
-      .opg-tape.-r {
-        left: auto;
-        right: 14px;
-        transform: rotate(6deg);
-      }
-      /* Foto + vidrio */
-      .opg-photo {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .opg-glass {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.18),
-          rgba(0, 0, 0, 0.55)
-        );
-      }
-      /* Marca */
-      .opg-brand {
-        position: absolute;
-        right: 10px;
-        bottom: 10px;
-        z-index: 3;
-        font-weight: 900;
-        font-size: 10px;
-        letter-spacing: 0.3px;
-        padding: 6px 8px;
-        border-radius: 999px;
-        border: 1px solid rgba(0, 0, 0, 0.06);
-        background: #fff;
-        color: #111;
-      }
-      /* Banda estado */
-      .opg-band {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        height: 46px;
-        display: grid;
-        place-items: center;
-        color: #fff;
-        font-weight: 900;
-        letter-spacing: 0.4px;
-      }
-      .opg-band.-busca {
-        background: #d7262d;
-      }
-      .opg-band.-perdido {
-        background: #f97316;
-      }
-      .opg-band.-ok {
-        background: #16a34a;
-      }
-      /* Nombre */
-      .opg-name {
-        position: absolute;
-        left: 16px;
-        right: 16px;
-        top: 56px;
-        display: grid;
-        place-items: center;
-        background: #fff;
-        border-radius: 12px;
-        padding: 8px 10px;
-        font-weight: 900;
-      }
+    <!-- Video elegante y 100% responsive -->
+    <div class="mt-12">
+      <div class="rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/10 bg-black/5">
+        <!-- Wrapper 16:9 sin plugin aspect-ratio -->
+        <div class="relative w-full" style="padding-bottom:56.25%;">
+          <!-- Opción A: video local (recomendado por control de marca) -->
+          <video
+            class="absolute inset-0 w-full h-full"
+            src="/assets/orupet/demo-orupet.mp4"
+            poster="/assets/orupet/poster-demo.jpg"
+            playsinline controls preload="metadata"
+          ></video>
 
-      /* Split (franja de datos) */
-      .opg-side {
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 45%;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(2px);
-        padding: 12px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      .opg-side h4 {
-        margin: 0;
-        font-size: 18px;
-        font-weight: 900;
-        color: #111;
-      }
-      .opg-meta {
-        font-size: 12px;
-        color: #374151;
-      }
-      .opg-phone {
-        display: inline-block;
-        background: #111;
-        color: #fff;
-        font-weight: 800;
-        border-radius: 999px;
-        padding: 6px 8px;
-        font-size: 11px;
-      }
-
-      /* Chips */
-      .opg-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        border-radius: 999px;
-        padding: 6px 10px;
-        font-size: 10px;
-        font-weight: 900;
-        text-transform: uppercase;
-      }
-      .opg-chip.-soft {
-        background: rgba(255, 255, 255, 0.14);
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.22);
-      }
-      /* Colores de estado para overlay */
-      .opg-state.-busca .opg-chip.-state {
-        background: #d7262d;
-        color: #fff;
-      }
-      .opg-state.-perdido .opg-chip.-state {
-        background: #f97316;
-        color: #fff;
-      }
-      .opg-state.-ok .opg-chip.-state {
-        background: #16a34a;
-        color: #fff;
-      }
-    </style>
-
-    <script>
-      (() => {
-        /* ====== DATOS (cámbialos por los tuyos) ====== */
-        const opgData = [
-          {
-            state: "busca",
-            date: "HOY 12 OCT",
-            name: "SASHI",
-            photo:
-              "https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=1200&auto=format&fit=crop",
-            place: "Las Delicias, Nuevo Chimbote",
-            when: "1:00 am",
-            phones: ["929449115", "990166618"],
-          },
-          {
-            state: "perdido",
-            date: "AYER 11 OCT",
-            name: "KIRA",
-            photo:
-              "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=1000&auto=format&fit=crop",
-            place: "Parque Kennedy, Miraflores",
-            when: "6:20 pm",
-            phones: ["999888777"],
-          },
-          {
-            state: "ok",
-            date: "HOY 12 OCT",
-            name: "MAX",
-            photo:
-              "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1200&auto=format&fit=crop",
-            place: "San Isidro",
-            when: "hace 12 min",
-            phones: ["987654321"],
-          },
-          {
-            state: "perdido",
-            date: "HOY 12 OCT",
-            name: "NALA",
-            photo:
-              "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?q=80&w=1000&auto=format&fit=crop",
-            place: "Cercado de Lima",
-            when: "40 min",
-            phones: ["912345678", "945556677"],
-          },
-          {
-            state: "busca",
-            date: "HOY 12 OCT",
-            name: "CENIZO",
-            photo:
-              "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?q=80&w=1000&auto=format&fit=crop",
-            place: "Lince",
-            when: "hace 1 h",
-            phones: ["900111222"],
-          },
-          {
-            state: "ok",
-            date: "AYER 11 OCT",
-            name: "FIONA",
-            photo:
-              "https://images.unsplash.com/photo-1543852786-1cf6624b9987?q=80&w=1200&auto=format&fit=crop",
-            place: "Barranco",
-            when: "hoy 9 am",
-            phones: ["901223344"],
-          },
-        ];
-
-        /* ====== HELPERS (aislados) ====== */
-        const $ = (s, r = document) => r.querySelector(s);
-        const el = (t, attrs = {}, html = "") => {
-          const n = document.createElement(t);
-          for (const k in attrs) n.setAttribute(k, attrs[k]);
-          n.innerHTML = html;
-          return n;
-        };
-        const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
-        const titleFor = (s) =>
-          s === "busca"
-            ? "SE BUSCA"
-            : s === "perdido"
-            ? "PERDIDO"
-            : "ENCONTRADO";
-
-        /* ====== PLANTILLAS ====== */
-        const TplBanner = (d) => `
-  <article class="opg-card">
-    <div class="opg-tape"></div><div class="opg-tape -r"></div>
-    <img class="opg-photo" src="${d.photo}" alt="">
-    <div class="opg-band opg-band.-${d.state} ${"-" + d.state}">${titleFor(
-          d.state
-        )} • ${d.date}</div>
-    <div class="opg-name">${d.name}</div>
-    <span class="opg-brand">Generado con ORUPET</span>
-  </article>`;
-
-        const TplOverlay = (d) => `
-  <article class="opg-card opg-state -${d.state}">
-    <div class="opg-tape"></div>
-    <img class="opg-photo" src="${d.photo}" alt=""><div class="opg-glass"></div>
-    <div style="position:absolute;inset:0;padding:14px;display:flex;flex-direction:column;justify-content:space-between;">
-      <div style="display:flex;gap:8px">
-        <span class="opg-chip -state">${titleFor(d.state)}</span>
-        <span class="opg-chip -soft">${d.date}</span>
-      </div>
-      <div>
-        <div class="opg-name" style="position:static;margin-bottom:8px">${
-          d.name
-        }</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <span class="opg-chip -soft">📍 ${d.place}</span>
-          <span class="opg-chip -soft">${d.when}</span>
+          <!-- Opción B (comenta A y descomenta B si prefieres YouTube/Vimeo)
+          <iframe
+            class="absolute inset-0 w-full h-full"
+            src="https://www.youtube.com/embed/XXXXXXXXX?rel=0&modestbranding=1&color=white"
+            title="Demostración OruPet"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+          -->
         </div>
       </div>
+      <p class="mt-3 text-center text-sm text-gray-500">Demostración en tiempo real del flujo de uso.</p>
     </div>
-    <span class="opg-brand">Generado con ORUPET</span>
-  </article>`;
+  </div>
+</section>
 
-        const TplSplit = (d) => `
-  <article class="opg-card">
-    <img class="opg-photo" src="${d.photo}" alt="">
-    <div class="opg-side">
-      <div>
-        <span class="opg-chip -state">${titleFor(d.state)}</span>
-        <h4 style="margin-top:6px">${d.name}</h4>
-        <div class="opg-meta" style="margin-top:6px">📍 ${d.place}</div>
-        <div class="opg-meta">${d.when}</div>
+
+
+
+
+
+
+
+
+<!-- ========================= -->
+<!-- SECCIÓN: DATOS (Premium) -->
+<!-- ========================= -->
+<section id="datos" class="relative overflow-hidden py-24">
+  <!-- Fondo elegante -->
+  <div class="pointer-events-none absolute -top-40 right-0 w-[880px] h-[880px] rounded-full bg-[radial-gradient(closest-side,rgba(16,185,129,.14),transparent_70%)] -z-10"></div>
+
+  <div class="container mx-auto px-4">
+    <!-- Encabezado conciso -->
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Datos de tu mascota, <span class="text-emerald-700">siempre contigo</span></h2>
+      <p class="mt-4 text-lg text-gray-600">Ficha editable, <b>ID único</b> (QR/NFC) reimprimible y opción de <b>recompensa</b> para facilitar su retorno.</p>
+    </div>
+
+    <!-- Chips de valor (scrollable en móvil) -->
+    <div class="mt-8 flex gap-3 overflow-x-auto pb-1 justify-center">
+      <div class="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur ring-1 ring-black/5 shadow-sm">
+        <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-white text-[11px] font-bold">✓</span>
+        <span class="text-sm font-medium">Ficha editable 24/7</span>
       </div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap">
-        ${d.phones.map((p) => `<span class="opg-phone">${p}</span>`).join("")}
+      <div class="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur ring-1 ring-black/5 shadow-sm">
+        <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-indigo-600 text-white text-[11px] font-bold">ID</span>
+        <span class="text-sm font-medium">QR/NFC único y permanente</span>
+      </div>
+      <div class="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur ring-1 ring-black/5 shadow-sm">
+        <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-amber-600 text-white text-[11px] font-bold">★</span>
+        <span class="text-sm font-medium">Recompensa opcional</span>
       </div>
     </div>
-    <span class="opg-brand">Generado con ORUPET</span>
-  </article>`;
 
-        const templates = [TplBanner, TplOverlay, TplSplit];
+    <!-- Feature principal: ID único -->
+    <div class="mt-10 rounded-3xl bg-white/90 backdrop-blur-xl ring-1 ring-black/5 shadow-[0_18px_50px_rgba(0,0,0,.08)] p-6 sm:p-8">
+      <div class="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start">
+        <!-- Vista QR (izquierda) -->
+        <div class="w-full max-w-[260px] lg:w-72">
+          <div class="relative rounded-2xl bg-gradient-to-br from-gray-50 to-white ring-1 ring-black/10 shadow-inner p-4">
+            <div class="aspect-square rounded-xl bg-white ring-1 ring-black/10 grid place-items-center overflow-hidden">
+              <img src="/assets/orupet/qr-demo.svg" alt="QR OruPet" class="w-28 h-28 object-contain" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <div class="hidden text-xs text-gray-400">QR</div>
+            </div>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="px-2 py-1 text-[11px] rounded-md bg-emerald-600/10 text-emerald-700 ring-1 ring-emerald-200">ID único</span>
+              <span class="px-2 py-1 text-[11px] rounded-md bg-black/5 ring-1 ring-black/10">Reimprimible</span>
+            </div>
+          </div>
+        </div>
 
-        /* ====== RENDER ====== */
-        const grid = $("#opgGrid");
-        function render() {
-          grid.innerHTML = "";
-          opgData.forEach((d) => {
-            grid.appendChild(el("div", {}, pick(templates)(d)));
-          });
-        }
-
-        /* ====== SOLO CUANDO ENTRA EN VIEWPORT (performance/estilo Apple) ====== */
-        const sec = $("#opg-posters");
-        const io = new IntersectionObserver(
-          (es) => {
-            es.forEach((e) => {
-              if (e.isIntersecting) {
-                render();
-                io.disconnect();
-              }
-            });
-          },
-          { threshold: 0.25 }
-        );
-        io.observe(sec);
-
-        /* Aleatorizar manual */
-        $("#opgShuffle").addEventListener("click", render);
-      })();
-    </script>
-
-    <!-- PANEL 4 • UNBOXING / PREMIUM -->
-    <section class="panel relative overflow-hidden">
-      <div
-        class="absolute inset-0 -z-10 bg-gradient-to-br from-rose-50 via-white to-indigo-50"
-      ></div>
-      <div class="container grid lg:grid-cols-2 gap-10 items-center">
-        <div>
-          <h3 class="text-4xl font-extrabold tracking-tight">
-            Unboxing que enamora.
-          </h3>
-          <p class="text-gray-600 mt-3">
-            Caja rígida con ventana, grabado de marca y cama interior. Perfecto
-            para tiendas o envíos.
-          </p>
-          <ul class="mt-6 space-y-2 text-gray-700 list-disc list-inside">
-            <li>Incluye guía de activación</li>
-            <li>QR/NFC probados en iPhone y Android</li>
-            <li>Mes de cortesía con funciones ilimitadas</li>
+        <!-- Copy claro (derecha) -->
+        <div class="flex-1">
+          <h3 class="text-2xl sm:text-3xl font-bold leading-tight">ID único · QR / NFC</h3>
+          <ul class="mt-3 space-y-3 text-gray-700 text-base">
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-emerald-600"></span><span>Escanéalo o acércalo: abre la ficha de tu mascota al instante.</span></li>
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-emerald-600"></span><span>Si pierdes el módulo físico, <b>reimprimes</b> otro desde la app con el <b>mismo ID</b>.</span></li>
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-emerald-600"></span><span>Puedes <b>editar la ficha</b> cuando quieras; el QR no cambia.</span></li>
           </ul>
-        </div>
-        <div
-          class="rounded-[28px] overflow-hidden ring-1 ring-black/5 shadow-xl"
-        >
-          <img
-            src="11111.jpg"
-            alt="Empaque Orupet"
-            class="w-full h-full object-cover"
-          />
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#crear-cuenta" class="px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-400 text-white shadow-lg hover:scale-105 transition">Crear ficha ahora</a>
+            <a href="#planes" class="px-6 py-3 rounded-full bg-white ring-1 ring-black/10 hover:ring-black/20">Comprar collar</a>
+          </div>
+
+          <!-- Secundario claro (accordion compacto) -->
+          <div class="mt-6 grid sm:grid-cols-3 gap-3">
+            <details class="group rounded-xl bg-white/70 backdrop-blur ring-1 ring-black/10 shadow p-4">
+              <summary class="cursor-pointer font-semibold flex items-center justify-between">¿Qué datos registro?<span class="text-gray-400 group-open:rotate-180 transition">⌄</span></summary>
+              <p class="mt-2 text-sm text-gray-600">Contacto, dirección, salud (vacunas, alergias), fotos y PDFs, notas y hábitos.</p>
+            </details>
+            <details class="group rounded-xl bg-white/70 backdrop-blur ring-1 ring-black/10 shadow p-4">
+              <summary class="cursor-pointer font-semibold flex items-center justify-between">¿Cómo reimprimo?<span class="text-gray-400 group-open:rotate-180 transition">⌄</span></summary>
+              <p class="mt-2 text-sm text-gray-600">Desde el panel, “Generar QR” → descargas PDF listo para imprimir o enviar a imprenta.</p>
+            </details>
+            <details class="group rounded-xl bg-white/70 backdrop-blur ring-1 ring-black/10 shadow p-4">
+              <summary class="cursor-pointer font-semibold flex items-center justify-between">Recompensa<span class="text-gray-400 group-open:rotate-180 transition">⌄</span></summary>
+              <p class="mt-2 text-sm text-gray-600">Actívala cuando quieras. Monto y condiciones visibles en la ficha pública.</p>
+            </details>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- Bento de beneficios (visual, sin ruido) -->
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      <div class="rounded-3xl bg-white/80 backdrop-blur-xl ring-1 ring-black/5 shadow p-6">
+        <div class="flex items-center gap-3">
+          <span class="h-11 w-11 rounded-2xl bg-emerald-600 text-white grid place-items-center shadow">📄</span>
+          <div>
+            <p class="font-semibold">Perfil siempre actualizado</p>
+            <p class="text-sm text-gray-600">Edita teléfonos, dirección y salud al instante.</p>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-3xl bg-white/80 backdrop-blur-xl ring-1 ring-black/5 shadow p-6">
+        <div class="flex items-center gap-3">
+          <span class="h-11 w-11 rounded-2xl bg-indigo-600 text-white grid place-items-center shadow">🔐</span>
+          <div>
+            <p class="font-semibold">Privacidad y control</p>
+            <p class="text-sm text-gray-600">Elige qué verán desde el QR y qué queda privado.</p>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-3xl bg-white/80 backdrop-blur-xl ring-1 ring-black/5 shadow p-6">
+        <div class="flex items-center gap-3">
+          <span class="h-11 w-11 rounded-2xl bg-amber-600 text-white grid place-items-center shadow">🎁</span>
+          <div>
+            <p class="font-semibold">Recompensas integradas</p>
+            <p class="text-sm text-gray-600">Agradece a quien lo devuelva con total transparencia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline mínimo (3 pasos) -->
+
+  </div>
+</section>
+
+
+
+
+   <!-- ============================ -->
+<!-- SECCIÓN: ALERTAS (OruPet)   -->
+<!-- ============================ -->
+<section id="alertas" class="relative overflow-hidden py-24">
+  <!-- halo -->
+  <div class="pointer-events-none absolute -top-40 left-0 w-[820px] h-[820px] rounded-full bg-[radial-gradient(closest-side,rgba(14,165,233,.12),transparent_70%)] -z-10"></div>
+
+  <div class="container mx-auto px-4">
+    <!-- Encabezado -->
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-xs uppercase tracking-widest text-emerald-700/80 font-semibold">Seguridad en tiempo real</p>
+      <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">Alertas <span class="text-emerald-700">inteligentes</span></h2>
+      <p class="mt-4 text-lg text-gray-600">
+        Notificaciones inmediatas cuando alguien escanea el QR/NFC, con ubicación, contacto y estado.
+        Controlas qué avisar, a quién y cómo.
+      </p>
+    </div>
+
+    <!-- Grid: Demo (izq) + Controles (der) -->
+    <div class="mt-12 grid gap-8 lg:grid-cols-12 items-start">
+      <!-- Teléfono con animación tipo iOS -->
+      <div class="lg:col-span-6">
+        <div class="mx-auto w-full max-w-[360px]">
+          <!-- Marco del teléfono -->
+          <div class="relative rounded-[42px] border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,.15)] overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+            <!-- notch -->
+            <div class="absolute left-1/2 -translate-x-1/2 top-0 h-6 w-40 bg-black/90 rounded-b-2xl z-20"></div>
+
+            <!-- pantalla (ratio 19.5:9) -->
+            <div class="relative w-full" style="padding-bottom: 215%;">
+              <!-- fondo suave -->
+              <div class="absolute inset-0 bg-[radial-gradient(1000px_600px_at_70%_20%,#dcfce7,#f8fafc_60%)]"></div>
+
+              <!-- stack de notificaciones -->
+              <div id="stack" class="absolute top-8 inset-x-3 flex flex-col gap-2.5 z-10">
+                <!-- NOTIF plantilla 1 -->
+                <article class="notif backdrop-blur-xl bg-white/80 ring-1 ring-black/10 rounded-2xl shadow-lg p-3.5 opacity-0 translate-y-4">
+                  <div class="flex items-start gap-3">
+                    <div class="h-8 w-8 rounded-xl bg-emerald-600 text-white grid place-items-center">QR</div>
+                    <div class="min-w-0">
+                      <p class="text-[13px] text-gray-500 leading-none">Ahora</p>
+                      <h3 class="font-semibold leading-tight truncate">OruPet — Escaneo de Nala</h3>
+                      <p class="text-sm text-gray-700">Alguien escaneó el ID. <b>Contacto disponible</b>.</p>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- NOTIF plantilla 2 -->
+                <article class="notif backdrop-blur-xl bg-white/80 ring-1 ring-black/10 rounded-2xl shadow-lg p-3.5 opacity-0 translate-y-4">
+                  <div class="flex items-start gap-3">
+                    <div class="h-8 w-8 rounded-xl bg-cyan-600 text-white grid place-items-center">
+                      <!-- ícono ubicación -->
+                      <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/></svg>
+                    </div>
+                    <div class="min-w-0">
+                      <p class="text-[13px] text-gray-500 leading-none">Hace 1 min</p>
+                      <h3 class="font-semibold leading-tight truncate">Ubicación aproximada</h3>
+                      <p class="text-sm text-gray-700 truncate">Parque Kennedy, Miraflores • Ver mapa</p>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- NOTIF plantilla 3 -->
+                <article class="notif backdrop-blur-xl bg-white/80 ring-1 ring-black/10 rounded-2xl shadow-lg p-3.5 opacity-0 translate-y-4">
+                  <div class="flex items-start gap-3">
+                    <div class="h-8 w-8 rounded-xl bg-indigo-600 text-white grid place-items-center">
+                      <!-- ícono estado -->
+                      <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor" aria-hidden="true"><path d="M9 12l2 2 4-4-1.4-1.4L11 11.2 10.4 10.6 7.6 13.4 9 12z"/><path d="M12 2a10 10 0 100 20 10 10 0 000-20z" fill-opacity=".15"/></svg>
+                    </div>
+                    <div class="min-w-0">
+                      <p class="text-[13px] text-gray-500 leading-none">Hace 3 min</p>
+                      <h3 class="font-semibold leading-tight truncate">Estado actualizado</h3>
+                      <p class="text-sm text-gray-700">Marcaste <b>“Encontrado”</b>. ¡Gracias por confirmar!</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <!-- barra inferior (home) -->
+              <div class="absolute bottom-2 left-1/2 -translate-x-1/2 h-1.5 w-32 rounded-full bg-black/10"></div>
+            </div>
+          </div>
+
+          <p class="mt-4 text-center text-sm text-gray-500">Vista simulada. El estilo y la animación imitan la experiencia de iOS.</p>
+        </div>
+      </div>
+
+      <!-- Controles y explicación -->
+      <div class="lg:col-span-6">
+        <!-- Tarjeta de configuración -->
+        <div class="rounded-3xl bg-white/90 backdrop-blur-xl ring-1 ring-black/5 shadow-[0_18px_50px_rgba(0,0,0,.08)] p-6">
+          <h3 class="text-2xl font-bold">¿Qué puedes hacer con las alertas?</h3>
+          <ul class="mt-4 space-y-3 text-gray-700">
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-emerald-600"></span><span><b>Recibir notificaciones</b> cuando alguien escanee el collar (QR/NFC).</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-emerald-600"></span><span>Ver <b>ubicación aproximada</b>, nombre y teléfono del contacto que reporta.</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-emerald-600"></span><span><b>Marcar estados</b>: “Buscando”, “Encontrado”, “En camino”, “En casa”.</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-emerald-600"></span><span>Activar <b>recompensa</b> y confirmarla al cerrar el caso.</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-emerald-600"></span><span>Notificar a <b>contactos de confianza</b> (familia, vet) de forma automática.</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-emerald-600"></span><span>Revisar <b>historial</b> de eventos y ubicaciones.</span></li>
+          </ul>
+
+          <!-- switches -->
+          <div class="mt-6 grid gap-3 sm:grid-cols-2">
+            <!-- Switch -->
+            <label class="flex items-center justify-between rounded-2xl ring-1 ring-black/10 bg-white/70 p-3">
+              <span class="text-sm font-medium">Push al teléfono</span>
+              <input type="checkbox" class="peer hidden" checked>
+              <span class="w-12 h-6 rounded-full bg-gray-200 relative after:content-[''] after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:bg-white after:rounded-full after:transition peer-checked:bg-emerald-500 peer-checked:after:translate-x-6"></span>
+            </label>
+            <label class="flex items-center justify-between rounded-2xl ring-1 ring-black/10 bg-white/70 p-3">
+              <span class="text-sm font-medium">Correo de respaldo</span>
+              <input type="checkbox" class="peer hidden">
+              <span class="w-12 h-6 rounded-full bg-gray-200 relative after:content-[''] after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:bg-white after:rounded-full after:transition peer-checked:bg-emerald-500 peer-checked:after:translate-x-6"></span>
+            </label>
+            <label class="flex items-center justify-between rounded-2xl ring-1 ring-black/10 bg-white/70 p-3">
+              <span class="text-sm font-medium">Compartir ubicación</span>
+              <input type="checkbox" class="peer hidden" checked>
+              <span class="w-12 h-6 rounded-full bg-gray-200 relative after:content-[''] after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:bg-white after:rounded-full after:transition peer-checked:bg-emerald-500 peer-checked:after:translate-x-6"></span>
+            </label>
+            <label class="flex items-center justify-between rounded-2xl ring-1 ring-black/10 bg-white/70 p-3">
+              <span class="text-sm font-medium">Avisar a contactos</span>
+              <input type="checkbox" class="peer hidden">
+              <span class="w-12 h-6 rounded-full bg-gray-200 relative after:content-[''] after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:bg-white after:rounded-full after:transition peer-checked:bg-emerald-500 peer-checked:after:translate-x-6"></span>
+            </label>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#crear-cuenta" class="px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-400 text-white shadow-lg hover:scale-105 transition">Probar alertas</a>
+            <a href="#planes" class="px-6 py-3 rounded-full bg-white ring-1 ring-black/10 hover:ring-black/20">Comprar collar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Animación estilo iOS para las notificaciones */
+  #alertas .notif{
+    animation: iosEnter 6s ease-in-out infinite;
+    transform-origin: top center;
+    /* cada una se desfasa para que entren en secuencia */
+  }
+  #alertas .notif:nth-child(1){ animation-delay: .0s; }
+  #alertas .notif:nth-child(2){ animation-delay: 2s; }
+  #alertas .notif:nth-child(3){ animation-delay: 4s; }
+
+  @keyframes iosEnter{
+    0%   { opacity: 0; transform: translateY(8px) scale(.98); filter: blur(4px); }
+    6%   { opacity: 1; transform: translateY(0) scale(1);     filter: blur(0);  }
+    30%  { opacity: 1; transform: translateY(0) scale(1);     filter: blur(0);  }
+    34%  { opacity: 1; transform: translateY(-2px) scale(1.01); }
+    65%  { opacity: 1; transform: translateY(0) scale(1); }
+    80%  { opacity: .98; }
+    90%  { opacity: .4; transform: translateY(-6px) scale(.995); filter: blur(2px); }
+    100% { opacity: 0;  transform: translateY(-12px) scale(.98); filter: blur(4px); }
+  }
+
+  /* Respeta movimiento reducido */
+  @media (prefers-reduced-motion: reduce){
+    #alertas .notif{ animation: none; opacity: 1; transform: none; }
+  }
+</style>
+
+<script>
+/* Inicia / pausa la animación sólo si la sección es visible (ahorra batería) */
+(() => {
+  const section = document.querySelector('#alertas');
+  if (!('IntersectionObserver' in window) || !section) return;
+  const cards = section.querySelectorAll('.notif');
+
+  let running = false;
+  const setRunning = (on) => {
+    if (running === on) return;
+    running = on;
+    cards.forEach(el => el.style.animationPlayState = on ? 'running' : 'paused');
+  };
+
+  // Pausar por defecto hasta que entre al viewport
+  setRunning(false);
+
+  const io = new IntersectionObserver(([entry]) => {
+    setRunning(entry.isIntersecting);
+  }, { threshold: .3 });
+  io.observe(section);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ============================== -->
+<!-- SECCIÓN: UBICACIONES (OruPet) -->
+<!-- ============================== -->
+<section id="ubicaciones" class="relative overflow-hidden py-24">
+  <!-- halo suave -->
+  <div class="pointer-events-none absolute -top-40 right-0 w-[900px] h-[900px] rounded-full bg-[radial-gradient(closest-side,rgba(59,130,246,.12),transparent_70%)] -z-10"></div>
+
+  <div class="container mx-auto px-4">
+    <!-- Encabezado -->
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-xs uppercase tracking-widest text-emerald-700/80 font-semibold">Vista de avistamientos</p>
+      <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">Ubicaciones <span class="text-emerald-700">en tiempo real*</span></h2>
+      <p class="mt-4 text-lg text-gray-600">Así verás los puntos reportados cuando alguien escanee o toque el collar. Interfaz clara, privada y elegante.</p>
+      <p class="mt-2 text-xs text-gray-400">*Simulación con datos ficticios para mostrar la experiencia.</p>
+    </div>
+
+    <!-- Grid: Mapa simulado + Lista -->
+    <div class="mt-12 grid gap-8 lg:grid-cols-12 items-start">
+      <!-- Teléfono con mapa -->
+      <div class="lg:col-span-7">
+        <div class="mx-auto w-full max-w-[420px]">
+          <!-- Marco iPhone-like -->
+          <div class="relative rounded-[42px] border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,.15)] overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+            <div class="absolute left-1/2 -translate-x-1/2 top-0 h-6 w-40 bg-black/90 rounded-b-2xl z-20"></div>
+
+            <!-- Pantalla -->
+            <div class="relative w-full" style="padding-bottom: 200%;">
+              <!-- Barra top -->
+              <div class="absolute top-3 left-3 right-3 z-30 flex items-center justify-between">
+                <div class="rounded-full px-3 py-1 text-[12px] bg-white/80 backdrop-blur ring-1 ring-black/10 shadow-sm">
+                  OruPet • Ubicaciones
+                </div>
+                <div class="rounded-full px-2 py-1 text-[12px] bg-white/80 backdrop-blur ring-1 ring-black/10 shadow-sm">
+                  <button id="range-today" class="px-2 py-0.5 rounded-full bg-emerald-600 text-white">Hoy</button>
+                  <button id="range-7d" class="px-2 py-0.5 rounded-full">7 días</button>
+                </div>
+              </div>
+
+              <!-- MAPA SVG SIMULADO -->
+              <svg id="map" class="absolute inset-0 w-full h-full" viewBox="0 0 430 860" xmlns="http://www.w3.org/2000/svg" aria-label="Mapa simulado">
+                <!-- fondo -->
+                <defs>
+                  <linearGradient id="gsky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#f0fdf4"/>
+                    <stop offset="100%" stop-color="#f8fafc"/>
+                  </linearGradient>
+                  <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+                    <feGaussianBlur stdDeviation="6" />
+                  </filter>
+                </defs>
+                <rect x="0" y="0" width="430" height="860" fill="url(#gsky)"/>
+
+                <!-- “barrios” -->
+                <g fill="#e5f2ff">
+                  <rect x="40" y="120" width="120" height="80" rx="14"/>
+                  <rect x="220" y="130" width="150" height="90" rx="14"/>
+                  <rect x="70" y="260" width="120" height="100" rx="14"/>
+                  <rect x="230" y="280" width="120" height="80" rx="14"/>
+                  <rect x="50" y="420" width="140" height="110" rx="14"/>
+                  <rect x="230" y="460" width="150" height="90" rx="14"/>
+                  <rect x="90" y="610" width="120" height="90" rx="14"/>
+                  <rect x="250" y="620" width="120" height="90" rx="14"/>
+                </g>
+
+                <!-- “ríos/parques” -->
+                <ellipse cx="120" cy="200" rx="60" ry="28" fill="#dcfce7"/>
+                <ellipse cx="320" cy="330" rx="56" ry="24" fill="#dcfce7"/>
+                <ellipse cx="180" cy="700" rx="70" ry="30" fill="#dcfce7"/>
+
+                <!-- rutas (animadas) -->
+                <polyline id="route" points="85,165 145,310 110,475 210,655 305,665" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".9" />
+
+                <!-- pines -->
+                <g id="pins">
+                  <!-- pin plantilla -->
+                  <!-- se clona por JS -->
+                  <g id="pin-template" class="pin" transform="translate(85,165)" style="display:none">
+                    <g filter="url(#soft)">
+                      <circle r="14" fill="#22c55e"/>
+                    </g>
+                    <circle r="10" fill="#059669"/>
+                    <circle r="3.5" fill="white"/>
+                  </g>
+                </g>
+              </svg>
+
+              <!-- Tarjeta flotante (como Apple Maps) -->
+              <div id="card" class="absolute left-3 right-3 bottom-4 z-30 rounded-3xl bg-white/90 backdrop-blur-xl ring-1 ring-black/10 shadow-xl p-4 translate-y-6 opacity-0">
+                <div class="flex items-center justify-between">
+                  <div class="min-w-0">
+                    <p id="card-time" class="text-[12px] text-gray-500 leading-none">Ahora</p>
+                    <h3 id="card-title" class="font-semibold truncate">Escaneo en Parque Central</h3>
+                  </div>
+                  <span class="px-2 py-1 text-[11px] rounded-md bg-emerald-600/10 text-emerald-700 ring-1 ring-emerald-200">Vía QR</span>
+                </div>
+                <p id="card-meta" class="mt-1 text-sm text-gray-700">iPhone • 230 m de tu casa • Ver contacto</p>
+              </div>
+
+              <div class="absolute bottom-2 left-1/2 -translate-x-1/2 h-1.5 w-32 rounded-full bg-black/10"></div>
+            </div>
+          </div>
+          <p class="mt-4 text-center text-sm text-gray-500">Privado por defecto. Tú eliges qué compartir y con quién.</p>
+        </div>
+      </div>
+
+      <!-- Lista/Historial -->
+      <div class="lg:col-span-5">
+        <div class="rounded-3xl bg-white/90 backdrop-blur-xl ring-1 ring-black/5 shadow-[0_18px_50px_rgba(0,0,0,.08)] p-6">
+          <h3 class="text-2xl font-bold">Historial de ubicaciones</h3>
+          <ul id="feed" class="mt-4 space-y-3">
+            <!-- se rellena por JS -->
+          </ul>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-3">
+            <label class="flex items-center justify-between rounded-2xl ring-1 ring-black/10 bg-white/70 p-3">
+              <span class="text-sm font-medium">Mostrar ubicación aproximada</span>
+              <input type="checkbox" class="peer hidden" checked>
+              <span class="w-12 h-6 rounded-full bg-gray-200 relative after:content-[''] after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:bg-white after:rounded-full after:transition peer-checked:bg-emerald-500 peer-checked:after:translate-x-6"></span>
+            </label>
+            <label class="flex items-center justify-between rounded-2xl ring-1 ring-black/10 bg-white/70 p-3">
+              <span class="text-sm font-medium">Compartir con familia</span>
+              <input type="checkbox" class="peer hidden" checked>
+              <span class="w-12 h-6 rounded-full bg-gray-200 relative after:content-[''] after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:bg-white after:rounded-full after:transition peer-checked:bg-emerald-500 peer-checked:after:translate-x-6"></span>
+            </label>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#crear-cuenta" class="px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-400 text-white shadow-lg hover:scale-105 transition">Probar ubicaciones</a>
+            <a href="#planes" class="px-6 py-3 rounded-full bg-white ring-1 ring-black/10 hover:ring-black/20">Comprar collar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Animaciones Apple-like: entrada de tarjeta y pulso de pines */
+  #ubicaciones #card{ animation: cardEnter .9s cubic-bezier(.22,.7,.26,1.2) forwards .6s; }
+  @keyframes cardEnter{
+    0%{opacity:0; transform: translateY(12px) scale(.98); filter: blur(4px);}
+    100%{opacity:1; transform: translateY(0) scale(1); filter: blur(0);}
+  }
+  #ubicaciones .pin circle:first-child{ animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse{
+    0%,100%{ r:14; opacity:.55 }
+    50%{ r:18; opacity:.25 }
+  }
+
+  /* Dibujo del trazo ruta */
+  #ubicaciones #route{
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: draw 3s ease forwards 0.2s;
+  }
+  @keyframes draw{
+    to{ stroke-dashoffset: 0; }
+  }
+
+  /* Pausar animación si no está visible */
+  @media (prefers-reduced-motion: reduce){
+    #ubicaciones *{ animation: none !important; }
+  }
+</style>
+
+<script>
+(() => {
+  // Datos ficticios de avistamientos
+  const sightings = [
+    { t:'Ahora',       title:'Escaneo en Parque Central',  meta:'iPhone • 230 m de tu casa • Ver contacto',   x:85,  y:165,  via:'QR' },
+    { t:'Hace 12 min', title:'Avistamiento en Av. Prado', meta:'Android • 1.1 km • Compartido por Luis',     x:145, y:310, via:'QR' },
+    { t:'Hace 47 min', title:'Reporte en Plaza Este',     meta:'Safari iOS • 2.4 km • Foto adjunta',         x:110, y:475, via:'NFC'},
+    { t:'Ayer 6:40pm', title:'Calle Los Robles',          meta:'Chrome • 4.7 km • Llamada realizada',        x:210, y:655, via:'QR' },
+    { t:'Ayer 7:05pm', title:'Parque Sur',                meta:'Android • 5.1 km • Mensaje enviado',         x:305, y:665, via:'NFC'},
+  ];
+
+  const section = document.querySelector('#ubicaciones');
+  const map = section.querySelector('#map');
+  const pinsGroup = map.querySelector('#pins');
+  const tmpl = pinsGroup.querySelector('#pin-template');
+  const card = section.querySelector('#card');
+  const cardTime = section.querySelector('#card-time');
+  const cardTitle = section.querySelector('#card-title');
+  const cardMeta = section.querySelector('#card-meta');
+  const feed = section.querySelector('#feed');
+  const rangeToday = section.querySelector('#range-today');
+  const range7d = section.querySelector('#range-7d');
+
+  // Crear pines
+  const pins = sightings.map((s, idx) => {
+    const g = tmpl.cloneNode(true);
+    g.style.display = '';
+    g.setAttribute('transform', `translate(${s.x},${s.y})`);
+    g.dataset.idx = idx;
+    pinsGroup.appendChild(g);
+    return g;
+  });
+  tmpl.remove();
+
+  // Rellenar lista
+  function renderFeed(items){
+    feed.innerHTML = '';
+    items.forEach((s, i) => {
+      const li = document.createElement('li');
+      li.className = 'rounded-2xl ring-1 ring-black/10 bg-white/80 backdrop-blur p-3 hover:bg-white transition';
+      li.innerHTML = `
+        <div class="flex items-start gap-3">
+          <span class="h-8 w-8 rounded-xl ${s.via==='QR'?'bg-emerald-600':'bg-indigo-600'} text-white grid place-items-center text-xs">${s.via}</span>
+          <div class="min-w-0">
+            <p class="text-[12px] text-gray-500 leading-none">${s.t}</p>
+            <h4 class="font-semibold leading-tight truncate">${s.title}</h4>
+            <p class="text-sm text-gray-700 truncate">${s.meta}</p>
+          </div>
+        </div>`;
+      li.addEventListener('mouseenter', ()=> focusPin(i));
+      feed.appendChild(li);
+    });
+  }
+
+  // Focus de pin + tarjeta
+  function focusPin(i){
+    const s = sightings[i];
+    cardTime.textContent = s.t;
+    cardTitle.textContent = s.title;
+    cardMeta.textContent = s.meta;
+
+    // destacar pin seleccionado
+    pins.forEach((p, k)=>{
+      p.style.opacity = k===i ? '1' : '.45';
+      p.querySelector('circle:nth-child(2)').setAttribute('fill', k===i ? '#059669' : '#10b981');
+    });
+
+    // animación ligera de la tarjeta
+    card.style.transition = 'transform .24s ease, box-shadow .24s ease';
+    card.style.transform = 'translateY(-2px)';
+    card.style.boxShadow = '0 14px 40px rgba(0,0,0,.14)';
+    setTimeout(()=>{
+      card.style.transform = '';
+      card.style.boxShadow = '';
+    }, 240);
+  }
+
+  // Rango (hoy vs 7 días)
+  rangeToday.addEventListener('click', ()=>{
+    rangeToday.classList.add('bg-emerald-600','text-white');
+    range7d.classList.remove('bg-emerald-600','text-white');
+    renderFeed(sightings.slice(0,3));
+    focusPin(0);
+  });
+  range7d.addEventListener('click', ()=>{
+    range7d.classList.add('bg-emerald-600','text-white');
+    rangeToday.classList.remove('bg-emerald-600','text-white');
+    renderFeed(sightings);
+    focusPin(sightings.length-1);
+  });
+
+  // Auto-ciclo suave cuando la sección está visible
+  let auto, idx=0, running=false;
+  function startAuto(){
+    if(running) return; running=true;
+    auto = setInterval(()=>{
+      idx = (idx+1) % sightings.length;
+      focusPin(idx);
+    }, 2600);
+  }
+  function stopAuto(){ running=false; clearInterval(auto); }
+
+  const io = new IntersectionObserver(([e])=>{
+    if(e.isIntersecting) startAuto(); else stopAuto();
+  }, {threshold:.35});
+  io.observe(section);
+
+  // Init
+  renderFeed(sightings.slice(0,3));
+  focusPin(0);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- =========== PRICING • pantalla completa (aislado) =========== -->
     <section id="prx-pricing" class="prx-sec" aria-label="Planes Orupet">
